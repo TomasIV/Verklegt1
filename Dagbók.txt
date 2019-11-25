@@ -1,1 +1,3 @@
-Test123
+25.22.19:
+Markmið dagsins er að setja upp notkunartilvikin fyrir hönnunarskýrslu og gera notandahópagreiningu.
+GitHub skrá hefur verið gerð til að halda utan um komadi kóða.
