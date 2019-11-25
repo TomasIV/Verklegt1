@@ -1,3 +1,8 @@
-25.22.19:
-Markmið dagsins er að setja upp notkunartilvikin fyrir hönnunarskýrslu og gera notandahópagreiningu.
+25.11.19:
+
+Markmið dagsins er að setja upp notkunartilvikin fyrir hönnunarskýrslu og gera notendahópagreiningu.
 GitHub skrá hefur verið gerð til að halda utan um komadi kóða.
+
+Notkunartilvik eru uppsett (allir).
+Þurfum að beturumbæta notendahópagreininguna.
+GitHub file var sett upp (Tómas).
