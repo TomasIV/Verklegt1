@@ -6,3 +6,12 @@ GitHub skrá hefur verið gerð til að halda utan um komadi kóða.
 Notkunartilvik eru uppsett (allir).
 Þurfum að beturumbæta notendahópagreininguna.
 GitHub file var sett upp (Tómas).
+
+26.11.19: 
+
+Markmið dagsins er að setja upp Klasariti (e. Class diagram) og Stöðuritum (e. State diagram) 
+
+Lagfæringar á Notkunartilviku (Þorgerður) 
+Klasarit ( 2 sjá um uppsetningu) 
+Stöðurit ( 2 sjá um uppsetningu) 
+
