@@ -9,9 +9,13 @@ GitHub file var sett upp (Tómas).
 
 26.11.19: 
 
-Markmið dagsins er að setja upp Klasariti (e. Class diagram) og Stöðuritum (e. State diagram) 
+Markmið dagsins er að setja upp Klasarit (e. Class diagram) og Stöðuritum (e. State diagram) 
 
-Lagfæringar á Notkunartilviku (Þorgerður) 
-Klasarit ( 2 sjá um uppsetningu) 
-Stöðurit ( 2 sjá um uppsetningu) 
+Lagfæringar á Notkunartilvikum (Þorgerður) 
+Klasarit (Anna og Viktor)
+Stöðurit (Andri og Tómas) 
+
+Klasar settir upp í rit og nokkur stöðurit búin til, Þorgerður veik vann heima frá seinna um kvöldið vildi commita strax
+
+
 
