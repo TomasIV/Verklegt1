@@ -12,18 +12,27 @@ GitHub file var sett upp (Tómas).
 Markmið dagsins er að setja upp Klasarit (e. Class diagram) og Stöðuritum (e. State diagram) 
 
 Lagfæringar á Notkunartilvikum (Þorgerður) 
-Klasarit (Anna og Viktor)
+Klasarit (Anna og Breki)
 Stöðurit (Andri og Tómas) 
 
 Í lok dags: 
 
-Klasar settir upp í rit og nokkur stöðurit búin til, Þorgerður veik vann heima frá seinna um kvöldið vildi commita strax
+Klasar settir upp í rit og nokkur stöðurit búin til, Þorgerður veik og fór því heim efir fyrirlestra og morgunfund, vann heima frá seinna um kvöldið vildi commita strax
 Klárað var verkefni sem Þorgerður tók að sér þrátt fyrir að það hafi verið gert heima vegna veikinda. 
 
 27.11.19:
 
 Markmið dagsins er að setja upp Notendahópagreiningu og Útlitshönnun (e. Wireframe) 
 Endurhugsa og útfæra Notendatilvik
-Smá lagfæringar á Klasariti og stöðuriti 
+Smá lagfæringar á Klasariti 
+Unnið í stöðuriti  
+
+Útlishönnun (Þorgerður og Andri) 
+Notendatilvik (smávegis lagfæringar)  og Notendahópagreiningu (Andri)
+Klasarit (smávegis breytingar) (Anna og Breki)
+Stöðurit (Haldið áfram frá því síðast) (Tómas) 
 
 Í lok dags: 
+
+Anna og Breki halda áfram að vinna í Klasarit heima í kvöld.
+Þorgerður heldur áfam í kvöld með útlitshönnun heima. 
