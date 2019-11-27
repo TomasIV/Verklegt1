@@ -4,7 +4,7 @@ Markmið dagsins er að setja upp notkunartilvikin fyrir hönnunarskýrslu og ge
 GitHub skrá hefur verið gerð til að halda utan um komadi kóða.
 
 Notkunartilvik eru uppsett (allir).
-Þurfum að beturumbæta notendahópagreininguna.
+Þurfum að beturumbæta notkunartilvikum.
 GitHub file var sett upp (Tómas).
 
 26.11.19: 
@@ -15,7 +15,15 @@ Lagfæringar á Notkunartilvikum (Þorgerður)
 Klasarit (Anna og Viktor)
 Stöðurit (Andri og Tómas) 
 
+Í lok dags: 
+
 Klasar settir upp í rit og nokkur stöðurit búin til, Þorgerður veik vann heima frá seinna um kvöldið vildi commita strax
+Klárað var verkefni sem Þorgerður tók að sér þrátt fyrir að það hafi verið gert heima vegna veikinda. 
 
+27.11.19:
 
+Markmið dagsins er að setja upp Notendahópagreiningu og Útlitshönnun (e. Wireframe) 
+Endurhugsa og útfæra Notendatilvik
+Smá lagfæringar á Klasariti og stöðuriti 
 
+Í lok dags: 
