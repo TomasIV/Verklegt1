@@ -17,10 +17,8 @@ Stöðurit (Andri og Tómas)
 
 Í lok dags: 
 
-Klasar settir upp í rit og nokkur stöðurit búin til,
-Þorgerður veik og fór því heim eftir fyrirlestra og morgunfund, vann heima frá seinna um kvöldið.
-Klárað var verkefni sem Þorgerður tók að sér þrátt fyrir að það hafi verið gert heima vegna veikinda. 
-
+Klasar settir upp í rit og nokkur stöðurit búin til og fínpússun notkunartivika var kláruð. 
+ 
 27.11.19:
 
 Markmið dagsins er að setja upp Notendahópagreiningu og Útlitshönnun (e. Wireframe) 
@@ -52,3 +50,7 @@ Tómas kláraði virknikröfur og andri kláraði mælanleg markmið, kröfulist
 29.11.19
 
 Markmið dags er að klára uppsetningu á hönnunarskýrslu og fínpússun á verkefnum
+
+í lok dags:
+
+Kláruðum allt fyrir fyrtsu skil, all fínt og fínpússað. 
