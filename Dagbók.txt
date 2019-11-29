@@ -48,3 +48,7 @@ Markmið dagsins er að klára klasarit, happy path og kröfulista til viðmóts
 Anna og Breki héldu áfram í vinnu við klasarit, mögulega tilbúið, rými fyrir betrumbætur ef tími gefst.
 Þorgerður og Andri unnu við og kláruðu happy path.
 Tómas kláraði virknikröfur og andri kláraði mælanleg markmið, kröfulisti ready:)
+
+29.11.19
+
+Markmið dags er að klára uppsetningu á hönnunarskýrslu og fínpússun á verkefnum
