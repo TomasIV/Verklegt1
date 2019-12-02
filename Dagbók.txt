@@ -57,5 +57,19 @@ Kláruðum allt fyrir fyrtsu skil, all fínt og fínpússað.
 
 02.12.19:
 
-Byrjum daginn á að setja upp skipulag fyrir núverandi viku
+Byrjum daginn á að setja upp skipulag fyrir núverandi viku.
+
+Förum yfir hvernig við ætlum að skipta á milli okkar mismunandi hlutverk. 
+Vinna að viðmiðunarklasa
+uppfæra sýslu (meðal annars útlishönnun)
+uppfærum starfsmanna skjalið (vantar heimasíma og netföng).
+byrjum á starfsmanna klasa. 
+
+Í lok dags: 
+
+Anna og Andri byrjuðu á að útfæra Starfsmanna klasan
+Tómas byrjaði á að setja upp user interface
+Þorgerður byrjar á breytingum fyrir skýsluna og uppfærir starfsmanna skjalið.
+Breki fékk frípassa í dag, persónulegar ástæður 
+Anna heldur áfram að vinna í starfsmanna klasan 
 
