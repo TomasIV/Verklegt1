@@ -71,4 +71,5 @@ Anna og Andri byrjuðu á að útfæra Starfsmanna klasan
 Tómas byrjaði á að setja upp user interface
 Þorgerður byrjar á breytingum fyrir skýsluna og uppfærir starfsmanna skjalið.
 Breki fékk frípassa í dag, persónulegar ástæður 
+Anna heldur áfram að vinna í starfsmanna klasan 
 
