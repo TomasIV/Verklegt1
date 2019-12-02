@@ -1,6 +1,5 @@
 class Employee(object):
-    def __init__(self, name, SSN, landline, mobile_phone, address, email, role):
-        # Fill out this yes
+    def __init__(self, SSN, name, role, rank, landline, mobile_phone, address, email):
         self.__name = name
         self.__ssn = SSN
         self.landline = landline
@@ -8,16 +7,17 @@ class Employee(object):
         self.address = address
         self.email = email
         self.__role = role # NOTE: We're keeping this a private attribute for now, can be changed later
-    
-    def change_address(self):
-        new_address = input("New name:")
-        self.address = new_address
+        self.__rank = rank
 
+    def save_employee(self):
+        employees = open("employees.csv", "a+")
+        list_of_attributes = [self.__ssn, self.__name, self.__role, self.__rank, self.landline, self.mobile, self.address, self.email]
+        employees.write(','.join(list_of_attributes) + '\n')
+        employees.close()
 
-def make_employee():
-    get_name = input("NAme:")
-    get_ssn = input("SSN:")
-    jhon_the_bitch = Employee(get_name, get_ssn)
+    def change_employee(self):
+        pass
 
-def change_employee():
-    jhon_the_bitch.change_address()
+john = Employee('100382-2389', 'John Stevenson Jr', 'Pilot', 'Captain', '5812345', '5686802', 'Flugmannavegur 3', 'refur34@gmail.com')
+input("Press enter to save John:")
+john.save_employee()
