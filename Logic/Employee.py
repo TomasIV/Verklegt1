@@ -1,4 +1,5 @@
 import csv
+# ALLT HÉR ER EKKI 100% RÉTT, ÞETTA ER Í VINNSLU
 
 class Employee(object):
     def __init__(self, SSN, name, role, rank, licence, address, mobile_phone, email):
