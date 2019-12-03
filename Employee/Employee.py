@@ -40,4 +40,3 @@ def find_employee(some_variable, search_key):
 # input("Press enter to save John to file: ")
 # john.save_employee()
 
-print(find_employee('1501681497'))
