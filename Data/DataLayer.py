@@ -3,11 +3,12 @@ from Models.Employee import Employee
 
 class DataLayer:
     def __init__(self):
-        self.employee = Employee(self)
+        pass
 
-    def save_employee(self):
+    def save_employee(self, some_employee):
         '''Takes an instance of an employee and saves it in an employee file.
         If such file doesn't exist, it's created.'''
         with open("employees.csv", "a") as employees:
-            list_of_attributes = [self.employee(self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email)]
-            employees.write(','.join(list_of_attributes) + '\n')
+            csv_writer = csv.writer(employees)
+            list_of_attributes = [some_employee.__ssn, some_employee.__name, some_employee.__role, some_employee.__rank, some_employee.licence, some_employee.address, some_employee.mobile, some_employee.email]
+            csv_writer.writerow(list_of_attributes)
