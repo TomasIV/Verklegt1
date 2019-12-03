@@ -21,6 +21,8 @@ class ManagerInterface:
             print ("Wow!") # Class coming!
         elif command_str == "5":
             print ("Wow!") # Class coming!
+        elif command_str == "5":
+            print ("Wow!") # Class coming!
         elif command_str == "6":
             print ("Wow!") # Class coming!
         elif command_str == "7":
