@@ -1,15 +1,18 @@
 import os
 from ui.ManagerInterface import ManagerInterface
-
+from ui.HRInterface import HRInterface
+from ui.InformationInterface import InformationInterface
 class Interface:
 
     def __init__(self):
-        #self.hr = HumanResourcesInterface(self)
-        #self.info = GeneralInformation(self)
-
         self.selection_msg_str = "Select one of the following options"
-        self.__main_menu_list = ["Exit", "Human Resources", "Manager", "General Information"]
+        self.__main_menu_list = ["Exit", "Human Resources", "Manager", "Information"]
+
         self.manager = ManagerInterface(self)
+        self.hr = HRInterface(self)
+        self.info = InformationInterface(self)
+
+
     def print_menu(self, main_menu_list):
         if len (main_menu_list) < 11:
             for index, text in enumerate(main_menu_list):
@@ -30,6 +33,25 @@ class Interface:
             print ("Invalid input, please try again")
             command = str(input("Select a number: "))
         return command
+    
+    def menu_helper(self, name, menu_list):
+        """Creates a working menu with error check from a title and a list of options to perform"""
+        self.clear()
+        print (name)
+        self.selection_msg_str
+        self.dash_divider(self.selection_msg_str)
+        self.print_menu(menu_list)
+        self.dash_divider(self.selection_msg_str)
+        options = []
+        for index in range(len(menu_list)):
+            options.append(str(index))
+        input_command_str = str(input("select a number: "))
+        command_str = self.check_command(input_command_str, options)
+        return command_str
+        
+
+
+
 
     def main_menu(self):
         """Prentar út main menu"""
@@ -47,13 +69,11 @@ class Interface:
             self.clear()
             print ("Thanks for using our program")
         elif command_str == "1":
-            pass
-            #self.hr.menu()
+            self.hr.menu()
         elif command_str == "2":
             self.manager.menu()
         elif command_str == "3":
-            pass
-            #self.info.menu()
+            self.info.menu()
 
 """
 def manager():
