@@ -3,7 +3,7 @@ from Models.Employee import Employee
 
 class DataLayer:
     def __init__(self):
-        self.dog = 0
+        pass
 
     def save_employee(self, some_employee):
         '''Takes an instance of an employee and saves it in an employee file.
