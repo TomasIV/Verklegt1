@@ -10,7 +10,7 @@ class DataLayer:
 
     def list_employee(self):
         list_employee = []
-        with open('employees.csv', newline='') as csvfile:
+        with open('CSVFiles\Employees.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 employee = Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email'])

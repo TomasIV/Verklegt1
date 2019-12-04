@@ -64,7 +64,7 @@ class Interface:
             self.clear()
             print ("Welcome to NaN Air")
             print (self.selection_msg_str)
-            options_commands = ["0", "1", "2", "3"]
+            options_commands = ["0", "1", "2", "3", "back"]
             self.dash_divider(self.selection_msg_str)
             self.print_menu(self.__main_menu_list)
             self.dash_divider(self.selection_msg_str)
@@ -81,3 +81,19 @@ class Interface:
                 self.manager.menu()
             elif command_str == "3":
                 self.info.menu()
+            elif command_str == "back":
+                self.infamous_menu()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    def infamous_menu(self):
+        user_input = input("ARE YOU TÓMAS???\nIF YOU ARE ENTER THE SECRET PASSWORD: ")
+        if user_input.upper() == "FUCKYEAHIAM":
+            os.chdir("Verklegt1")
