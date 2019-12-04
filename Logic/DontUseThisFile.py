@@ -33,7 +33,7 @@ class Employee(object):
         with open("Crew.csv", "r") as employees:
             employee_reader = csv.DictReader(employees)
             for row in employee_reader:
-                if some_variable == row[search_key]:
+                if row[search_key] in some_variable:
                     return Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email'])
             return 'Employee does not exist!'
         print(Employee)
