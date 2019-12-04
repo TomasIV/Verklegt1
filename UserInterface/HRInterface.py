@@ -22,7 +22,7 @@ class HRInterface:
         elif command_str == "1":
             print ("Please enter the details of the new employee")
             ssn = self.get_employee_ssn()
-            name = get_employee_name()
+            name = input("Name: ")
             role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
             options = ["1", "2"]
             while role not in options:
@@ -34,7 +34,7 @@ class HRInterface:
             elif role == "2":
                 role = "Cabin crew"
             if role == "Pilot":
-                pilot_license = input("Enter a license:")
+                pilot_license = input("Enter a license: ")
                 rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
                 while rank not in options:
                     print ("Invalid input! Please try again")
@@ -56,17 +56,9 @@ class HRInterface:
             mobile_phone = input("Employee phone number: ")
             email = input("Employee email: ")
             print ("Wow! you created an employee!")
-            self.ssn = ssn
-            self.name = name
-            self.role = role
-            self.rank = rank
-            self.licence = pilot_license
-            self.address = address
-            self.mobile_phone = mobile_phone
-            self.email = email
-            #self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.licence, self.address, self.mobile_phone, self.email)
-            self.new_employee = [self.ssn, self.name, self.role, self.rank, self.licence, self.address, self.mobile_phone, self.email] # List of info about said employee
-            self.__logicapi.register_employee(self.new_employee) # sends the list to LLAPI
+            self.new_employee = Employee(ssn, name, role, pilot_license, rank, address, mobile_phone, email)
+            self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAPI
+           
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         ssn = 99
