@@ -14,7 +14,7 @@ class Employee:
         the_line = "{:<20s}Licence: {}\n{:<20s}Role: {}\n{:<20s}Rank: {}\n{}\n{}".format(self.__ssn, self.licence, self.__name, self.__role, self.address, self.__rank, self.mobile, self.email)
         return the_line
     
-    def add_employee(self):
+    '''def add_employee(self):
         print ("Please enter the details of the new employee")
         ssn = input("SSN: ")
         name = input("Name: ")
@@ -69,7 +69,7 @@ class Employee:
             self.employee_rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
         
         def get_cabin_rank(self):
-            self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
+            self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")'''
 
 """
         self.__name = name

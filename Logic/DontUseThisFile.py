@@ -12,13 +12,6 @@ class Employee(object):
         self.__rank = rank # Same here
         self.licence = licence
 
-    def save_employee(self):
-        '''Takes an instance of an employee and saves it in an employee file.
-        If such file doesn't exist, it's created.'''
-        with open("employees.csv", "a") as employees:
-            list_of_attributes = [self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email]
-            employees.write(','.join(list_of_attributes) + '\n')
-
     def change_employee(self):
         pass
     

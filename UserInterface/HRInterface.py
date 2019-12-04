@@ -33,7 +33,7 @@ class HRInterface:
             elif role == "2":
                 role = "Cabin crew"
             if role == "Pilot":
-                pilot_license = input("Enter a license")
+                pilot_license = input("Enter a license:")
                 rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
                 while rank not in options:
                     print ("Invalid input! Please try again")
@@ -56,6 +56,7 @@ class HRInterface:
             email = input("Employee email: ")
             new_employee = Employee(ssn, name, role, rank, pilot_license, address, mobile_phone, email)
             print ("Wow! you created an employee!")
+<<<<<<< HEAD
         def get_employee_ssn(self):
             self.__ssn = input("SSN: ")
 
@@ -74,6 +75,10 @@ class HRInterface:
         
         def get_cabin_rank(self):
             self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
+=======
+            print(new_employee)
+            input("Go back")
+>>>>>>> 39ecdc8a4086c110fcc7b0773cdf57e8b4cfa6d7
 
 """
 	captain
