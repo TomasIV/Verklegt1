@@ -14,21 +14,29 @@ class Employee(object):
         self.__rank = rank # Same here
         self.licence = licence
 
+    def get_employee_attributes(self):
+        return [self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email]
+    
+
     def change_employee(self, SSN_number, what_to_change, new_info):
         #licence, address, mobile_phone, email
         self.all_employees = self.find_employee()
         for row in range(len(self.all_employees)):
             if self.all_employees[row].__ssn == SSN_number:
-                if what_to_change == 'License':
+                if what_to_change == 'license':
                     self.all_employees[row].licence = new_info
-                elif what_to_change == 'Address':
+                elif what_to_change == 'address':
                     self.all_employees[row].address = new_info
-                elif what_to_change == 'Phone':
+                elif what_to_change == 'phone':
                     self.all_employees[row].mobile = new_info
-                elif what_to_change == 'Email':
+                elif what_to_change == 'email':
                     self.all_employees[row].email = new_info
+            with open("Crew.csv", "w") as cleared_file:
+                for person in self.all_employees:
+                    overwriter = csv.writer(cleared_file)
+                    overwriter.writerow(person.get_employee_attributes())
 
-    
+
     def __str__(self):
         '''Returns the employee information on a very pretty format'''
         the_line = "{:<20s}Licence: {}\n{:<20s}Role: {}\n{:<20s}Rank: {}\n{}\n{}".format(self.__ssn, self.licence, self.__name, self.__role, self.address, self.__rank, self.mobile, self.email)
@@ -48,7 +56,10 @@ class Employee(object):
 john = Employee('1003822389', 'John Stevenson Jr', 'Pilot', 'Captain', 'Boeing', '5686802', 'Flugmannavegur 3', 'refur34@gmail.com')
 # input("Press enter to save John to file: ")
 # petur = john.change_employee("ssn", "1900769521", "address", "Efstasund 32")
-petur = john.change_employee("ssn", "2910858778", "address", "Efstasund 32")
-print(petur)
+
+john.change_employee("2910858778", "address", "Efstasund 32")
+
+# petur = john.find_employee("ssn", ["2910858778"])
+
 # for em in petur:
 #     print(em)

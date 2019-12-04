@@ -14,6 +14,9 @@ class Employee:
         the_line = "{:<20s}Licence: {}\n{:<20s}Role: {}\n{:<20s}Rank: {}\n{}\n{}".format(self.__ssn, self.licence, self.__name, self.__role, self.address, self.__rank, self.mobile, self.email)
         return the_line
     
+    def get_employee_attributes(self):
+        return [self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email]
+    
     '''def add_employee(self):
         print ("Please enter the details of the new employee")
         ssn = input("SSN: ")
