@@ -1,10 +1,10 @@
 from Models.Employee import Employee
-from Logic.LogicLayer
+from Logic.LogicLayerAPI import LogicLayer
 
 class HRInterface:
     def __init__(self, interface):
         self.__interface = interface
-
+        self.__logicapi = LogicLayer()
         self.__menu_list = ["Back",
         "Register new employee", "All employees", "Edit employees",
         "Captains", "Co-Pilots",
@@ -54,11 +54,21 @@ class HRInterface:
             address = input("Employee address: ")
             mobile_phone = input("Employee phone number: ")
             email = input("Employee email: ")
-            new_employee = Employee(ssn, name, role, rank, pilot_license, address, mobile_phone, email)
             print ("Wow! you created an employee!")
-<<<<<<< HEAD
+            self.ssn = ssn
+            self.name = name
+            self.role = role
+            self.rank = rank
+            self.licence = pilot_license
+            self.address = address
+            self.mobile_phone = mobile_phone
+            self.email = email
+            #self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.licence, self.address, self.mobile_phone, self.email)
+            self.new_employee = [self.ssn, self.name, self.role, self.rank, self.licence, self.address, self.mobile_phone, self.email] # List of info about said employee
+            self.__logicapi.register_employee(self.new_employee) # sends the list to LLAPI
+"""
         def get_employee_ssn(self):
-            self.__ssn = input("SSN: ")
+            ssn = input("SSN: ")
 
         def get_employee_name(self):
             self.__name = input("Name: ")
@@ -75,14 +85,14 @@ class HRInterface:
         
         def get_cabin_rank(self):
             self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
-=======
-            print(new_employee)
-            input("Go back")
->>>>>>> 39ecdc8a4086c110fcc7b0773cdf57e8b4cfa6d7
+        
+        def error_check_ssn(self, ssn):
+            pass
+            
 
-"""
+
 	captain
 	co pilot
 	flight service manager
 	flight attendant
-    """
+"""

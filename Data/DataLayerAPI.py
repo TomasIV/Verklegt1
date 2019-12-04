@@ -1,17 +1,18 @@
 import csv
 from Models.Employee import Employee
+import os
 
 class DataLayer:
     def __init__(self):
         pass
-
     def save_employee(self, some_employee):
         '''Takes an instance of an employee and saves it in an employee file.
         If such file doesn't exist, it's created.'''
-        with open("Crew.csv", "a") as employees:
+        self.some_employee = some_employee
+        with open("Verklegt1\Data\Crew.csv", "a") as employees:
             csv_writer = csv.writer(employees)
-            list_of_attributes = [some_employee.__ssn, some_employee.__name, some_employee.__role, some_employee.__rank, some_employee.licence, some_employee.address, some_employee.mobile, some_employee.email]
-            csv_writer.writerow(list_of_attributes)
+            #list_of_attributes = [self.some_employee.ssn, self.some_employee.name, self.some_employee.role, self.some_employee.rank, self.some_employee.licence, self.some_employee.address, self.some_employee.mobile, self.some_employee.email]
+            csv_writer.writerow(some_employee)
 
     def list_employee(self):
         list_employee = []
