@@ -1,4 +1,5 @@
 from Models.Employee import Employee
+from Logic.LogicLayer
 
 class HRInterface:
     def __init__(self, interface):
@@ -55,6 +56,24 @@ class HRInterface:
             email = input("Employee email: ")
             new_employee = Employee(ssn, name, role, rank, pilot_license, address, mobile_phone, email)
             print ("Wow! you created an employee!")
+        def get_employee_ssn(self):
+            self.__ssn = input("SSN: ")
+
+        def get_employee_name(self):
+            self.__name = input("Name: ")
+
+        def get_employee_role(self):
+            self.__role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
+
+        def get_pilot_license(self):
+            #Print License selection list
+            self.license = input("Select a License")
+
+        def get_pilot_rank(self):
+            self.employee_rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+        
+        def get_cabin_rank(self):
+            self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
 
 """
 	captain
