@@ -80,5 +80,8 @@ Gera tengingarnar skýrar, passa uppá lagaskiptingu vel
 
 04.12.19:
 
-
+Allir tóku mismunandi hluti til að klára í data og UI,
+Andir vann í að setja upp airplanes
+Þorgerður setti upp destinations og bætti við í datalayerinn
+Anna hélt áfram að vinna
 
