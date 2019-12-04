@@ -1,5 +1,5 @@
 class Employee:
-    def __init__(self):
+    def __init__(self, SSN, name, role, rank, licence, address, mobile_phone, email):
         self.__name = name
         self.__ssn = SSN
         self.mobile = mobile_phone
