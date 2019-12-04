@@ -23,40 +23,17 @@ class HRInterface:
             print ("Please enter the details of the new employee")
             self.ssn = self.get_employee_ssn()
             self.name = self.get_employee_name()
-            role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
-            options = ["1", "2"]
-            while role not in options:
-                print ("Invalid input! Please try again")
-                new_role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
-                role = new_role
-            if role =="1":
-                role = "Pilot"
-            elif role == "2":
-                role = "Cabin crew"
-            if role == "Pilot":
-                pilot_license = input("Enter a license: ")
-                rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
-                while rank not in options:
-                    print ("Invalid input! Please try again")
-                    rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
-                if rank == "1":
-                    rank = "Captain"
-                elif rank == "2":
-                    rank = "Copilot"       
-            elif role == "Cabincrew":
-                rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
-                while rank not in rank:
-                    print ("Invalid input! Please try again")
-                    rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
-                if rank == "1":
-                    rank = "Flight Service Manager"
-                elif rank == "2":
-                    rank = "Flight Attendant"  
-            address = input("Employee address: ")
-            mobile_phone = input("Employee phone number: ")
-            email = input("Employee email: ")
-            print ("Wow! you created an employee!")
-            self.new_employee = Employee(ssn, name, role, pilot_license, rank, address, mobile_phone, email)
+            self.role = self.get_employee_role()
+            if self.role == "Pilot":
+                self.license = self.get_pilot_license()
+                self.rank = self.get_pilot_rank()       
+            elif self.role == "Cabincrew":
+                self.rank = self.get_cabincrew_rank()
+            self.address = self.get_employee_address()
+            self.mobile_phone = self.get_employee_num()
+            self.email = self.get_employee_email()
+            input("Wow! you created an employee, press enter to continue")
+            self.new_employee = Employee(self.ssn, self.name, self.role, self.pilot_license, self.rank, self.address, self.mobile_phone, self.email)
             self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAPI
            
     def get_employee_ssn(self):
@@ -93,26 +70,69 @@ class HRInterface:
         return input("Name: ")
 
     def get_employee_role(self):
-        self.__role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
-
-
+        role = input("1. Pilot\t2. CabinCrew\tSelect a role: ")
+        options = ["1", "2"]
+        while role not in options:
+            print ("Invalid input! Please try again")
+            new_role = input("1. Pilot\t2. CabinCrew\tSelect a role: ")
+            role = new_role
+        if role =="1":
+            role = "Pilot"
+        elif role == "2":
+            role = "Cabin crew"
+        return role
+    
     def get_pilot_license(self):
-        #Print License selection list
-        self.license = input("Select a License")
-
+        return input("License: ") #VANTAR LISTA AF FLUGVÉLUM Í OKKAR EIGU
+        
     def get_pilot_rank(self):
-        self.employee_rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+        options = ["1", "2"]
+        rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+        while rank not in options:
+            print ("Invalid input! Please try again")
+            rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+        if rank == "1":
+            rank = "Captain"
+        elif rank == "2":
+            rank = "Copilot"
+        return rank
     
-    def get_cabin_rank(self):
-        self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
-    
-    def error_check_ssn(self, ssn):
-        pass
-            
-"""
+    def get_cabincrew_rank(self):
+        options = ["1", "2"]
+        rank = input("1. Flight Service Manager\t2. Flight Attendant\tSelect a rank: ")
+        while rank not in options:
+            print ("Invalid input! Please try again")
+            rank = input("1. Flight Service Manager\t2. Flight Attendant\tSelect a rank: ")
+        if rank == "1":
+            rank = "Flight Service Manager"
+        elif rank == "2":
+            rank = "Flight Attendant" 
+        return rank
 
-	captain
-	co pilot
-	flight service manager
-	flight attendant
-"""
+    def get_employee_address(self):
+        return input("Employee address: ")
+
+    def get_employee_num(self):
+        return input("Employee phone number: ") #VANTAR ERRORCHECK
+        
+    def get_employee_email(self):
+        while True:
+            email = input("Employee email: ")
+            first = ""
+            mid = ""
+            last = ""
+            name = True
+            for char in email:
+                if name:
+                    if char != "@":
+                        first += char
+                    elif char == "@":
+                        mid += "@"
+                        name = False
+                else:
+                    last += char
+            if "." in last:
+                email = first + mid + last
+                return email
+            else:
+                print ("Invalid input, please try again!")
