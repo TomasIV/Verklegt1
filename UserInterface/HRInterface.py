@@ -21,8 +21,8 @@ class HRInterface:
             return
         elif command_str == "1":
             print ("Please enter the details of the new employee")
-            ssn = self.get_employee_ssn()
-            name = get_employee_name()
+            self.ssn = self.get_employee_ssn()
+            self.name = self.get_employee_name()
             role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
             options = ["1", "2"]
             while role not in options:
@@ -102,7 +102,7 @@ class HRInterface:
 
     def get_employee_role(self):
         self.__role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
-        
+
 
     def get_pilot_license(self):
         #Print License selection list
