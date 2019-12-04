@@ -1,9 +1,11 @@
+import csv
 from Models.Employee import Employee
-from Data.DataLayerAPI import DataLayer
+#from Data.DataLayerAPI import DataLayer
 
 class EmployeeDL:
     def __init__(self):
-        self.__data_layer = DataLayer()
+        #self.__data_layer = Datalayer()
+        pass
 
     def save_employee(self, some_employee):
         '''Takes an instance of an employee and saves it in an employee file.

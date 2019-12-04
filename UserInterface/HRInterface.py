@@ -25,7 +25,7 @@ class HRInterface:
             self.name = self.get_employee_name()
             self.role = self.get_employee_role()
             if self.role == "Pilot":
-                self.license = self.get_pilot_license()
+                self.pilot_license = self.get_pilot_license()
                 self.rank = self.get_pilot_rank()       
             elif self.role == "Cabincrew":
                 self.rank = self.get_cabincrew_rank()
@@ -113,8 +113,18 @@ class HRInterface:
         return input("Employee address: ")
 
     def get_employee_num(self):
-        return input("Employee phone number: ") #VANTAR ERRORCHECK
-        
+        num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        while True:
+            phone_num = input("Phone number: ")
+            new_num = ""
+            for char in phone_num:
+                if char in num:
+                    new_num += char
+            if len(new_num) == 7:
+                return new_num
+            else:
+                print ("Invalid input, pleaes try again!")
+
     def get_employee_email(self):
         while True:
             email = input("Employee email: ")
