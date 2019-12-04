@@ -18,7 +18,7 @@ class DataLayer:
             #return list_employee
             print(list_employee)
 
-    def save_destinations():
+    def save_destinations(self):
         pass
 
     def list_destinations(self):
