@@ -69,7 +69,7 @@ class Interface:
             self.print_menu(self.__main_menu_list)
             self.dash_divider(self.selection_msg_str)
 
-            input_command_str = str(input("Enter a number: "))
+            input_command_str =  str(input("Enter a number: "))
             command_str = self.check_command(input_command_str, options_commands)
             if command_str == "0":
                 self.clear()
