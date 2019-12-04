@@ -24,6 +24,18 @@ class DataLayer:
             #return list_employee
             print(list_employee)
 
+    def save_destinations():
+        pass
+
+    def list_destinations(self):
+        list_destinations = []
+        with open('Destination.csv', newline='') as csvfile:
+            reader = csv.DictWriter(csvfile)
+            for row in reader: 
+                destination = Destination(row['id'], row['destination'], row['emergency contact'],row['phonenumber'])
+                list_destinations.append(destination)
+            #return list_destinations
+            print(list_destinations)
 
 
 # john = Employee('100382-2389', 'steb stebson', 'Pilot', 'Captain', 'Boeing', '5686802', 'Flugmannavegur 3', 'refur34@gmail.com')
