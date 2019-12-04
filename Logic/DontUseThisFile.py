@@ -14,18 +14,20 @@ class Employee(object):
         self.__rank = rank # Same here
         self.licence = licence
 
-    def change_employee(self,SSN, SSN_number, what_to_change, new_info):
+    def change_employee(self, SSN_number, what_to_change, new_info):
         #licence, address, mobile_phone, email
         self.all_employees = self.find_employee()
-        self.target_employee = self.find_employee(SSN, SSN_number)
         for row in range(len(self.all_employees)):
-            if what_to_change in self.target_employee[row]:
-                item_index = row
-                self.target_employee[item_index] = new_info
+            if self.all_employees[row].__ssn == SSN_number:
+                if what_to_change == 'License':
+                    self.all_employees[row].licence = new_info
+                elif what_to_change == 'Address':
+                    self.all_employees[row].address = new_info
+                elif what_to_change == 'Phone':
+                    self.all_employees[row].mobile = new_info
+                elif what_to_change == 'Email':
+                    self.all_employees[row].email = new_info
 
-
-        self.target_employee[what_to_change] = new_info
-        print(self.target_employee)
     
     def __str__(self):
         '''Returns the employee information on a very pretty format'''
