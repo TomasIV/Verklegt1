@@ -32,15 +32,15 @@ class Employee(object):
         Returns the line in an instance of Employee.'''
         with open("Crew.csv", "r") as employees:
             employee_reader = csv.DictReader(employees)
+            list_of_employees = []
             for row in employee_reader:
                 if row[search_key] in some_variable:
-                    return Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email'])
-            return 'Employee does not exist!'
-        print(Employee)
+                    list_of_employees.append(Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email']))
+            return list_of_employees
 
 john = Employee('1003822389', 'John Stevenson Jr', 'Pilot', 'Captain', 'Boeing', '5686802', 'Flugmannavegur 3', 'refur34@gmail.com')
 # input("Press enter to save John to file: ")
 # petur = john.change_employee("ssn", "1900769521", "address", "Efstasund 32")
 petur = john.find_employee("rank", "Captain")
-
-print(petur)
+for em in petur:
+    print(em)
