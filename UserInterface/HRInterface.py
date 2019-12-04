@@ -1,5 +1,6 @@
 from Models.Employee import Employee
 from Logic.LogicLayerAPI import LogicLayer
+from string import punctuation
 
 class HRInterface:
     def __init__(self, interface):
@@ -20,8 +21,8 @@ class HRInterface:
             return
         elif command_str == "1":
             print ("Please enter the details of the new employee")
-            ssn = input("SSN: ")
-            name = input("Name: ")
+            ssn = self.get_employee_ssn()
+            name = get_employee_name()
             role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
             options = ["1", "2"]
             while role not in options:
@@ -66,30 +67,57 @@ class HRInterface:
             #self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.licence, self.address, self.mobile_phone, self.email)
             self.new_employee = [self.ssn, self.name, self.role, self.rank, self.licence, self.address, self.mobile_phone, self.email] # List of info about said employee
             self.__logicapi.register_employee(self.new_employee) # sends the list to LLAPI
-"""
-        def get_employee_ssn(self):
-            ssn = input("SSN: ")
-
-        def get_employee_name(self):
-            self.__name = input("Name: ")
-
-        def get_employee_role(self):
-            self.__role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
-
-        def get_pilot_license(self):
-            #Print License selection list
-            self.license = input("Select a License")
-
-        def get_pilot_rank(self):
-            self.employee_rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
-        
-        def get_cabin_rank(self):
-            self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
-        
-        def error_check_ssn(self, ssn):
-            pass
+    def get_employee_ssn(self):
+        num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        ssn = 99
+        while ssn:
+            ssn = input("SSN: ").strip()
+            new_ssn = ""
+            for char in ssn:
+                if char in num:
+                    new_ssn += char
+            if len(new_ssn) == 10:
+                d = int(str(new_ssn[0] + new_ssn[1]))
+                m = int(str(new_ssn[2] + new_ssn[3]))
+                y = int(str(new_ssn[4] + new_ssn[5]))
+                last = int(new_ssn[-1])
+                if last == 0: #if year == 2000
+                    if ((32 > d > 0 ) and ( 13 > m > 0) and (y < 20)):
+                        return new_ssn
+                    else:
+                        print("SSN not valid")
+                elif str(last) == "9": #if year == 1900
+                    if (( 32 > d > 0 ) and (13 > m > 0)):
+                        return new_ssn
+                    else:
+                        print("SSN not valid")
+                else:
+                    print ("SSN not valid")
+            else:
+                print ("SSN not valid")
             
+                
+    def get_employee_name(self):
+        return input("Name: ")
 
+    def get_employee_role(self):
+        self.__role = input("1. Pilot\t2. CabinCrew\nSelect a role: ")
+        
+
+    def get_pilot_license(self):
+        #Print License selection list
+        self.license = input("Select a License")
+
+    def get_pilot_rank(self):
+        self.employee_rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+    
+    def get_cabin_rank(self):
+        self.employee_rank = input("1. Flight Service Manager\t2. Flight Attendant\nSelect a rank: ")
+    
+    def error_check_ssn(self, ssn):
+        pass
+            
+"""
 
 	captain
 	co pilot
