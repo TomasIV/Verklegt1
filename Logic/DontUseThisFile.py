@@ -2,6 +2,7 @@ import csv
 # ALLT HÉR ER EKKI 100% RÉTT, ÞETTA ER Í VINNSLU
 #ÞÚ STENDUR ÞIG VEL!
 
+
 class Employee(object):
     def __init__(self, SSN, name, role, rank, licence, address, mobile_phone, email):
         self.__name = name
@@ -15,10 +16,14 @@ class Employee(object):
 
     def change_employee(self,SSN, SSN_number, what_to_change, new_info):
         #licence, address, mobile_phone, email
-        #all_employees = find_employee()
+        self.all_employees = self.find_employee()
         self.target_employee = self.find_employee(SSN, SSN_number)
-        #for row in self.target_employee:
-            #if  == row[what_to_change]
+        for row in range(len(self.all_employees)):
+            if what_to_change in self.target_employee[row]:
+                item_index = row
+                self.target_employee[item_index] = new_info
+
+
         self.target_employee[what_to_change] = new_info
         print(self.target_employee)
     
@@ -41,6 +46,7 @@ class Employee(object):
 john = Employee('1003822389', 'John Stevenson Jr', 'Pilot', 'Captain', 'Boeing', '5686802', 'Flugmannavegur 3', 'refur34@gmail.com')
 # input("Press enter to save John to file: ")
 # petur = john.change_employee("ssn", "1900769521", "address", "Efstasund 32")
-petur = john.find_employee("rank", "Captain")
-for em in petur:
-    print(em)
+petur = john.change_employee("ssn", "2910858778", "address", "Efstasund 32")
+print(petur)
+# for em in petur:
+#     print(em)
