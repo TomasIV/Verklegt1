@@ -10,12 +10,12 @@ class Destination:
         line = "ID and Destination: Emergency Name and Mobile:\n{:<20s}{}\n{:<20s}{}\n".format(self.ids, self.emergency_contact, self.destination,  self.emergency_phone)
         return line
 
-    def add_destination(self):
-        print ("Please enter the details of the new destination")
-        destination_id = input("Id: ")
-        name_of_destination  = input("Name of destination: ")
-        em_contact = input("Name of emergency contact: ")
-        em_phone = input("Emergency phone number: ")
+    # def add_destination(self):
+    #     print ("Please enter the details of the new destination")
+    #     destination_id = input("Id: ")
+    #     name_of_destination  = input("Name of destination: ")
+    #     em_contact = input("Name of emergency contact: ")
+    #     # em_phone = input("Emergency phone number: ")
     
 
 

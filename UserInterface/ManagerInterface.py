@@ -1,6 +1,9 @@
+from Models.VoyageMODEL import Voyage
+
 class ManagerInterface:
     def __init__(self, interface):
         self.__interface = interface
+        self.__voyage = Voyage()
         
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
@@ -15,7 +18,7 @@ class ManagerInterface:
         if command_str == "0":
             self.__interface.main_menu()
         elif command_str == "1":
-            print ("Please enter the details of the new airplae")
+            print ("Please enter the details of the new airplane")
             self.name = self.get_airplane_name()
             self.manufacturer = self.get_airplane_manufacturer()
             if self.manufacturer == "BAE":
@@ -40,7 +43,7 @@ class ManagerInterface:
         elif command_str == "5":
             print ("Wow!") # Class coming!
         elif command_str == "5":
-            print ("Wow!") # Class coming!
+            self.__voyage.add_voyage()
         elif command_str == "6":
             print ("Wow!") # Class coming!
         elif command_str == "7":
@@ -109,6 +112,26 @@ class ManagerInterface:
                 return new_num
             else: 
                 print("Invalid input, please try again!")
+
+    # def get_voyage_sold_seats(self):
+    #     num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    #     while True:
+    #         sold_seats = input("Sold Seats: ")
+    #         new_num = ""
+    #         for char in sold_seats:
+    #             if char in num:
+    #                 new_num += char
+    #         if 0 < len(new_num) < 4:
+    #             return new_num
+    #         else: 
+    #             print("Invalid input, please try again!")
+
+    # def get_voyage_airplane(self):
+    #     pass
+
+    # def get_voyage_date(self):
+    #     pass
+
 
     def get_destination_id(self):
         return input("Input destination ID: ")

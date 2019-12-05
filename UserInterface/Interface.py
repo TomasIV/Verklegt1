@@ -1,5 +1,4 @@
 import os
-import msvcrt
 
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
