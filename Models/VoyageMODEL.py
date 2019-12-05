@@ -21,7 +21,7 @@ class Voyage:
         hour = input("Hour: ")
         minute = input("Minute: ")
         date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
-        return Voyage(status, sold_seats, airplain, date)
+        return Voyage(status, sold_seats, airplane, date)
         print("Wow! you created an voyage!")
 
 
