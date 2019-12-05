@@ -3,9 +3,9 @@ from Data.EmployeeDL import EmployeeDL
 from Data.VoyageDL import VoyageDL
 from Data.AirplainDL import AirplainDL
 from Data.ModelDL import ModelDL
-from Models.Employee import Employee
-from Models.Destination import Destination
-from Models.Voyage import Voyage
+from Models.EmployeeMODEL import Employee
+from Models.DestinationMODEL import Destination
+from Models.VoyageMODEL import Voyage
 from Models.Airplane import Airplane
 from Models.Model import Model
 
