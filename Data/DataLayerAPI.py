@@ -1,7 +1,13 @@
 from Data.DestinationDL import DestinationDL
 from Data.EmployeeDL import EmployeeDL
+from Data.VoyageDL import VoyageDL
+from Data.AirplainDL import AirplainDL
+from Data.ModelDL import ModelDL
 from Models.Employee import Employee
 from Models.Destination import Destination
+from Models.Voyage import Voyage
+from Models.Airplane import Airplane
+from Models.Model import Model
 
 class DataLayer:
     def __init__(self):
@@ -21,7 +27,7 @@ class DataLayer:
     # def list_employee(self):
     #     self.__data_employee_list.list_employee()
 
-    def save_destinations(self, some_destination):
+    def save_destinations(self,some_destination):
         self.__data_destination.save_destinations(some_destination)
 
     def list_destinations(self):
