@@ -1,5 +1,5 @@
 import os
-
+import msvcrt
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
@@ -17,6 +17,7 @@ class Interface:
 
 
     def print_menu(self, main_menu_list):
+        """Printer for menu"""
         if len (main_menu_list) < 11:
             for index, text in enumerate(main_menu_list):
                 print ("{:<3}{}".format(str(index) + ".", text))
@@ -31,10 +32,12 @@ class Interface:
 
 
     def clear(self):
+        """Clears the screen"""
         os.system("cls")
 
 
     def check_command(self, command, options):
+        """Checks to see if the command is valid (in the options list)"""
         while command not in options:
             print ("Invalid input, please try again")
             command = str(input("Select a number: "))
@@ -61,12 +64,12 @@ class Interface:
         """Prentar út main menu"""
         while True:
             self.clear()
-            print ("Welcome to")
+            print ("\t    Welcome to")
             na = "    _   __      _   __   ___    _     "
             n = "   / | / /___ _/ | / /  /   |  (_)____"
             a = "  /  |/ / __ `/  |/ /  / /| | / / ___/"
             i = " / /|  / /_/ / /|  /  / ___ |/ / /    "
-            r = "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     "
+            r = "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     "                              
             nan_air = [na, n, a, i, r, "\n"]
             for element in nan_air:
                 print (element)

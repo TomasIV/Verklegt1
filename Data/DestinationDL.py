@@ -7,14 +7,14 @@ class DestinationDL:
 
 
     def save_destinations(self, some_destination):
-        with open("Destination.csv", "a") as destination:
+        with open("CSVFiles\Destination.csv", "a") as destination:
             csv_writer = csv.writer(destination)
-            list_of_attributes = [some_destination.id, some_destination.destination, some_destination.emergencycontact, some_destination.phonenumber]
+            list_of_attributes = [some_destination.id, some_destination.destination, some_destination.emergency_contact, some_destination.phonenumber]
             csv_writer.writerow(list_of_attributes)
 
     def list_destinations(self):
         list_destinations = []
-        with open('Destination.csv', newline='') as csvfile:
+        with open('CSVFiles\Destination.csv', 'r') as csvfile:
             reader = csv.DictWriter(csvfile)
             for row in reader: 
                 destination = Destination(row['id'], row['destination'], row['emergency contact'],row['phonenumber'])
