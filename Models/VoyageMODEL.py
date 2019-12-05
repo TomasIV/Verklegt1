@@ -1,5 +1,5 @@
 import datetime
-import dateutil.parser
+#import dateutil.parser
 
 class Voyage:
     def __init__(self, status = "", sold_seats = "", airplane = "", date = ""):
