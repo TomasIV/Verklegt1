@@ -1,6 +1,9 @@
+from Models.VoyageMODEL import Voyage
+
 class ManagerInterface:
     def __init__(self, interface):
         self.__interface = interface
+        self.__voyage = Voyage()
         
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
@@ -31,10 +34,10 @@ class ManagerInterface:
             print ("Wow!") # Class coming!
         elif command_str == "3":
             print ("Wow!") # Class coming!
-        elif command_str == "5":
+        elif command_str == "4":
             print ("Wow!") # Class coming!
         elif command_str == "5":
-            print ("Wow!") # Class coming!
+            self.__voyage.add_voyage()
         elif command_str == "6":
             print ("Wow!") # Class coming!
         elif command_str == "7":

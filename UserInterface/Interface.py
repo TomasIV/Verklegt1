@@ -1,5 +1,4 @@
 import os
-import msvcrt
 
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
@@ -62,9 +61,17 @@ class Interface:
         """Prentar út main menu"""
         while True:
             self.clear()
-            print ("Welcome to NaN Air")
+            print ("Welcome to")
+            na = "    _   __      _   __   ___    _     "
+            n = "   / | / /___ _/ | / /  /   |  (_)____"
+            a = "  /  |/ / __ `/  |/ /  / /| | / / ___/"
+            i = " / /|  / /_/ / /|  /  / ___ |/ / /    "
+            r = "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     "
+            nan_air = [na, n, a, i, r, "\n"]
+            for element in nan_air:
+                print (element)
             print (self.selection_msg_str)
-            options_commands = ["0", "1", "2", "3", "back"]
+            options_commands = ["0", "1", "2", "3"]
             self.dash_divider(self.selection_msg_str)
             self.print_menu(self.__main_menu_list)
             self.dash_divider(self.selection_msg_str)
@@ -81,19 +88,3 @@ class Interface:
                 self.manager.menu()
             elif command_str == "3":
                 self.info.menu()
-            elif command_str == "back":
-                self.infamous_menu()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    def infamous_menu(self):
-        user_input = input("ARE YOU TÓMAS???\nIF YOU ARE ENTER THE SECRET PASSWORD: ")
-        if user_input.upper() == "FUCKYEAHIAM":
-            os.chdir("Verklegt1")
