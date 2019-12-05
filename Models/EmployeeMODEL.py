@@ -1,13 +1,13 @@
 class Employee:
     def __init__(self, ssn, name, role, rank, licence, address, mobile_phone, email):
-        self.__name = name
         self.__ssn = ssn
-        self.mobile = mobile_phone
-        self.address = address
-        self.email = email
+        self.__name = name
         self.__role = role # NOTE: We're keeping this a private attribute for now, can be changed later
         self.__rank = rank # Same here
         self.licence = licence
+        self.mobile = mobile_phone
+        self.address = address
+        self.email = email
 
     def __str__(self):
         '''Returns the employee information on a very pretty format'''
@@ -18,9 +18,15 @@ class Employee:
         return [self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email]
 
     def __eq__(self, comparison):
-        # Anna: Er að vinna í þessu
-        if self.__name == comparison:
+        if self.__ssn == comparison \
+        or self.__name == comparison \
+        or self.__role == comparison \
+        or self.__rank == comparison \
+        or self.licence == comparison \
+        or self.address == comparison \
+        or self.mobile == comparison \
+        or self.email == comparison:
             return True
-        if self.__ssn == comparison:
-            return True
+        else:
+            return False
         
