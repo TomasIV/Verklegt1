@@ -1,4 +1,4 @@
-from Models.Employee import Employee
+from Models.EmployeeMODEL import Employee
 from Logic.LogicLayerAPI import LogicLayer
 from string import punctuation
 

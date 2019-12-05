@@ -1,11 +1,8 @@
 import csv
-from Models.Employee import Employee
-#from Data.DataLayerAPI import DataLayer
-from Logic.LogicLayerAPI import LogicLayer
+from Models.EmployeeMODEL import Employee
 
 class EmployeeDL:
     def __init__(self):
-        #self.__data_layer = Datalayer()
         pass
 
     def save_employee(self, some_employee):
@@ -18,11 +15,12 @@ class EmployeeDL:
             csv_writer.writerow(some_employee.get_employee_attributes())
 
     def list_employee(self):
+        '''Takes an employee file and reads all employees from it.
+        Returns a list of all employees.'''
         list_employee = []
-        with open('CSVFiles\Employees.csv', newline='') as csvfile:
+        with open("CSVFiles\Employees.csv", "r") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 employee = Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email'])
                 list_employee.append(employee)
-            #return list_employee
-            print(list_employee)
+            return list_employee
