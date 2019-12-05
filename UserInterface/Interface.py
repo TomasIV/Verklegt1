@@ -1,5 +1,9 @@
 import os
+<<<<<<< HEAD
 import msvcrt
+=======
+
+>>>>>>> 218eb45be2cdc8825cf4196c4996133868410974
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
