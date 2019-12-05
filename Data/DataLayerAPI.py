@@ -6,21 +6,28 @@ from Models.Destination import Destination
 class DataLayer:
     def __init__(self):
         self.__data_employee = EmployeeDL()
-        self.__data_employee_list = EmployeeDL()
+        #self.__data_employee_list = EmployeeDL()
+        self.__find_all_employees = EmployeeDL()
         self.__data_destination = DestinationDL()
         self.__data_destination_list = DestinationDL()
 
     def save_employee(self, some_employee):
         self.__data_employee.save_employee(some_employee)
 
-    def list_employee(self):
-        self.__data_employee_list.list_employee()
+    def find_employee(self):
+        self.__find_all_employees.find_employee()
 
-    def save_destinations(self):
+    
+    # def list_employee(self):
+    #     self.__data_employee_list.list_employee()
+
+    def save_destinations(self, some_destination):
         self.__data_destination.save_destinations(some_destination)
 
     def list_destinations(self):
-        self.__data_destination_list.list_destination()
+        self.__data_destination_list.list_destinations()
+
+    
 
 
 # john = Employee('100382-2389', 'steb stebson', 'Pilot', 'Captain', 'Boeing', '5686802', 'Flugmannavegur 3', 'refur34@gmail.com')
