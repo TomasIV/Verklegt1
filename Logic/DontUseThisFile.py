@@ -1,6 +1,7 @@
 import csv
 # ALLT HÉR ER EKKI 100% RÉTT, ÞETTA ER Í VINNSLU
-#ÞÚ STENDUR ÞIG VEL!
+# ÞÚ STENDUR ÞIG VEL!
+# TAKK :)
 
 
 class Employee(object):
