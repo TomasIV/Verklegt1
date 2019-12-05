@@ -16,6 +16,12 @@ class DataLayer:
         self.__find_all_employees = EmployeeDL()
         self.__data_destination = DestinationDL()
         self.__data_destination_list = DestinationDL()
+        self.__data_voyage = VoyageDL()
+        self.__data_voyage_list = VoyageDL()
+        self.__data_airplane = AirplainDL()
+        self.__data_airplanes_list = AirplainDL()
+        self.__data_model = ModelDL()
+        self.__data_model_list = ModelDL()
 
     def save_employee(self, some_employee):
         self.__data_employee.save_employee(some_employee)
@@ -23,7 +29,6 @@ class DataLayer:
     def find_employee(self):
         self.__find_all_employees.find_employee()
 
-    
     # def list_employee(self):
     #     self.__data_employee_list.list_employee()
 
@@ -32,6 +37,28 @@ class DataLayer:
 
     def list_destinations(self):
         self.__data_destination_list.list_destinations()
+
+    def save_voyage(self, some_voyage):
+        self.__data_voyage.save_voyage(some_voyage)
+
+    def list_voyage(self):
+        self.__data_voyage_list.list_voyage()
+
+    def save_airplane(self, some_airplane):
+        self.__data_airplane.save_airplane(some_airplane)
+
+    def list_airplanes(self):
+        self.__data_airplanes_list(self):
+
+    def save_model(self, some_model):
+        self.__data_model.save_model(some_model)
+
+    def list_model(self):
+        self.__data_model_list.list_model()
+
+
+
+    
 
     
 
