@@ -1,6 +1,5 @@
 from Models.EmployeeMODEL import Employee
 from Logic.LogicLayerAPI import LogicLayer
-from string import punctuation
 
 class HRInterface:
     def __init__(self, interface):
@@ -8,7 +7,7 @@ class HRInterface:
         self.__logicapi = LogicLayer()
 
         self.__menu_list = ["Back",
-        "Register new employee", "All employees", "Edit employees",
+        "Register new employee - COMPLETE", "All employees - ALMOST COMPLETED(smá formatting)", "Edit employees",
         "Captains", "Co-Pilots",
         "Flight service managers", "Flight attendants",
         "Register employees on voyage"]

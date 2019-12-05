@@ -1,9 +1,11 @@
 from Models.VoyageMODEL import Voyage
+from Logic.LogicLayerAPI import LogicLayer
 
 class ManagerInterface:
     def __init__(self, interface):
         self.__interface = interface
         self.__voyage = Voyage()
+        self.__logic_layer = LogicLayer()
         
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
@@ -51,7 +53,10 @@ class ManagerInterface:
         elif command_str == "8":
             print ("Wow!") # Class coming!
         elif command_str == "9":
-            print ("Wow!") # Class coming!
+            all_destinations = self.__logic_layer.list_all_destinations()
+            for destinations in all_destinations:
+                print (destinations)
+            input ("press enter to continue")
 
     def get_airplane_name(self):
         return input("PlaneID: ")

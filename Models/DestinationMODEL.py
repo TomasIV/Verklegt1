@@ -3,7 +3,7 @@ class Destination:
         self.ids = ids #we could not have id so I changed it to ids
         self.destination = destination 
         self.emergency_contact = emergency_contact
-        self.emergency_phone = emergency_phone 
+        self.emergency_phone = emergency_phone
     
     def __str__(self):
         '''Returns the destinastion information format so it looks super nice and pretty'''

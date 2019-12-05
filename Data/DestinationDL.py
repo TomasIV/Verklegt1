@@ -14,10 +14,9 @@ class DestinationDL:
 
     def list_destinations(self):
         list_destinations = []
-        with open('CSVFiles\Destination.csv', 'r') as csvfile:
-            reader = csv.DictWriter(csvfile)
+        with open('CSVFiles\Destinations.csv', 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
             for row in reader: 
-                destination = Destination(row['id'], row['destination'], row['emergency contact'],row['phonenumber'])
+                destination = Destination(row['id'], row['destination'], row['emergencycontact'],row['phonenumber'])
                 list_destinations.append(destination)
-            #return list_destinations
-            print(list_destinations)
+            return list_destinations
