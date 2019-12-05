@@ -1,8 +1,5 @@
 import csv
-from Models.Destination import Destination
-from Logic.LogicLayerAPI import LogicLayer
-
-
+from Models.DestinationMODEL import Destination
 
 class DestinationDL:
     def __init__(self):
