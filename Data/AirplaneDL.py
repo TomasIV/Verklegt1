@@ -8,7 +8,7 @@ class AirplainDL:
     
 def list_airplanes(self):
         list_airplanes = []
-        with open('aircraft.csv', newline='') as csvfile:
+        with open('aircraft.csv', 'r') as csvfile:
             reader = csv.DictWriter(csvfile)
             for row in reader:
                 airplane = Airplane(row['planeInsignia'], row['planeTypeId'])
@@ -16,11 +16,11 @@ def list_airplanes(self):
             #return list_airplane
             print(list_airplanes)
 
-    def save_airplane(self, some_airplane):
-        '''Takes an instance of an airplane and saves it in an airplane file.
-        If such file doesn't exist, it's created.'''
-        with open("Aircraft.csv", "a") as airplane:
-            csv_writer = csv.writer(airplane)
-            list_of_attributes = [some_airplane.name, some_airplane.model, some_airplane.manufacturer, some_airplane.capacity]
-            csv_writer.writerow(list_of_attributes)
+def save_airplane(self, some_airplane):
+    '''Takes an instance of an airplane and saves it in an airplane file.
+    If such file doesn't exist, it's created.'''
+    with open("Aircraft.csv", "") as airplane:
+        csv_writer = csv.writer(some_airplane, lineterminator= "\r" )
+        csv_writer.writerow(some_airplane.get_airplane_attributes())
+
 
