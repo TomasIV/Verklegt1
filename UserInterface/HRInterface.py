@@ -6,6 +6,7 @@ class HRInterface:
     def __init__(self, interface):
         self.__interface = interface
         self.__logicapi = LogicLayer()
+
         self.__menu_list = ["Back",
         "Register new employee", "All employees", "Edit employees",
         "Captains", "Co-Pilots",
@@ -35,6 +36,11 @@ class HRInterface:
             input("Wow! you created an employee, press enter to continue")
             self.new_employee = Employee(self.ssn, self.name, self.role, self.pilot_license, self.rank, self.address, self.mobile_phone, self.email)
             self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAPI
+        elif command_str == "2":
+            all_employees = self.__logicapi.list_all_employees()
+            for employee in all_employees:
+                print (employee)
+            input ("press enter to continue")
            
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
