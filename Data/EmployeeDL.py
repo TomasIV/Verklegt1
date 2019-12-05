@@ -1,5 +1,5 @@
 import csv
-from Models.Employee import Employee
+from Models.EmployeeMODEL import Employee
 
 class EmployeeDL:
     def __init__(self):

@@ -13,7 +13,6 @@ class DataLayer:
     def __init__(self):
         self.__data_employee = EmployeeDL()
         #self.__data_employee_list = EmployeeDL()
-        self.__find_all_employees = EmployeeDL()
         self.__data_destination = DestinationDL()
         self.__data_destination_list = DestinationDL()
         self.__data_voyage = VoyageDL()
@@ -27,7 +26,7 @@ class DataLayer:
         self.__data_employee.save_employee(some_employee)
 
     def find_employee(self):
-        self.__find_all_employees.find_employee()
+        self.__data_employee.find_employee()
 
     # def list_employee(self):
     #     self.__data_employee_list.list_employee()
