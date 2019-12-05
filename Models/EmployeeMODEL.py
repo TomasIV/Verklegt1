@@ -16,3 +16,11 @@ class Employee:
     
     def get_employee_attributes(self):
         return [self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email]
+
+    def __eq__(self, comparison):
+        # Anna: Er að vinna í þessu
+        if self.__name == comparison:
+            return True
+        if self.__ssn == comparison:
+            return True
+        
