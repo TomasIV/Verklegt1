@@ -1,21 +1,21 @@
 from Data.DestinationDL import DestinationDL
 from Data.EmployeeDL import EmployeeDL
-from Data.VoyageDL import VoyageDL
-from Data.AirplainDL import AirplainDL
-from Data.ModelDL import ModelDL
+#from Data.VoyageDL import VoyageDL
+#from Data.AirplaneDL import AirplaneDL
+#from Data.ModelDL import ModelDL
 from Models.EmployeeMODEL import Employee
 from Models.DestinationMODEL import Destination
 from Models.VoyageMODEL import Voyage
-from Models.Airplane import Airplane
-from Models.Model import Model
+from Models.AirplaneMODEL import Airplane
+#from Models.Model import Model
 
 class DataLayer:
     def __init__(self):
         self.__data_employee = EmployeeDL()
         self.__data_destination = DestinationDL()
-        self.__data_voyage = VoyageDL()
-        self.__data_airplane = AirplainDL()
-        self.__data_model = ModelDL()
+        #self.__data_voyage = VoyageDL()
+        #self.__data_airplane = AirplaneDL()
+        #self.__data_model = ModelDL()
 
     def save_employee(self, some_employee):
         self.__data_employee.save_employee(some_employee)

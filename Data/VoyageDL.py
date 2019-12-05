@@ -1,6 +1,3 @@
-from Logic.LogicLayerAPI import LogicLayer
-from Models.VoyageMODEL import Voyage
-
 class Voyage:
     def __init__(self):
         pass

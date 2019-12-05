@@ -1,5 +1,5 @@
 import datetime
-import dateutil.parser
+#import dateutil.parser
 
 class Voyage:
     def __init__(self, status, sold_seats, airplane, date):
@@ -22,7 +22,7 @@ class Voyage:
         minute = input("Minute: ")
         date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
         return Voyage(status, sold_seats, airplane, date)
-        print("Wow! you created an voyage!")
+        print ("Wow! you created an voyage!")
 
 
     def add_employee_to_voyage(self, ssn):

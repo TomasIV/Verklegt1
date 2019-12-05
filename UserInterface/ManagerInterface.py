@@ -43,7 +43,7 @@ class ManagerInterface:
             print ("Wow!") # Class coming!
         elif command_str == "9":
             print ("Wow!") # Class coming!
-
+"""
     def get_airplane_name(self):
         return name = input("PlaneID: ")
 
@@ -103,3 +103,4 @@ class ManagerInterface:
                 return new_num
             else: 
                 print("Invalid input, please try again!")
+"""

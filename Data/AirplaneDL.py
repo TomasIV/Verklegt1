@@ -1,6 +1,6 @@
 import csv
-from Logic.LogicLayerAPI import LogicLayer
-from Models.Airplane import Airplane
+#from Logic.LogicLayerAPI import LogicLayer
+from Models.AirplaneMODEL import Airplane
 
 class AirplainDL:
     def __init__(self):

@@ -1,4 +1,3 @@
-from Models.EmployeeMODEL import Employee
 from Logic.EmployeeLL import EmployeeLL
 
 class LogicLayer:
