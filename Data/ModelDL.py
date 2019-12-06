@@ -3,7 +3,7 @@ import csv
 
 
 class Model:
-    PATH = "CSVFiles\AircraftTyype.csv"
+    PATH = "CSVFiles/AircraftTyype.csv"
     def __init__(self):
         pass
 

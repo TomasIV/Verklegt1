@@ -3,7 +3,7 @@ from Logic.LogicLayerAPI import LogicLayer
 
 
 class Model:
-    PATH = "CSVFiles\AircraftType.csv"
+    PATH = "CSVFiles/AircraftType.csv"
     def __init__(self):
         pass
 

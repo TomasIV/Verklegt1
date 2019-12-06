@@ -2,7 +2,7 @@ import csv
 from Models.DestinationMODEL import Destination
 
 class DestinationDL:
-    PATH = "CSVFiles\Destinations.csv"
+    PATH = "CSVFiles/Destinations.csv"
     def __init__(self):
         pass
 

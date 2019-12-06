@@ -3,7 +3,7 @@ import csv
 from Models.AirplaneMODEL import Airplane
 
 class AirplainDL:
-    PATH = "CSVFiles\Aircraft.csv"
+    PATH = "CSVFiles/Aircraft.csv"
     def __init__(self):
         pass
     

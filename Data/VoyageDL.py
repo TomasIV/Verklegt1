@@ -1,7 +1,7 @@
 import csv
 from Models.VoyageMODEL import Voyage
 class VoyageDL:
-    PATH = "CSVFiles\Voyages.csv"
+    PATH = "CSVFiles/Voyages.csv"
     def __init__(self):
         pass
 
