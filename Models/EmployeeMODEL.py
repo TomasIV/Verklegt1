@@ -11,9 +11,17 @@ class Employee:
 
     def __str__(self):
         '''Returns the employee information on a very pretty format'''
-        the_line = "{:<20s}Licence: {}\n{:<20s}Role: {}\n{:<20s}Rank: {}\n{}\n{}".format(self.__ssn, self.licence, self.__name, self.__role, self.address, self.__rank, self.mobile, self.email)
+        the_line = "{:<20s}\n{:<30s} Licence: {}\n{:<30s} Role: {:<20s}\n{:<30s} Rank: {}\n{}\n".format(self.__ssn, self.__name, self.licence, self.address, self.__role, self.mobile, self.__rank, self.email)
+                    #ssn       #name         #licence   #address #role    #rank #mobile #email         
         return the_line
-    
+
+    '''How the lsit is suppose to print'''
+        #SSN
+        #Name       Licence 
+        #Address    Role 
+        #Moblie     Rank
+        #Email 
+
     def get_employee_attributes(self):
         return [self.__ssn, self.__name, self.__role, self.__rank, self.licence, self.address, self.mobile, self.email]
 
