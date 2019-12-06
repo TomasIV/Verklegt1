@@ -23,8 +23,8 @@ class LogicLayer:
     def list_all_destinations(self):
         return self.__logic_destination.list_all_destinations()
     
-    def get_voyage_to_add_employee_on(self):
-        return self.__logic_voyage.get_voyage_to_add_employee_on()
+    def get_voyage_to_add_employee_on(self, search_word):
+        return self.__logic_voyage.get_voyage_to_add_employee_on(search_word)
     
     def add_employee_to_voyage(self, ssn):
         return self.__logic_voyage.add_employee_to_voyage(ssn)
