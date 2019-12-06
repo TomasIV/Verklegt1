@@ -20,6 +20,9 @@ class DataLayer:
 
     def save_employee(self, some_employee):
         self.__data_employee.save_employee(some_employee)
+    
+    def overwrite_employee_file(self, list_of_employees):
+        self.__data_employee.overwrite_file(list_of_employees)
 
     def list_employee(self):
         return self.__data_employee.list_employee()

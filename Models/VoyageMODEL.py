@@ -3,14 +3,14 @@ import dateutil.parser
 
 class Voyage:
     def __init__(self, status = "", sold_seats = "", airplane = "", date = ""):
-        self.status = status
+        #self.status = status
         self.sold_seats = sold_seats
         self.airplane = airplane
         self.employees = []
         self.date = date
 
 
-    def add_voyage(self):
+    def create_voyage(self):
         print("Please enter the details of the new voyage")
         #status = input("Status: ") Status á nýju voyage????
         sold_seats = input("Sold Seats: ")
@@ -27,5 +27,13 @@ class Voyage:
 
     def add_employee_to_voyage(self, ssn):
         self.employees.append(ssn)
+
+    def __eq__(self, comparison):
+        if self.sold_seats == comparison \
+        or self.airplane == comparison \
+        or self.date == comparison: 
+            return True
+        else:
+            return False
 
 
