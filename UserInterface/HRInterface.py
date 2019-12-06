@@ -42,11 +42,13 @@ class HRInterface:
                 print (employee)
             input ("press enter to continue")
         elif command_str == "8":
+            print("Please enter what voyage you whant to add on: ")
+
             print("Please enter what position you want to add to the voyage: ")
             self.position = self.get_position_for_voyage()
             self.target_employees = self.__logicapi.find_employees(self.position)
             for person in self.target_employees:
-                print(person) 
+                print(person)
 
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -158,13 +160,13 @@ class HRInterface:
                 return email
             else:
                 print ("Invalid input, please try again!")
-        
+
     def get_position_for_voyage(self):
-        position = input("1. Register Captain\t2. Co-pilot\t. Register FSM\t. Register FA\tSelect a position: ")
+        position = input("1. Register Captain\t2. Co-pilot\t3. Register FSM\t4. Register FA\nSelect a position: ")
         options = ["1", "2", "3", "4"]
         while position not in options:
             print ("Invalid input! Please try again")
-            new_position = input("1. Register Captain\t2. Co-pilot\t. Register FSM\t. Register FA\tSelect a position: ")
+            new_position = input("1. Register Captain\t2. Co-pilot\t3. Register FSM\t4. Register FA\nSelect a position: ")
             position = new_position
         if position =="1":
             position = "Captain"
@@ -175,3 +177,12 @@ class HRInterface:
         elif position == "4":
             position = "Flight Attendant"
         return position
+
+    def get_voyage_to_add_employee_on(self):
+        pass
+
+
+    def add_employee_to_voyage(self, ssn):
+        #self.__logicapi.
+        #self.employees.append(ssn)
+        pass

@@ -18,3 +18,17 @@ class EmployeeLL:
     
     def get_all_employees(self):
         return self.__data_layer.list_employee()
+    
+    def change_employee(self, SSN_number, what_to_change, new_info):
+        all_employees = self.__data_layer.list_employee()
+        for num in range(len(all_employees)):
+            if all_employees[num] == SSN_number:
+                if what_to_change == 'license':
+                    all_employees[num].licence = new_info
+                elif what_to_change == 'address':
+                    all_employees[num].address = new_info
+                elif what_to_change == 'phone':
+                    all_employees[num].mobile = new_info
+                elif what_to_change == 'email':
+                    all_employees[num].email = new_info
+        self.__data_layer.overwrite_employee_file(all_employees)

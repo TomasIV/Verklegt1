@@ -1,9 +1,9 @@
 import os
-import msvcrt
+#import msvcrt
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
-
+from sys import platform
 
 class Interface:
 
@@ -33,7 +33,10 @@ class Interface:
 
     def clear(self):
         """Clears the screen"""
-        os.system("cls")
+        if platform == "win32" or "win64":
+            os.system("cls")
+        else:
+            os.system("clear")
 
 
     def check_command(self, command, options):
@@ -47,11 +50,15 @@ class Interface:
     def menu_helper(self, name, menu_list):
         """Creates a working menu with error check from a title and a list of options to perform"""
         self.clear()
+        longest_string = ""
+        for string in menu_list:
+            if len(string) > len(longest_string):
+                longest_string = string
         print (name)
-        self.selection_msg_str
-        self.dash_divider(self.selection_msg_str)
+        longest_string += "123"
+        self.dash_divider(longest_string)
         self.print_menu(menu_list)
-        self.dash_divider(self.selection_msg_str)
+        self.dash_divider(longest_string)
         options = []
         for index in range(len(menu_list)):
             options.append(str(index))
@@ -64,20 +71,20 @@ class Interface:
         """Prentar út main menu"""
         while True:
             self.clear()
-            print ("\t    Welcome to")
+            print ("{:>24s}".format("welcome to")) # 38 over
             na = "    _   __      _   __   ___    _     "
             n = "   / | / /___ _/ | / /  /   |  (_)____"
-            a = "  /  |/ / __ `/  |/ /  / /| | / / ___/"
+            a = "  /  |/ / __ `/  |/ /  / /| | / / ___/" # Lengsti strengur í main menu printinu
             i = " / /|  / /_/ / /|  /  / ___ |/ / /    "
-            r = "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     "                              
-            nan_air = [na, n, a, i, r, "\n"]
-            for element in nan_air:
+            r = "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     \n"                              
+            nan_air = [na, n, a, i, r]
+            for element in nan_air:#Prentar út text artið fyrir ofan
                 print (element)
             print (self.selection_msg_str)
-            options_commands = ["0", "1", "2", "3"]
-            self.dash_divider(self.selection_msg_str)
-            self.print_menu(self.__main_menu_list)
-            self.dash_divider(self.selection_msg_str)
+            options_commands = ["0", "1", "2", "3"] # options sem hægt er að velja frá menu-inu
+            self.dash_divider(a) # til að fá út dashes jafn mikið og lengsti strengur sem upp kemur í printinu
+            self.print_menu(self.__main_menu_list) # Main menu verður til út frá lista
+            self.dash_divider(a) # lína 82
 
             input_command_str =  str(input("Enter a number: "))
             command_str = self.check_command(input_command_str, options_commands)
