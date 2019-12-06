@@ -10,7 +10,7 @@ class EmployeeDL:
         If such file doesn't exist, it's created.'''
         self.some_employee = some_employee
         with open("CSVFiles\Employees.csv", "a") as employees:
-            csv_writer = csv.writer(employees, lineterminator = "\r")
+            csv_writer = csv.writer(employees, lineterminator= "\r")
             #list_of_attributes = [self.some_employee.ssn, self.some_employee.name, self.some_employee.role, self.some_employee.rank, self.some_employee.licence, self.some_employee.address, self.some_employee.mobile, self.some_employee.email]
             csv_writer.writerow(some_employee.get_employee_attributes())
 
@@ -24,3 +24,10 @@ class EmployeeDL:
                 employee = Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email'])
                 list_employee.append(employee)
             return list_employee
+    
+    def overwrite_file(self, list_of_employees):
+        with open("Crew.csv", "w") as cleared_file:
+            overwriter = csv.writer(cleared_file, lineterminator= "\r")
+            overwriter.writerow(['ssn', 'name', 'role', 'rank', 'licence', 'address', 'phonenumber', 'email'])
+            for person in list_of_employees:
+                overwriter.writerow(person.get_employee_attributes())
