@@ -3,12 +3,14 @@ from Logic.LogicLayerAPI import LogicLayer
 from Models.VoyageMODEL import Voyage
 
 class HRInterface:
+
     def __init__(self, interface):
         self.__interface = interface
         self.__logicapi = LogicLayer()
+        self.all_employees = self.__logicapi.list_all_employees()
 
         self.__menu_list = ["Back",
-        "Register new employee - COMPLETE", "All employees - ALMOST COMPLETED(smá formatting)", "Edit employees",
+        "Register new employee", "All employees", "Edit employees",
         "Captains", "Co-Pilots",
         "Flight service managers", "Flight attendants",
         "Register employees on voyage"]
@@ -21,28 +23,33 @@ class HRInterface:
         if command_str == "0":
             return
         elif command_str == "1":
-            print ("Please enter the details of the new employee")
-            self.ssn = self.get_employee_ssn()
-            self.name = self.get_employee_name()
-            self.role = self.get_employee_role()
-            if self.role == "Pilot":
-                self.pilot_license = self.get_pilot_license()
-                self.rank = self.get_pilot_rank()       
-            elif self.role == "Cabincrew":
-                self.rank = self.get_cabincrew_rank()
-            self.address = self.get_employee_address()
-            self.mobile_phone = self.get_employee_num()
-            self.email = self.get_employee_email()
-            input("Wow! you created an employee, press enter to continue")
-            self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.pilot_license, self.address, self.mobile_phone, self.email)
-            self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAPI
+            self.register_new_employee()
         elif command_str == "2":
-            all_employees = self.__logicapi.list_all_employees()
-            for employee in all_employees:
+            for employee in self.all_employees:
                 print (employee)
             input("press enter to return to main menu...")
         elif command_str == "3":
             self.change_employee()
+        elif command_str == "4":
+            for employee in self.all_employees:
+                if "Captain" in employee.__str__():
+                    print (employee)
+            input("Press enter to continue...")
+        elif command_str == "5":
+            for employee in self.all_employees:
+                if "Copilot" in employee.__str__():
+                    print (employee)
+            input("Press enter to continue...")
+        elif command_str == "6":
+            for employee in self.all_employees:
+                if "Flight Service Manager" in employee.__str__():
+                    print (employee)
+            input("Press enter to continue...")
+        elif command_str == "7":
+            for employee in self.all_employees:
+                if "Flight Attendant" in employee.__str__():
+                    print (employee)
+            input("Press enter to continue...")
         elif command_str == "8":
             print("Please enter what voyage you whant to add on: ")
 
@@ -229,3 +236,20 @@ class HRInterface:
             if change and command_str:
                 new_info = input("New " + change + ": ")
                 self.__logicapi.change_employee(employee_ssn, change, new_info)
+    def register_new_employee(self):
+        print ("Please enter the details of the new employee")
+        self.ssn = self.get_employee_ssn()
+        self.name = self.get_employee_name()
+        self.role = self.get_employee_role()
+        if self.role == "Pilot":
+            self.pilot_license = self.get_pilot_license()
+            self.rank = self.get_pilot_rank()       
+        elif self.role == "Cabincrew":
+            self.rank = self.get_cabincrew_rank()
+        self.address = self.get_employee_address()
+        self.mobile_phone = self.get_employee_num()
+        self.email = self.get_employee_email()
+        input("Wow! you created an employee, press enter to continue")
+        self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.pilot_license, self.address, self.mobile_phone, self.email)
+        self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAP
+
