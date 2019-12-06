@@ -1,5 +1,6 @@
 from Logic.EmployeeLL import EmployeeLL
 from Logic.DestinationLL import DestinationLL
+from Logic.AirplaneLL import AirplaneLL
 from Logic.VoyageLL import VoyageLL
 
 class LogicLayer:
@@ -7,6 +8,7 @@ class LogicLayer:
         self.__logic_employee = EmployeeLL()
         self.__logic_destination = DestinationLL()
         self.__logic_voyage = VoyageLL()
+        self.__logic_airplane = AirplaneLL()
 
     def register_employee(self, new_employee):
         self.__logic_employee.save_employee(new_employee) # Sends information about employee to Data
@@ -28,5 +30,8 @@ class LogicLayer:
     
     def add_employee_to_voyage(self, ssn):
         return self.__logic_voyage.add_employee_to_voyage(ssn)
+
+    def register_airplane(self, new_airplane):
+        self.__logic_airplane.save_airplane(new_airplane)
 
 
