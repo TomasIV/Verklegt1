@@ -40,7 +40,8 @@ class HRInterface:
             all_employees = self.__logicapi.list_all_employees()
             for employee in all_employees:
                 print (employee)
-            input ("press enter to continue")
+        elif command_str == "3":
+            self.change_employee()
         elif command_str == "8":
             print("Please enter what voyage you whant to add on: ")
 
@@ -186,3 +187,40 @@ class HRInterface:
         #self.__logicapi.
         #self.employees.append(ssn)
         pass
+    
+    def change_employee(self):
+        self.__clear()
+        ssn = input("Enter employee SSN: ")
+        employee_ssn = self.__logicapi.find_employees(ssn)
+        print ("Employee details\n", employee_ssn[0])
+        input("Press enter to continue..")
+        if "Pilot" in employee_ssn:
+            change_list = ["Main menu", "license", "address", "phone", "email"]
+            command_str = self.__menu_helper("Change Employee", change_list)
+            if command_str == "0":
+                return
+            if command_str == "1":
+                change = change_list[1]
+            elif command_str == "2":
+                change = change_list[2]
+            elif command_str == "3":
+                change = change_list[3]
+            elif command_str == "4":
+                change = change_list[4]
+            if change and command_str:
+                new_info = input("New " + change + ": ")
+                self.__logicapi.change_employee(employee_ssn, change, new_info)
+        elif "Cabincrew" in employee_ssn:
+            change_list2 = ["Main menu", "address", "phone", "email"]
+            command_str = self.__menu_helper("Change Employee", change_list2)
+            if command_str == "0":
+                return
+            if command_str == "1":
+                change = change_list[1]
+            elif command_str == "2":
+                change = change_list[2]
+            elif command_str == "3":
+                change = change_list[3]
+            if change and command_str:
+                new_info = input("New " + change + ": ")
+                self.__logicapi.change_employee(employee_ssn, change, new_info)
