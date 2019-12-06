@@ -31,3 +31,4 @@ class EmployeeLL:
                     all_employees[num].mobile = new_info
                 elif what_to_change == 'email':
                     all_employees[num].email = new_info
+        self.__data_layer.overwrite_employee_file(all_employees)
