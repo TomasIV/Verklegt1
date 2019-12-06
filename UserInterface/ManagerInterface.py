@@ -20,7 +20,7 @@ class ManagerInterface:
     def menu(self): # Kóði virkar en eftir að tengja hann við API
         command_str = self.__menu_helper("Manager", self.__menu_list)
         if command_str == "0":
-            self.__interface.main_menu() #Return?
+            return
         elif command_str == "1":
             print ("Please enter new airplane")
             self.name = self.get_airplane_name()

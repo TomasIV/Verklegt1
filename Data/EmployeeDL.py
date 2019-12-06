@@ -26,7 +26,7 @@ class EmployeeDL:
             return list_employee
     
     def overwrite_file(self, list_of_employees):
-        with open("Crew.csv", "w") as cleared_file:
+        with open("CSVFiles\Employees.csv", "w") as cleared_file:
             overwriter = csv.writer(cleared_file, lineterminator= "\r")
             overwriter.writerow(['ssn', 'name', 'role', 'rank', 'licence', 'address', 'phonenumber', 'email'])
             for person in list_of_employees:
