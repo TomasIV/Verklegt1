@@ -13,7 +13,7 @@ class VoyageDL:
     def list_voyages(self):
         list_aircraftType = []
         with open('CSVFiles\Voyages.csv', 'r') as csvfile:
-            reader = csv.Dictreader(csvfile)
+            reader = csv.DictReader(csvfile)
             for row in reader: 
                 voyage = Voyage(row['planeTypeId'], row['manufacturer'], row['model'],row['capacity'], row['emptyWheight'], row['maxTakeoffWeight'], row['unitThrust'], row['serviceCeiling'], row['length'], row['height'], row['wingspan'])
                 list_aircraftType.append(voyage)

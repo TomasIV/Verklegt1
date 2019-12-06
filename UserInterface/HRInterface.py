@@ -44,8 +44,8 @@ class HRInterface:
         elif command_str == "3":
             self.change_employee()
         elif command_str == "8":
-            search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
-            self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
+            #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
+            #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
             print("Please enter what position you want to add to the voyage")
             self.position = self.get_position_for_voyage()
             self.target_employees = self.__logicapi.find_employees(self.position)
