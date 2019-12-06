@@ -11,5 +11,9 @@ class LogicLayer:
     
     def list_all_employees(self):
         return self.__logic_employee.get_all_employees()
+
+    def find_employees(self, search_word):
+        return self.__logic_employee.find_employee(search_word)
+    
     def list_all_destinations(self):
         return self.__logic_destination.list_all_destinations()
