@@ -3,11 +3,12 @@ import csv
 
 
 class Model:
+    PATH = "CSVFiles\AircraftTyype.csv"
     def __init__(self):
         pass
 
     def save_model(self, some_aircraftType):
-         with open("CSVFiles\AircraftType.csv", "a") as aircraftType:
+         with open(PATH, "a") as aircraftType:
             csv_writer = csv.writer(aircraftType, lineterminator= "\r" )
             csv_writer.writerow(some_aircraftType.get_aircraftType_attributes())
 

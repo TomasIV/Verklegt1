@@ -3,11 +3,12 @@ from Logic.LogicLayerAPI import LogicLayer
 
 
 class Model:
+    PATH = "CSVFiles\AircraftType.csv"
     def __init__(self):
         pass
 
     def save_model(self, some_aircraftType):
-         with open("CSVFiles\AircraftType.csv", "a") as aircraftType:
+         with open(PATH, "a") as aircraftType:
             csv_writer = csv.writer(aircraftType, lineterminator= "\r" )
             csv_writer.writerow(some_aircraftType.get_aircraftType_attributes())
 
@@ -16,7 +17,7 @@ class Model:
 
     def list_model(self):
         list_aircraftType = []
-        with open('CSVFiles\AircraftTypes.csv', 'r') as csvfile:
+        with open(PATH, 'r') as csvfile:
             reader = csv.DictWriter(csvfile)
             for row in reader: 
                 aircraftType = aircraftType(row['planeTypeId'], row['manufacturer'], row['model'],row['capacity'], row['emptyWheight'], row['maxTakeoffWeight'], row['unitThrust'], row['serviceCeiling'], row['length'], row['height'], row['wingspan'])
