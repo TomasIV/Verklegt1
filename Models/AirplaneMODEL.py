@@ -1,7 +1,6 @@
 class Airplane:
-    def __init__(self, name, model, manufacturer, capacity):
+    def __init__(self, name, model):
         self.name = name
         self.model = model
-        self.manufacturer = manufacturer
-        self.capacity = capacity
+
     
