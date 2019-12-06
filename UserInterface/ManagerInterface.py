@@ -1,4 +1,5 @@
 from Models.VoyageMODEL import Voyage
+from Models.AirplaneMODEL import Airplane
 from Logic.LogicLayerAPI import LogicLayer
 import string
 
@@ -7,7 +8,7 @@ class ManagerInterface:
         self.__interface = interface
         self.__voyage = Voyage()
         self.__logic_layer = LogicLayer()
-        
+        self.__logicapi = LogicLayer()
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
         "Edit Airplane", "Edit Voyage","Edit Destination", 
