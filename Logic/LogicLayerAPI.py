@@ -13,6 +13,9 @@ class LogicLayer:
     
     def list_all_employees(self):
         return self.__logic_employee.get_all_employees()
+    
+    def change_employee(self, ssn, what_to_change, new_info):
+        self.__logic_employee.change_employee(ssn, what_to_change, new_info)
 
     def find_employees(self, search_word):
         return self.__logic_employee.find_employee(search_word)
