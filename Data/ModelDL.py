@@ -8,7 +8,7 @@ class Model:
         pass
 
     def save_model(self, some_aircraftType):
-         with open(PATH, "a") as aircraftType:
+         with open(self.PATH, "a") as aircraftType:
             csv_writer = csv.writer(aircraftType, lineterminator= "\r" )
             csv_writer.writerow(some_aircraftType.get_aircraftType_attributes())
 
@@ -16,4 +16,5 @@ class Model:
 
 
     def list_model(self):
+        pass
         

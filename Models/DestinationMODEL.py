@@ -1,6 +1,6 @@
 class Destination:
-    def __init__(self, ids, destination, emergency_contact, emergency_phone):
-        self.ids = ids #we could not have id so I changed it to ids
+    def __init__(self, id, destination, emergency_contact, emergency_phone):
+        self.id = id #we could not have id so I changed it to ids
         self.destination = destination 
         self.emergency_contact = emergency_contact
         self.emergency_phone = emergency_phone

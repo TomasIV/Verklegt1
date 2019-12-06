@@ -10,9 +10,9 @@ class HRInterface:
         self.all_employees = self.__logicapi.list_all_employees()
 
         self.__menu_list = ["Back",
-        "Register new employee", "All employees", "Edit employees",
-        "Captains", "Co-Pilots",
-        "Flight service managers", "Flight attendants",
+        "Register new employee - COMPLETE", "All employees - COMPLETE", "Edit employees - COMPLETE",
+        "Captains - COMPLETE", "Co-Pilots - COMPLETE",
+        "Flight service managers - COMPLETE", "Flight attendants - COMPLETE",
         "Register employees on voyage"]
 
         self.__menu_helper = self.__interface.menu_helper
@@ -34,22 +34,22 @@ class HRInterface:
             for employee in self.all_employees:
                 if "Captain" in employee.__str__():
                     print (employee)
-            input("Press enter to continue...")
+            input("press enter to return to main menu...")
         elif command_str == "5":
             for employee in self.all_employees:
                 if "Copilot" in employee.__str__():
                     print (employee)
-            input("Press enter to continue...")
+            input("press enter to return to main menu...")
         elif command_str == "6":
             for employee in self.all_employees:
                 if "Flight Service Manager" in employee.__str__():
                     print (employee)
-            input("Press enter to continue...")
+            input("press enter to return to main menu...")
         elif command_str == "7":
             for employee in self.all_employees:
                 if "Flight Attendant" in employee.__str__():
                     print (employee)
-            input("Press enter to continue...")
+            input("press enter to return to main menu...")
         elif command_str == "8":
             #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
             #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)

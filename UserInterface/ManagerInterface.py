@@ -1,13 +1,13 @@
 from Models.VoyageMODEL import Voyage
 from Models.AirplaneMODEL import Airplane
 from Logic.LogicLayerAPI import LogicLayer
+from Models.DestinationMODEL import Destination
 import string
 
 class ManagerInterface:
     def __init__(self, interface):
         self.__interface = interface
         self.__voyage = Voyage()
-        self.__logic_layer = LogicLayer()
         self.__logicapi = LogicLayer()
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
@@ -26,7 +26,8 @@ class ManagerInterface:
             self.name = self.get_airplane_name()
             self.model = self.get_airplane_model()
             self.new_airplane = Airplane(self.name, self.model)
-            self.__logicapi.register_airplane(self.new_airplane) # ekki búið að tengja í API
+            self.__logicapi.register_airplane(self.new_airplane)
+            input ("Airplane created, press enter to continue...")
             # self.name = self.get_airplane_name()
             # self.manufacturer = self.get_airplane_manufacturer()
             # if self.manufacturer == "BAE":
@@ -48,6 +49,7 @@ class ManagerInterface:
             self.emergency_phone = self.get_destination_emegency_phone()
             self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone)
             self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
+            input("Destination created, press enter to continue...")
         elif command_str == "5":
             print ("Wow!") # Class coming!
         elif command_str == "5":
@@ -59,7 +61,7 @@ class ManagerInterface:
         elif command_str == "8":
             print ("Wow!") # Class coming!
         elif command_str == "9":
-            all_destinations = self.__logic_layer.list_all_destinations()
+            all_destinations = self.__logicapi.list_all_destinations()
             for destinations in all_destinations:
                 print (destinations)
             input ("press enter to continue")

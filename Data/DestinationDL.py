@@ -10,7 +10,7 @@ class DestinationDL:
     def save_destinations(self, some_destination):
         with open(self.PATH, "a") as destination:
             csv_writer = csv.writer(destination)
-            list_of_attributes = [some_destination.id, some_destination.destination, some_destination.emergency_contact, some_destination.phonenumber]
+            list_of_attributes = [some_destination.id, some_destination.destination, some_destination.emergency_contact, some_destination.emergency_phone]
             csv_writer.writerow(list_of_attributes)
 
     def list_destinations(self):
