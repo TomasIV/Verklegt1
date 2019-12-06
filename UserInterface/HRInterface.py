@@ -34,12 +34,13 @@ class HRInterface:
             self.mobile_phone = self.get_employee_num()
             self.email = self.get_employee_email()
             input("Wow! you created an employee, press enter to continue")
-            self.new_employee = Employee(self.ssn, self.name, self.role, self.pilot_license, self.rank, self.address, self.mobile_phone, self.email)
+            self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.pilot_license, self.address, self.mobile_phone, self.email)
             self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAPI
         elif command_str == "2":
             all_employees = self.__logicapi.list_all_employees()
             for employee in all_employees:
                 print (employee)
+            input("press enter to return to main menu...")
         elif command_str == "3":
             self.change_employee()
         elif command_str == "8":
@@ -192,10 +193,14 @@ class HRInterface:
         self.__clear()
         ssn = input("Enter employee SSN: ")
         employee_ssn = self.__logicapi.find_employees(ssn)
-        print ("Employee details\n", employee_ssn[0])
-        input("Press enter to continue..")
+        try:
+            print ("Employee details\n\n" + str(employee_ssn[0]))
+            input("Press enter to continue...")
+        except:
+            input ("Employee not found, press enter to return to main menu")
+            return
         if "Pilot" in employee_ssn:
-            change_list = ["Main menu", "license", "address", "phone", "email"]
+            change_list = ["Main menu", "License", "Address", "Phone", "Email"]
             command_str = self.__menu_helper("Change Employee", change_list)
             if command_str == "0":
                 return
