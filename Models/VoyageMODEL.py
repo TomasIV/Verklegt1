@@ -9,6 +9,9 @@ class Voyage:
         self.employees = []
         self.date = date
 
+    def get_voyage_attributes(self):
+        return [self.sold_seats, self.airplane, self.date]
+
 
     def create_voyage(self):
         print("Please enter the details of the new voyage")
