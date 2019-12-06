@@ -2,7 +2,7 @@ import csv
 from Models.EmployeeMODEL import Employee
 
 class EmployeeDL:
-    PATH = "\CSVFiles\Employees.csv"
+    PATH = "CSVFiles/Employees.csv"
     def __init__(self):
         pass
 
