@@ -23,12 +23,12 @@ class EmployeeLL:
         all_employees = self.__data_layer.list_employee()
         for num in range(len(all_employees)):
             if all_employees[num] == SSN_number:
-                if what_to_change == 'license':
+                if what_to_change == 'License':
                     all_employees[num].licence = new_info
-                elif what_to_change == 'address':
+                elif what_to_change == 'Address':
                     all_employees[num].address = new_info
-                elif what_to_change == 'phone':
+                elif what_to_change == 'Phone':
                     all_employees[num].mobile = new_info
-                elif what_to_change == 'email':
+                elif what_to_change == 'Email':
                     all_employees[num].email = new_info
         self.__data_layer.overwrite_employee_file(all_employees)

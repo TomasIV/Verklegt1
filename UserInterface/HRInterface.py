@@ -34,13 +34,15 @@ class HRInterface:
             self.mobile_phone = self.get_employee_num()
             self.email = self.get_employee_email()
             input("Wow! you created an employee, press enter to continue")
-            self.new_employee = Employee(self.ssn, self.name, self.role, self.pilot_license, self.rank, self.address, self.mobile_phone, self.email)
+            self.new_employee = Employee(self.ssn, self.name, self.role, self.rank, self.pilot_license, self.address, self.mobile_phone, self.email)
             self.__logicapi.register_employee(self.new_employee) # sends the employee to LLAPI
         elif command_str == "2":
             all_employees = self.__logicapi.list_all_employees()
             for employee in all_employees:
                 print (employee)
-            input ("press enter to continue")
+            input("press enter to return to main menu...")
+        elif command_str == "3":
+            self.change_employee()
         elif command_str == "8":
             search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
             self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
@@ -182,3 +184,44 @@ class HRInterface:
         #self.__logicapi.
         #self.employees.append(ssn)
         pass
+    
+    def change_employee(self):
+        self.__clear()
+        ssn = input("Enter employee SSN: ")
+        employee_ssn = self.__logicapi.find_employees(ssn)
+        try:
+            print ("Employee details\n\n" + str(employee_ssn[0]))
+            input("Press enter to continue...")
+        except:
+            input ("Employee not found, press enter to return to main menu")
+            return
+        if "Pilot" in employee_ssn:
+            change_list = ["Main menu", "License", "Address", "Phone", "Email"]
+            command_str = self.__menu_helper("Change Employee", change_list)
+            if command_str == "0":
+                return
+            if command_str == "1":
+                change = change_list[1]
+            elif command_str == "2":
+                change = change_list[2]
+            elif command_str == "3":
+                change = change_list[3]
+            elif command_str == "4":
+                change = change_list[4]
+            if change and command_str:
+                new_info = input("New " + change + ": ")
+                self.__logicapi.change_employee(employee_ssn, change, new_info)
+        elif "Cabincrew" in employee_ssn:
+            change_list2 = ["Main menu", "address", "phone", "email"]
+            command_str = self.__menu_helper("Change Employee", change_list2)
+            if command_str == "0":
+                return
+            if command_str == "1":
+                change = change_list[1]
+            elif command_str == "2":
+                change = change_list[2]
+            elif command_str == "3":
+                change = change_list[3]
+            if change and command_str:
+                new_info = input("New " + change + ": ")
+                self.__logicapi.change_employee(employee_ssn, change, new_info)
