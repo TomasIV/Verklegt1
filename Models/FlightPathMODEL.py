@@ -2,12 +2,12 @@ import datetime
 import dateutil.parser
 
 class FlighPath:
-    def __init__(self, departing_location, destination, departure_year, departure_month, departure_day, departure_hour, departure_minute):
-        self.__flight_number = ''
+    def __init__(self, departing_location, destination, departure_time, arrival_time = '', flight_number = ''):
+        self.__flight_number = flight_number
         self.__departing_id = departing_location
         self.__destination_id = destination
-        self.__departure_timestamp = datetime.datetime(int(departure_year), int(departure_month), int(departure_day), int(departure_hour), int(departure_minute), 0).isoformat
-        self.__arrival_timestamp = ''
+        self.__departure_timestamp = departure_time
+        self.__arrival_timestamp = arrival_time
     
     def set_arrival_time(self, length_of_fight):
         minutes = int(length_of_fight)
