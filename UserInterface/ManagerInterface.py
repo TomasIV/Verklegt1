@@ -12,7 +12,7 @@ class ManagerInterface:
         self.__menu_list = ["Back", 
         "Register Airplane COMPLETE", "Register Voyage", "Register Destination COMPLETE", 
         "Edit Airplane", "Edit Voyage","Edit Destination", 
-        "View Airplanes TÓMAS", "View Voyages","View Destinations COMPLETE"]
+        "View Airplanes COMPLETE", "View Voyages","View Destinations COMPLETE"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
@@ -47,7 +47,9 @@ class ManagerInterface:
             self.destination = self.get_destination_name()
             self.emergency_contact = self.get_destination_emergency_contact()
             self.emergency_phone = self.get_destination_emegency_phone()
-            self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone)
+            self.flight_time = self.get_flight_time()
+            self.km = self.get_km()
+            self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone, self.flight_time, self.km)
             self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
             input("Destination created, press enter to continue...")
         elif command_str == "4":
@@ -69,6 +71,12 @@ class ManagerInterface:
                 print (destinations)
             input ("Press enter to return to main menu...")
 
+    def get_km(self):
+        return input("Kilometers from Iceland to Destination: ")
+    
+    def get_flight_time(self):
+        return input("Time from Iceland to Destination: ")
+        
     def get_airplane_name(self): #Error check bara á "-"" ekki hvort þetta séu stafir er að missa vitið!
         plane_insignia = input("Plane Insignia: ")
         new_plane_insignia = ""
