@@ -19,45 +19,46 @@ class HRInterface:
         self.__clear = self.__interface.clear
 
     def menu(self):
-        command_str = self.__menu_helper("Human Resources", self.__menu_list)
-        if command_str == "0":
-            return
-        elif command_str == "1":
-            self.register_new_employee()
-        elif command_str == "2":
-            for employee in self.all_employees:
-                print (employee)
-            input("press enter to return to main menu...")
-        elif command_str == "3":
-            self.change_employee()
-        elif command_str == "4":
-            for employee in self.all_employees:
-                if "Captain" in employee.__str__():
+        while True:
+            command_str = self.__menu_helper("Human Resources", self.__menu_list)
+            if command_str == "0":
+                return
+            elif command_str == "1":
+                self.register_new_employee()
+            elif command_str == "2":
+                for employee in self.all_employees:
                     print (employee)
-            input("press enter to return to main menu...")
-        elif command_str == "5":
-            for employee in self.all_employees:
-                if "Copilot" in employee.__str__():
-                    print (employee)
-            input("press enter to return to main menu...")
-        elif command_str == "6":
-            for employee in self.all_employees:
-                if "Flight Service Manager" in employee.__str__():
-                    print (employee)
-            input("press enter to return to main menu...")
-        elif command_str == "7":
-            for employee in self.all_employees:
-                if "Flight Attendant" in employee.__str__():
-                    print (employee)
-            input("press enter to return to main menu...")
-        elif command_str == "8":
-            #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
-            #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
-            print("Please enter what position you want to add to the voyage")
-            self.position = self.get_position_for_voyage()
-            self.target_employees = self.__logicapi.find_employees(self.position)
-            for person in self.target_employees:
-                print(person)
+                input("press enter to return to main menu...")
+            elif command_str == "3":
+                self.change_employee()
+            elif command_str == "4":
+                for employee in self.all_employees:
+                    if "Captain" in employee.__str__():
+                        print (employee)
+                input("press enter to return to main menu...")
+            elif command_str == "5":
+                for employee in self.all_employees:
+                    if "Copilot" in employee.__str__():
+                        print (employee)
+                input("press enter to return to main menu...")
+            elif command_str == "6":
+                for employee in self.all_employees:
+                    if "Flight Service Manager" in employee.__str__():
+                        print (employee)
+                input("press enter to return to main menu...")
+            elif command_str == "7":
+                for employee in self.all_employees:
+                    if "Flight Attendant" in employee.__str__():
+                        print (employee)
+                input("press enter to return to main menu...")
+            elif command_str == "8":
+                #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
+                #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
+                print("Please enter what position you want to add to the voyage")
+                self.position = self.get_position_for_voyage()
+                self.target_employees = self.__logicapi.find_employees(self.position)
+                for person in self.target_employees:
+                    print(person)
 
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]

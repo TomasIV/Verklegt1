@@ -92,10 +92,10 @@ class Interface:
             self.clear()
             print ("{:>24s}".format("welcome to")) # 38 over
             na = "    _   __      _   __   ___    _     "
-            n = "   / | / /___ _/ | / /  /   |  (_)____"
-            a = "  /  |/ / __ `/  |/ /  / /| | / / ___/" # Lengsti strengur í main menu printinu
-            i = " / /|  / /_/ / /|  /  / ___ |/ / /    "
-            r = "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     \n"                              
+            n =  "   / | / /___ _/ | / /  /   |  (_)____"
+            a =  "  /  |/ / __ `/  |/ /  / /| | / / ___/" # Lengsti strengur í main menu printinu
+            i =  " / /|  / /_/ / /|  /  / ___ |/ / /    "
+            r =  "/_/ |_/\__,_/_/ |_/  /_/  |_/_/_/     \n"                              
             nan_air = [na, n, a, i, r]
             for element in nan_air:#Prentar út text artið fyrir ofan
                 print (element)

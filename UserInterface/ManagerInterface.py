@@ -18,58 +18,59 @@ class ManagerInterface:
 
 
     def menu(self):
-        command_str = self.__menu_helper("Manager", self.__menu_list)
-        if command_str == "0":
-            return
-        elif command_str == "1":
-            print ("Please enter new airplane")
-            self.name = self.get_airplane_name()
-            self.model = self.get_airplane_model()
-            self.new_airplane = Airplane(self.name, self.model)
-            self.__logicapi.register_airplane(self.new_airplane)
-            input ("Airplane created, press enter to continue...")
-            # self.name = self.get_airplane_name()
-            # self.manufacturer = self.get_airplane_manufacturer()
-            # if self.manufacturer == "BAE":
-            #     self.model = self.get_airplane_bae_model()
-            # elif self.manufacturer == "Fokker":
-            #     self.model = self.get_airplane_fokker_model()
-            # elif self.manufacturer != "Fokker" or self.manufacturer != "BAE":
-            #     self.model = self.get_airplane_other_model()
-            # self.capacity = self.get_airplane_capacity()
-            # self.new_airplane = Airplane(self.name, self.model, self.manufacturer, self.capacity)
-            # self.__logicapi.register_airplane(self.new_airplane) # sends the airplane to LLAPI
-        elif command_str == "2":
-            print ("Wow!") # Class coming!
-        elif command_str == "3":
-            print("Please enter the details of the new Destination")
-            self.ids = self.get_destination_id()
-            self.destination = self.get_destination_name()
-            self.emergency_contact = self.get_destination_emergency_contact()
-            self.emergency_phone = self.get_destination_emegency_phone()
-            self.flight_time = self.get_flight_time()
-            self.km = self.get_km()
-            self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone, self.flight_time, self.km)
-            self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
-            input("Destination created, press enter to continue...")
-        elif command_str == "4":
-            self.change_airplane()
-        elif command_str == "5":
-            print ("Wow!") # Class coming!
-        elif command_str == "6":
-            print ("Wow!") # Class coming!
-        elif command_str == "7":
-            all_airplanes = self.__logicapi.list_all_airplanes()
-            for airplane in all_airplanes:
-                print (airplane)
-            input ("Press enter to return to main menu...")
-        elif command_str == "8":
-            print ("Wow!") # Class coming!
-        elif command_str == "9":
-            all_destinations = self.__logicapi.list_all_destinations()
-            for destinations in all_destinations:
-                print (destinations)
-            input ("Press enter to return to main menu...")
+        while True:
+            command_str = self.__menu_helper("Manager", self.__menu_list)
+            if command_str == "0":
+                return
+            elif command_str == "1":
+                print ("Please enter new airplane")
+                self.name = self.get_airplane_name()
+                self.model = self.get_airplane_model()
+                self.new_airplane = Airplane(self.name, self.model)
+                self.__logicapi.register_airplane(self.new_airplane)
+                input ("Airplane created, press enter to continue...")
+                # self.name = self.get_airplane_name()
+                # self.manufacturer = self.get_airplane_manufacturer()
+                # if self.manufacturer == "BAE":
+                #     self.model = self.get_airplane_bae_model()
+                # elif self.manufacturer == "Fokker":
+                #     self.model = self.get_airplane_fokker_model()
+                # elif self.manufacturer != "Fokker" or self.manufacturer != "BAE":
+                #     self.model = self.get_airplane_other_model()
+                # self.capacity = self.get_airplane_capacity()
+                # self.new_airplane = Airplane(self.name, self.model, self.manufacturer, self.capacity)
+                # self.__logicapi.register_airplane(self.new_airplane) # sends the airplane to LLAPI
+            elif command_str == "2":
+                print ("Wow!") # Class coming!
+            elif command_str == "3":
+                print("Please enter the details of the new Destination")
+                self.ids = self.get_destination_id()
+                self.destination = self.get_destination_name()
+                self.emergency_contact = self.get_destination_emergency_contact()
+                self.emergency_phone = self.get_destination_emegency_phone()
+                self.flight_time = self.get_flight_time()
+                self.km = self.get_km()
+                self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone, self.flight_time, self.km)
+                self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
+                input("Destination created, press enter to continue...")
+            elif command_str == "4":
+                self.change_airplane()
+            elif command_str == "5":
+                print ("Wow!") # Class coming!
+            elif command_str == "6":
+                print ("Wow!") # Class coming!
+            elif command_str == "7":
+                all_airplanes = self.__logicapi.list_all_airplanes()
+                for airplane in all_airplanes:
+                    print (airplane)
+                input ("Press enter to return to main menu...")
+            elif command_str == "8":
+                print ("Wow!") # Class coming!
+            elif command_str == "9":
+                all_destinations = self.__logicapi.list_all_destinations()
+                for destinations in all_destinations:
+                    print (destinations)
+                input ("Press enter to return to main menu...")
 
     def get_km(self):
         return input("Kilometers from Iceland to Destination: ")
