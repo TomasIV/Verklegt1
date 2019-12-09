@@ -20,7 +20,7 @@ class AirplaneDL:
         '''Takes an instance of an airplane and saves it in an airplane file.
         If such file doesn't exist, it's created.'''
         with open(self.PATH, "a") as airplane:
-            csv_writer = csv.writer(airplane)
+            csv_writer = csv.writer(airplane, lineterminator ="\r")
             list_of_attributes = [some_airplane.name, some_airplane.model]
             csv_writer.writerow(list_of_attributes)
 

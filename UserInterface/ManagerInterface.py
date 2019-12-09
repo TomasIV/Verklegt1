@@ -12,7 +12,7 @@ class ManagerInterface:
         self.__menu_list = ["Back", 
         "Register Airplane COMPLETE", "Register Voyage", "Register Destination COMPLETE", 
         "Edit Airplane", "Edit Voyage","Edit Destination", 
-        "View Airplanes TÓMAS", "View Voyages","View Destinations COMPLETE"]
+        "View Airplanes COMPLETE", "View Voyages","View Destinations COMPLETE"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
