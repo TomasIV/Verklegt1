@@ -8,3 +8,13 @@ class DestinationLL:
         return self.__data_layer.list_destinations()
     def save_destination(self, new_destination):
         self.__data_layer.save_destinations(new_destination)
+
+def change_destination(self, destination_name, what_to_change, new_info):
+        all_destinations = self.__data_layer.list_destinations()
+        for num in range(len(all_destinations)):
+            if all_destinations[num] == destination_name:
+                if what_to_change == 'emergencycontact':
+                    all_employees[num].emergencycontact = new_info
+                elif what_to_change == 'phonenumber':
+                    all_employees[num].phonenumber = new_info
+        self.__data_layer.overwrite_employee_file(all_destinations)

@@ -43,3 +43,4 @@ class LogicLayer:
     def change_airplane(self, plane_insignia, new_info):
         self.__logic_airplane.change_airplane()
 
+    
