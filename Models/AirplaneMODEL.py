@@ -4,7 +4,7 @@ class Airplane:
         self.model = model
 
     def __str__(self):
-        return ("{:<5s}: {}\n{}: {}\n".format("Name", self.name, "model", self.model))
+        return ("{:<5s}: {}\n{}: {}\n".format("Name", self.name, "Model", self.model))
     
     def __eq__(self, comparison):
         if (self.name == comparison) or (self.model == comparison):
