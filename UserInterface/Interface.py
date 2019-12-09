@@ -6,7 +6,7 @@ from sys import platform
 try:
     import msvcrt
 except:
-    import getch
+    pass #virkar ekki a fokking mac, what a bitch os
 
 class Interface:
 
@@ -49,9 +49,11 @@ class Interface:
             #command = str(input("Select a number: "))
             print ("Select a number")
             if platform == "win32" or "win64":
-                command = msvcrt.getch()
+                command_input = msvcrt.getch()
+                command_input_str = str (command_input)
+                command = command_input_str[2]
             else:
-                command = getch.getch()
+                command = input("Enter a number you mac bitch: ")
         return str(command)
     
 
@@ -76,9 +78,12 @@ class Interface:
 
     def get_input(self):
         """Takes input from using without pressing enter"""
-        user_input = msvcrt.getch() # Takes input in form of b'char' without pressing enter
-        user_input_str = str(user_input) #Converts to string
-        return user_input_str[2] #Return the char pressed
+        try:
+            user_input = msvcrt.getch() # Takes input in form of b'char' without pressing enter
+            user_input_str = str(user_input) #Converts to string
+            return user_input_str[2] #Return the char pressed
+        except:
+            return input("Enter a number you mac bitch: ")
 
 
     def main_menu(self):
