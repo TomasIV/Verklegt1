@@ -8,6 +8,7 @@ class Voyage:
         self.airplane = airplane
         self.employees = []
         self.date = date
+        self.__flight_numbers = []
 
     def get_voyage_attributes(self):
         return [self.sold_seats, self.airplane, self.date]
@@ -34,9 +35,8 @@ class Voyage:
     def __eq__(self, comparison):
         if self.sold_seats == comparison \
         or self.airplane == comparison \
-        or self.date == comparison: 
+        or self.date == comparison \
+        or comparison in self.__flight_numbers:
             return True
         else:
             return False
-
-
