@@ -47,7 +47,7 @@ class Interface:
         while command not in options:
             print ("Invalid input, please try again")
             print ("Select a number")
-            if platform "win32" or "win64":
+            if platform == "win32" or "win64":
                 command = msvcrt.getch()
                 command_str = str(msvcrt)
                 return command_str[2]
