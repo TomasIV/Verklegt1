@@ -10,9 +10,9 @@ class ManagerInterface:
         self.__voyage = Voyage()
         self.__logicapi = LogicLayer()
         self.__menu_list = ["Back", 
-        "Register Airplane", "Register Voyage", "Register Destination", 
+        "Register Airplane COMPLETE", "Register Voyage", "Register Destination COMPLETE", 
         "Edit Airplane", "Edit Voyage","Edit Destination", 
-        "View Airplanes", "View Voyages","View Destinations"]
+        "View Airplanes", "View Voyages","View Destinations COMPLETE"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
@@ -50,10 +50,10 @@ class ManagerInterface:
             self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone)
             self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
             input("Destination created, press enter to continue...")
-        elif command_str == "5":
+        elif command_str == "4":
             print ("Wow!") # Class coming!
         elif command_str == "5":
-            self.__voyage.add_voyage()
+            print ("Wow!") # Class coming!
         elif command_str == "6":
             print ("Wow!") # Class coming!
         elif command_str == "7":

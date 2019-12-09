@@ -1,5 +1,5 @@
 import os
-#import msvcrt
+import msvcrt
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
@@ -43,8 +43,10 @@ class Interface:
         """Checks to see if the command is valid (in the options list)"""
         while command not in options:
             print ("Invalid input, please try again")
-            command = str(input("Select a number: "))
-        return command
+            #command = str(input("Select a number: "))
+            print ("Select a number")
+            command = msvcrt.getch()
+        return str(command)
     
 
     def menu_helper(self, name, menu_list):
@@ -62,10 +64,16 @@ class Interface:
         options = []
         for index in range(len(menu_list)):
             options.append(str(index))
-        input_command_str = input("select a number: ")
+        input_command_str = self.get_input()
         command_str = self.check_command(input_command_str, options)
         return command_str
-        
+
+    def get_input(self):
+        """Takes input from using without pressing enter"""
+        user_input = msvcrt.getch() # Takes input in form of b'char' without pressing enter
+        user_input_str = str(user_input) #Converts to string
+        return user_input_str[2] #Return the char pressed
+
 
     def main_menu(self):
         """Prentar út main menu"""
@@ -86,7 +94,8 @@ class Interface:
             self.print_menu(self.__main_menu_list) # Main menu verður til út frá lista
             self.dash_divider(a) # lína 82
 
-            input_command_str =  str(input("Enter a number: "))
+            input_command_str = self.get_input()
+            #input_command_str =  str(input("Enter a number: "))
             command_str = self.check_command(input_command_str, options_commands)
             if command_str == "0":
                 self.clear()
