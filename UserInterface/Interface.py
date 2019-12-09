@@ -49,7 +49,9 @@ class Interface:
             #command = str(input("Select a number: "))
             print ("Select a number")
             if platform == "win32" or "win64":
-                command = msvcrt.getch()
+                command_input = msvcrt.getch()
+                command_input_str = str (command_input)
+                command = command_input_str[2]
             else:
                 command = input("Enter a number you mac bitch: ")
         return str(command)
