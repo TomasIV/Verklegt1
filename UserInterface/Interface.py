@@ -83,7 +83,7 @@ class Interface:
             user_input_str = str(user_input) #Converts to string
             return user_input_str[2] #Return the char pressed
         except:
-            return input("{}: ".format(self.generate_mac_instults))
+            return input("Enter something wrong u mac ReTaRd")
 
 
     def main_menu(self):
