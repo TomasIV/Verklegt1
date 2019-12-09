@@ -78,9 +78,12 @@ class Interface:
 
     def get_input(self):
         """Takes input from using without pressing enter"""
-        user_input = msvcrt.getch() # Takes input in form of b'char' without pressing enter
-        user_input_str = str(user_input) #Converts to string
-        return user_input_str[2] #Return the char pressed
+        if platform == "win32" or "win64":
+            user_input = msvcrt.getch() # Takes input in form of b'char' without pressing enter
+            user_input_str = str(user_input) #Converts to string
+            return user_input_str[2] #Return the char pressed
+        else:
+            return input("Enter a number you mac bitch: ")
 
 
     def main_menu(self):
