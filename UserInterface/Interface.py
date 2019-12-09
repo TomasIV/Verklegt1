@@ -6,7 +6,7 @@ from sys import platform
 try:
     import msvcrt
 except:
-    import getch
+    pass #virkar ekki a fokking mac, what a bitch os
 
 class Interface:
 
@@ -51,7 +51,7 @@ class Interface:
             if platform == "win32" or "win64":
                 command = msvcrt.getch()
             else:
-                command = getch.getch()
+                command = input("Enter a number you mac bitch: ")
         return str(command)
     
 
