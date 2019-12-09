@@ -7,7 +7,7 @@ import string
 class ManagerInterface:
     def __init__(self, interface):
         self.__interface = interface
-        self.__voyage = Voyage()
+        #self.__voyage = Voyage()
         self.__logicapi = LogicLayer()
         self.__menu_list = ["Back", 
         "Register Airplane COMPLETE", "Register Voyage", "Register Destination COMPLETE", 
@@ -76,7 +76,7 @@ class ManagerInterface:
     
     def get_flight_time(self):
         return input("Time from Iceland to Destination: ")
-        
+
     def get_airplane_name(self): #Error check bara á "-"" ekki hvort þetta séu stafir er að missa vitið!
         plane_insignia = input("Plane Insignia: ")
         new_plane_insignia = ""
