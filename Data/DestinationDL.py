@@ -10,7 +10,7 @@ class DestinationDL:
     def save_destinations(self, some_destination):
         with open(self.PATH, "a") as destination:
             csv_writer = csv.writer(destination)
-            list_of_attributes = [some_destination.id, some_destination.destination, some_destination.emergency_contact, some_destination.emergency_phone]
+            list_of_attributes = [some_destination.id, some_destination.destination, some_destination.emergency_contact, some_destination.emergency_phone, some_destination.flighttime, some_destination.kilometers]
             csv_writer.writerow(list_of_attributes)
 
     def list_destinations(self):
@@ -18,6 +18,6 @@ class DestinationDL:
         with open(self.PATH, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader: 
-                destination = Destination(row['id'], row['destination'], row['emergencycontact'],row['phonenumber'])
+                destination = Destination(row['id'], row['destination'], row['emergencycontact'],row['phonenumber'], row['flighttime'], row['kilometers'])
                 list_destinations.append(destination)
             return list_destinations

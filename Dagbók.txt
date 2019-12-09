@@ -110,3 +110,14 @@ Anna fer í að gera change_employee fall og tengja það á milli lagaskiptingu
 Tómas ætlar að vinna meira í interface ásamt því að laga vandamál sem koma upp í sambanndi við git.
 
 Í lok dags:
+
+09.12.19:
+
+Edit destination, Hönnunarskýslu fixes, view destinations og Most popular destinations - Tobba
+view airplane og Edit airplane, User face design, vann með gets fall - Tómas
+Register employee to voyage og register voyage - Breki 
+Edit voyages, register employee to voage - Andri
+
+í lok dags: 
+
+Tobba náði að klára smá hönnunarskýslu fixes, edit voyage og view voyage , klárar view voyage og most popular destination heima
