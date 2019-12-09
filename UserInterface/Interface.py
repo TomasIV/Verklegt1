@@ -1,9 +1,12 @@
 import os
-import msvcrt
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
 from sys import platform
+try:
+    import msvcrt
+except:
+    import getch
 
 class Interface:
 
@@ -45,7 +48,10 @@ class Interface:
             print ("Invalid input, please try again")
             #command = str(input("Select a number: "))
             print ("Select a number")
-            command = msvcrt.getch()
+            if platform == "win32" or "win64":
+                command = msvcrt.getch()
+            else:
+                command = getch.getch()
         return str(command)
     
 
