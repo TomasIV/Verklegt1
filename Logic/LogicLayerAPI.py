@@ -37,3 +37,4 @@ class LogicLayer:
     def register_destination(self, new_destination):
         return self.__logic_destination.save_destination(new_destination)
 
+    
