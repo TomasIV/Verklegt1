@@ -8,7 +8,7 @@ from Models.DestinationMODEL import Destination
 from Models.VoyageMODEL import Voyage
 from Models.AirplaneMODEL import Airplane
 from Data.DestinationDL import DestinationDL
-#from Models.Model import Model
+from Data.AircraftModelDL import PlaneModel
 
 class DataLayer:
     def __init__(self):
@@ -16,6 +16,7 @@ class DataLayer:
         self.__data_destination = DestinationDL()
         self.__data_voyage = VoyageDL()
         self.__data_airplane = AirplaneDL()
+        self.__data_airplane_model = PlaneModel()
         #self.__data_model = ModelDL()
 
     def save_employee(self, some_employee):
@@ -43,13 +44,16 @@ class DataLayer:
         self.__data_airplane.save_airplane(some_airplane)
 
     def list_airplanes(self):
-        return self.__data_airplane.list_airplanes()
+        return self.__data_airplane.list_all_airplanes()
 
     def save_model(self, some_model):
         self.__data_model.save_model(some_model)
 
     def list_model(self):
         return self.__data_model.list_model()
+    
+    def overwrite_airplane_file(self, list_of_airplanes):
+        self.__data_airplane.overwrite_file(list_of_airplanes)
 
 
 

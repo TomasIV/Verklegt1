@@ -12,12 +12,12 @@ class ManagerInterface:
         self.__menu_list = ["Back", 
         "Register Airplane COMPLETE", "Register Voyage", "Register Destination COMPLETE", 
         "Edit Airplane", "Edit Voyage","Edit Destination", 
-        "View Airplanes", "View Voyages","View Destinations COMPLETE"]
+        "View Airplanes TÓMAS", "View Voyages","View Destinations COMPLETE"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
 
-    def menu(self): # Kóði virkar en eftir að tengja hann við API
+    def menu(self):
         command_str = self.__menu_helper("Manager", self.__menu_list)
         if command_str == "0":
             return
@@ -51,22 +51,25 @@ class ManagerInterface:
             self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
             input("Destination created, press enter to continue...")
         elif command_str == "4":
-            print ("Wow!") # Class coming!
+            self.change_airplane()
         elif command_str == "5":
             print ("Wow!") # Class coming!
         elif command_str == "6":
             print ("Wow!") # Class coming!
         elif command_str == "7":
-            print ("Wow!") # Class coming!
+            all_airplanes = self.__logicapi.list_all_airplanes()
+            for airplane in all_airplanes:
+                print (airplane)
+            input ("Press enter to return to main menu...")
         elif command_str == "8":
             print ("Wow!") # Class coming!
         elif command_str == "9":
             all_destinations = self.__logicapi.list_all_destinations()
             for destinations in all_destinations:
                 print (destinations)
-            input ("press enter to continue")
+            input ("Press enter to return to main menu...")
 
-    def get_airplane_name(self): #Error check bara á - ekki hvort þetta séu stafir er að missa vitið!
+    def get_airplane_name(self): #Error check bara á "-"" ekki hvort þetta séu stafir er að missa vitið!
         plane_insignia = input("Plane Insignia: ")
         new_plane_insignia = ""
         letters = string.ascii_letters
@@ -93,7 +96,9 @@ class ManagerInterface:
         elif model == "3":
             model = "NABAE146"
         return model
-        
+
+    def change_airplane(self):
+        pass
     # def get_airplane_name(self):
     #     return input("PlaneID: ")
 

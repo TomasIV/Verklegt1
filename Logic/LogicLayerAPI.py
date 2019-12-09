@@ -36,4 +36,10 @@ class LogicLayer:
 
     def register_destination(self, new_destination):
         return self.__logic_destination.save_destination(new_destination)
+    
+    def list_all_airplanes(self):
+        return self.__logic_airplane.list_airplanes()
+    
+    def change_airplane(self, plane_insignia, new_info):
+        self.__logic_airplane.change_airplane()
 

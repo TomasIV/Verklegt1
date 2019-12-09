@@ -15,7 +15,7 @@ class Employee:
                     #ssn       #name         #licence   #address #role    #rank #mobile #email         
         return the_line
 
-    '''How the lsit is suppose to print'''
+    #How the list is suppose to print
         #SSN
         #Name       Licence 
         #Address    Role 

@@ -1,8 +1,7 @@
 import csv
-from Logic.LogicLayerAPI import LogicLayer
 
 
-class Model:
+class PlaneModel:
     PATH = "CSVFiles/AircraftType.csv"
     def __init__(self):
         pass
@@ -15,12 +14,11 @@ class Model:
 #planeTypeId,manufacturer,model,capacity,emptyWeight,maxTakeoffWeight,unitThrust,serviceCeiling,length,height,wingspan
 
 
-    def list_model(self):
+    def list_all_airplane_models(self):
         list_aircraftType = []
         with open(self.PATH, 'r') as csvfile:
             reader = csv.DictWriter(csvfile)
             for row in reader: 
                 aircraftType = aircraftType(row['planeTypeId'], row['manufacturer'], row['model'],row['capacity'], row['emptyWheight'], row['maxTakeoffWeight'], row['unitThrust'], row['serviceCeiling'], row['length'], row['height'], row['wingspan'])
                 list_aircraftType.append(aircraftType)
-            #return list_aircraftType
-            print(list_aircraftType)
+            return list_aircraftType
