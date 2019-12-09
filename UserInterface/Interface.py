@@ -3,9 +3,9 @@ from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
 from sys import platform
-if platform == "win32" or "win64":
+try:
     import msvcrt
-else:
+except:
     import getch
 
 class Interface:
@@ -46,14 +46,13 @@ class Interface:
         """Checks to see if the command is valid (in the options list)"""
         while command not in options:
             print ("Invalid input, please try again")
+            #command = str(input("Select a number: "))
             print ("Select a number")
             if platform == "win32" or "win64":
                 command = msvcrt.getch()
-                command_str = str(msvcrt)
-                return command_str[2]
             else:
                 command = getch.getch()
-                return str(command)
+        return str(command)
     
 
     def menu_helper(self, name, menu_list):
