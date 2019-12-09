@@ -25,6 +25,9 @@ class LogicLayer:
     def list_all_destinations(self):
         return self.__logic_destination.list_all_destinations()
     
+    def change_destination(self, all_destinations, what_to_chagne, new_info):
+            self.__data_layer.overwrite_destination_file(all_destinations, what_to_chagne, new_info)
+
     def get_voyage_to_add_employee_on(self, search_word):
         return self.__logic_voyage.get_voyage_to_add_employee_on(search_word)
     
@@ -43,4 +46,4 @@ class LogicLayer:
     def change_airplane(self, plane_insignia, new_info):
         self.__logic_airplane.change_airplane()
 
-    
+   

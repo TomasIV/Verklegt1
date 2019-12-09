@@ -17,4 +17,4 @@ def change_destination(self, destination_name, what_to_change, new_info):
                     all_employees[num].emergencycontact = new_info
                 elif what_to_change == 'phonenumber':
                     all_employees[num].phonenumber = new_info
-        self.__data_layer.overwrite_employee_file(all_destinations)
+        self.__data_layer.overwrite_destination_file(all_destinations)
