@@ -120,4 +120,4 @@ Edit voyages, register employee to voage - Andri
 
 í lok dags: 
 
-Tobba náði að klára smá hönnunarskýslu fixes, edit voyage og view voyage , klárar view voyage og most popular destination heima
+Tobba náði að klára smá hönnunarskýslu fixes, edit voyage og view voyage , klárar view voyage og most popular destination heima (hópurinn samþykkir það) 
