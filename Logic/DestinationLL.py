@@ -21,3 +21,11 @@ class DestinationLL:
 
     def list_most_popular_destination(self):
         pass
+
+    def find_destination(self, search_word):
+        all_destinations = self.__data_layer.list_destinations()
+        found_destinations = []
+        for place in all_destinations:
+            if place == search_word:
+                found_destinations.append(place)
+        return found_destinations
