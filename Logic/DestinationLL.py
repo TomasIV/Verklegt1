@@ -14,9 +14,9 @@ class DestinationLL:
         for num in range(len(all_destinations)):
             if all_destinations[num] == destination_name:
                 if what_to_change == 'emergencycontact':
-                    all_destinations[num].emergencycontact = new_info
+                    all_destinations[num].emergency_contact = new_info
                 elif what_to_change == 'phonenumber':
-                    all_destinations[num].phonenumber = new_info
+                    all_destinations[num].emergency_phone = new_info
         self.__data_layer.overwrite_destination_file(all_destinations)
 
     def list_most_popular_destination(self):

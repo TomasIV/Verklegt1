@@ -26,8 +26,8 @@ class LogicLayer:
     def list_all_destinations(self):
         return self.__logic_destination.list_all_destinations()
     
-    def change_destination(self, all_destinations, what_to_chagne, new_info):
-        self.__logic_destination.change_destination(all_destinations, what_to_chagne, new_info)
+    def change_destination(self, the_destination, what_to_change, new_info):
+        self.__logic_destination.change_destination(the_destination, what_to_change, new_info)
 
     def get_voyage_to_add_employee_on(self, search_word):
         return self.__logic_voyage.get_voyage_to_add_employee_on(search_word)

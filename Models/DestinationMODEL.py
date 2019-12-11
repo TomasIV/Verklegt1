@@ -8,7 +8,7 @@ class Destination:
         self.__flight_time = flight_time
         self.__kilometers = kilometers
 
-    def get_destiantion_attributes(self):
+    def get_destination_attributes(self):
         return [self.__id, self.__destination, self.__number, self.emergency_contact, self.emergency_phone, self.__flight_time, self.__kilometers]
 
     def get_destiantion_number(self):
@@ -25,7 +25,9 @@ class Destination:
             return True
         else:
             return False
-
+    def get_name(self):
+        return self.__destination
+        
     def __str__(self):
         '''Returns the destinastion information format so it looks super nice and pretty'''
         #line = "ID and Destination: Emergency Name and Mobile:\n{:<20s}{}\n{:<20s}{}\n".format(self.__id, self.emergency_contact, self.__destination,  self.emergency_phone)

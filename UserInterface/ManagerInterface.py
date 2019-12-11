@@ -61,7 +61,7 @@ class ManagerInterface:
                 self.destination = self.get_destination_name()
                 self.destination_number = self.get_destination_number()
                 self.emergency_contact = self.get_destination_emergency_contact()
-                self.emergency_phone = self.get_destination_emegency_phone()
+                self.emergency_phone = self.get_destination_emergency_phone()
                 self.flight_time = self.get_flight_time()
                 self.kilometers= self.get_km()
                 self.new_destination = Destination(self.ids, self.destination, self.destination_number, self.emergency_contact, self.emergency_phone, self.flight_time, self.kilometers)
@@ -214,7 +214,7 @@ class ManagerInterface:
     def get_destination_emergency_contact(self):
         return input("Input emergency contact: ")
 
-    def get_destination_emegency_phone(self):
+    def get_destination_emergency_phone(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         while True:
             em_phone = input("Input emergency phone number: ")
@@ -271,20 +271,22 @@ class ManagerInterface:
     def change_destination(self):
         self.__clear()
         destination = input("Enter destination: ")
-        destination_name = self.__logicapi.find_destination(destination_name)
+        destination_name = self.__logicapi.find_destination(destination)
         try:
             print("Destination details\n\n" + str(destination_name[0]))
             input("Press enter to continue...")
         except:
             input("Destination not found, press enter to return to main menu")
             return
-        change_list = ["Main menu", "Emergency contact name" "Emergency contact phone number"]
+        change_list = ["Back", "Emergency contact name", "Emergency contact phone number"]
+        command_str = self.__interface.menu_helper("VERYV VERY VERY VERY NICE TITLE", change_list)
         if command_str == "0":
             return
         if command_str == "1":
-            change = change_list[1]
+            change = "emergencycontact"
+            new_info = self.get_destination_emergency_contact()
         elif command_str == "2":
-            change = change_list[2]
-        if change and command_str:
-            new_info = input("New " + change + ": ")
-            self.__logicapi.change_destination(destination_name, change, new_info)
+            change = "phonenumber"
+            new_info = self.get_destination_emergency_phone()
+        if change:
+            self.__logicapi.change_destination(destination_name[0].get_name(), change, new_info)

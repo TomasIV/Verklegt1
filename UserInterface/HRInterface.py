@@ -32,13 +32,14 @@ class HRInterface:
             elif command_str == "3":
                 self.change_employee()
             elif command_str == "4":
-                #pilot_list = []
-                #for employee in self.all_employees:
-                #    if "Captain" or "Copilot" in employee.__str__():
-                #        pilot_list.append(employee)
-                #
-                #input ("press enter to return...")
-                pass
+                sorted_pilots_license = sorted(self.all_employees, key=lambda x: x.license)
+                new_list = []
+                for element in sorted_pilots_license:
+                    if (("Captain") or ("Copilot")) in element.__str__():
+                        new_list.append(element)
+                for pilot in new_list:
+                    print (pilot)
+                input ("press enter to return...")
             elif command_str == "5":
                 for employee in self.all_employees:
                     if "Captain" in employee.__str__():
