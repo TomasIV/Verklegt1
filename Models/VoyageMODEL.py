@@ -11,6 +11,9 @@ class Voyage:
     
     def get_destination(self):
         return self.__destination_id
+    
+    def get_departure(self):
+        return self.__departure
 
     def get_voyage_attributes(self):
         return [self.__flight_numbers[0], self.__flight_numbers[1], self.__destination_id, self.__departure, self.__aircraft_id, self.employees[0], self.employees[1], self.employees[2], self.employees[3], self.employees[4]]

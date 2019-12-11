@@ -1,3 +1,5 @@
+import datetime
+import dateutil.parser
 from Models.VoyageMODEL import Voyage
 from Data.DataLayerAPI import DataLayer
 from Models.FlightPathMODEL import FlighPath
@@ -8,9 +10,16 @@ class VoyageLL:
 
     def create_voyage(self, some_voyage, departure_sold_seats, arrival_sold_seats):
         all_voyages = self.__data_layer.list_voyages()
+        new_voyage_date = dateutil.parser.parse(some_voyage)
+        colliding_voyages = []
         for voyage in all_voyages:
-            if voyage.get_destination() == some_voyage.get_destination():
-                pass
+            voyage_date = dateutil.parser.parse(voyage.get_departure)
+            if new_voyage_date.year == voyage_date.year \
+            and new_voyage_date.month == voyage_date.month \
+            and new_voyage_date.day == voyage_date.day:
+                if voyage.get_destination() == some_voyage.get_destination():
+                    colliding_voyages.append(voyage)
+        # Ekki búið
 
     def voyage_time_check(self):
         pass
