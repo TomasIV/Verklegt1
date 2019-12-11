@@ -30,7 +30,7 @@ class LogicLayer:
         self.__logic_destination.change_destination(all_destinations, what_to_chagne, new_info)
 
     def get_voyage_to_add_employee_on(self, search_word):
-        return self.__logic_voyage.get_voyage_to_add_employee_on(search_word)
+        return self.__logic_voyage.find_voyage(search_word)
     
     def add_employee_to_voyage(self, ssn):
         return self.__logic_voyage.add_employee_to_voyage(ssn)

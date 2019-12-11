@@ -5,6 +5,7 @@ from Data.DataLayerAPI import DataLayer
 from Models.FlightPathMODEL import FlighPath
 
 class VoyageLL:
+    TIME = 60 # The time between landing and takeoff at some location (in sec)
     def __init__(self):
         self.__data_layer = DataLayer()
 
@@ -46,7 +47,7 @@ class VoyageLL:
                 return False
         return True
 
-    def get_voyage_to_add_employee_on(self, search_word):
+    def find_voyage(self, search_word):
         all_voyages = self.__data_layer.list_voyages()
         found_voyages = []
         for voyage in all_voyages:
