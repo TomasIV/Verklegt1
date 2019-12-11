@@ -5,8 +5,8 @@ class VoyageLL:
     def __init__(self):
         self.__data_layer = DataLayer()
 
-    def save_voyage(self, some_voyage):
-        self.__data_layer.save_voyage(some_voyage)
+    def create_voyage(self, some_voyage, departure_sold_seats, arrival_sold_seats):
+        pass
 
     def get_voyage_to_add_employee_on(self, search_word):
         all_voyages = self.__data_layer.list_voyages()
@@ -21,5 +21,3 @@ class VoyageLL:
 
     def add_employee_to_voyage(self, ssn):
         pass
-
-    
