@@ -43,17 +43,15 @@ class ManagerInterface:
             elif command_str == "2":
                 print ("Please enter a new voyage")
                 print ("Please enter date and time of departure")
-                self.departure_date_time = get_voyage_date()
-                print ("Please enter date and time of arrival")
-               # self.arrival_date_time = get_voyage_date()
-                self.voyage_destination = get_voyage_destination()
+                self.departure_date_time = self.get_voyage_date()
+                self.voyage_destination = self.get_voyage_destination()
                 print ("Please enter number of sold seats for departure flight")
-                self.departure_sold_seats = get_voyage_sold_seats()
+                self.departure_sold_seats = self.get_voyage_sold_seats()
                 print ("Please enter number of sold seats for arrival flight")
-                self.arrival_sold_seats = get_voyage_sold_seats()
-                self.voyage_airplane_id = get_voyage_airplane_id()
-                self.new_voyage = Voyage(self.departure_date_time, self.arrival_date_time, self.voyage_destination, self.departure_sold_seats, self.arrival_sold_seats, self.voyage_airplane_id)
-                print ("Wow!") # Class coming! new voyage
+                self.arrival_sold_seats = self.get_voyage_sold_seats()
+                self.voyage_airplane_id = self.get_voyage_airplane_id()
+                self.voyage_info = Voyage(self.voyage_destination, self.departure_date_time, self.voyage_airplane_id)
+                self.new_voyage = VoyageLL(self.voyage_info, self.departure_sold_seats, self.arrival_sold_seats)
             elif command_str == "3":
                 print("Please enter the details of the new Destination")
                 self.ids = self.get_destination_id()
@@ -193,6 +191,11 @@ class ManagerInterface:
     #         else: 
     #             print("Invalid input, please try again!")
 
+    # def get_voyage_airplane(self):
+    #     pass
+
+    # def get_voyage_date(self):
+    #     pass
 
 
     def get_destination_id(self):
@@ -216,13 +219,6 @@ class ManagerInterface:
                 return new_em_phone
             else:
                 print("Invalid input, please try again!")
-
-    def create_voyage(self):
-        print("Please enter the details of the new voyage")
-        #status = input("Status: ") Status á nýju voyage????
-        input ("{} :)".format(date))
-        return Voyage(sold_seats, airplane, date)
-        #status
 
     def get_voyage_date(self):
         year = int(input("Year: "))
