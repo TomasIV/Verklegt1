@@ -41,7 +41,19 @@ class ManagerInterface:
                 # self.new_airplane = Airplane(self.name, self.model, self.manufacturer, self.capacity)
                 # self.__logicapi.register_airplane(self.new_airplane) # sends the airplane to LLAPI
             elif command_str == "2":
-                print ("Wow!") # Class coming!
+                print ("Please enter a new voyage")
+                print ("Please enter date and time of departure")
+                self.departure_date_time = get_voyage_date()
+                print ("Please enter date and time of arrival")
+               # self.arrival_date_time = get_voyage_date()
+                self.voyage_destination = get_voyage_destination()
+                print ("Please enter number of sold seats for departure flight")
+                self.departure_sold_seats = get_voyage_sold_seats()
+                print ("Please enter number of sold seats for arrival flight")
+                self.arrival_sold_seats = get_voyage_sold_seats()
+                self.voyage_airplane_id = get_voyage_airplane_id()
+                self.new_voyage = Voyage(self.departure_date_time, self.arrival_date_time, self.voyage_destination, self.departure_sold_seats, self.arrival_sold_seats, self.voyage_airplane_id)
+                print ("Wow!") # Class coming! new voyage
             elif command_str == "3":
                 print("Please enter the details of the new Destination")
                 self.ids = self.get_destination_id()
@@ -181,11 +193,6 @@ class ManagerInterface:
     #         else: 
     #             print("Invalid input, please try again!")
 
-    # def get_voyage_airplane(self):
-    #     pass
-
-    # def get_voyage_date(self):
-    #     pass
 
 
     def get_destination_id(self):
@@ -209,3 +216,41 @@ class ManagerInterface:
                 return new_em_phone
             else:
                 print("Invalid input, please try again!")
+
+    def create_voyage(self):
+        print("Please enter the details of the new voyage")
+        #status = input("Status: ") Status á nýju voyage????
+        input ("{} :)".format(date))
+        return Voyage(sold_seats, airplane, date)
+        #status
+
+    def get_voyage_date(self):
+        year = int(input("Year: "))
+        month = int(input("Month: "))
+        day = int(input("Day: "))
+        hour = int(input("Hour: "))
+        minute = int(input("Minute: "))
+        date = dateutil.parser.parse(datetime.datetime(year,month,day,hour,minute,0).isoformat())
+        return date
+
+    def get_voyage_sold_seats(self):
+        num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        while True:
+            sold_seats = input("Sold Seats: ")
+            new_num = ""
+            for char in sold_seats:
+                if char in num:
+                    new_num += char
+                if 0 < len(new_num) < 4:
+                    return new_num
+                else: 
+                    print("Invalid input, please try again!")
+
+    def get_voyage_airplane(self):
+        voyage_airplane_id = input("Enter Airplane ID for voyage: ")
+        return voyage_airplane_id
+        #Búa til brú niður í LL þar sem athugað er hvort flugvélin sé nógu stór?
+
+    def get_voyage_destination(self):
+        voyage_destination = input("Enter voyage destination: ")
+        return voyage_destination
