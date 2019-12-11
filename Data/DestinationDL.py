@@ -8,7 +8,7 @@ class DestinationDL:
 
     def save_destinations(self, some_destination):
         with open(self.PATH, "a", encoding="utf-8") as destination:
-            csv_writer = csv.writer(destination)
+            csv_writer = csv.writer(destination, lineterminator = "\r")
             csv_writer.writerow(some_destination.get_destiantion_attributes())
 
     def list_destinations(self):

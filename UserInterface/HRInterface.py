@@ -13,7 +13,7 @@ class HRInterface:
         "Register new employee - COMPLETE", "All employees - COMPLETE", "Edit employees - COMPLETE",
         "List all pilots - COMPLETE", "List all Captains - COMPLETE", "List all Co-Pilots - COMPLETE",
         "List Cabin crew", "Flight service managers - COMPLETE", "Flight attendants - COMPLETE",
-        "Register employees on voyage", "Find employee"]
+        "Register employees on voyage", "Find employee", "Find Pilot for specific airplane"]
 
         self.__menu_helper = self.__interface.menu_helper
         self.__clear = self.__interface.clear
@@ -32,10 +32,13 @@ class HRInterface:
             elif command_str == "3":
                 self.change_employee()
             elif command_str == "4":
-                for employee in self.all_employees:
-                    if "Captain" or "Copilot" in employee.__str__():
-                        print (employee)
-                    input ("press enter to return...")
+                #pilot_list = []
+                #for employee in self.all_employees:
+                #    if "Captain" or "Copilot" in employee.__str__():
+                #        pilot_list.append(employee)
+                #
+                #input ("press enter to return...")
+                pass
             elif command_str == "5":
                 for employee in self.all_employees:
                     if "Captain" in employee.__str__():
@@ -73,6 +76,8 @@ class HRInterface:
                 employee = self.find_employee()
                 print ("\n", employee[0])
                 input("press enter to continue...")
+            elif command_str =="NOCCO":
+                self.find_pilots_by_license()
 
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -140,16 +145,16 @@ class HRInterface:
         return role
     
     def get_pilot_license(self):
-        print ("1. NAFokker100\t2. NAFokkerF28\t3. NABAE146\tSelect a license")
+        print ("1. NAFokkerF100\t2. NAFokkerF28\t3. NABAE146\tSelect a license")
         options = ["1", "2", "3"]
         pilot_license = self.__interface.get_input()
         while pilot_license not in options:
             print ("Invalid input, please try again!")
-            print ("1. NAFokker100\t2. NAFokkerF28\t3. NABAE146\tSelect a license")
+            print ("1. NAFokkerF100\t2. NAFokkerF28\t3. NABAE146\tSelect a license")
             new_pilot_license = self.__interface.get_input()
             pilot_license = new_pilot_license
         if pilot_license == "1":
-            the_license = "NAFokker100"
+            the_license = "NAFokkerF100"
         elif pilot_license == "2":
             the_license = "NAFokkerF28"
         elif pilot_license == "3":
@@ -240,6 +245,25 @@ class HRInterface:
         elif position == "4":
             position = "Flight Attendant"
         return position
+    
+    def find_pilots_by_license(self):
+        all_employees = self.all_employees
+        menu_options = ["1", "2", "3"]
+        print ("1. NAFokkerF28\t2. NAFokkerF100\t3. NABAE146\tSelect a license")
+        command_str = self.__interface.get_input()
+        while command_str not in menu_options:
+            print("Invaldi input, please try again")
+            print ("1. NAFokkerF28\t2. NAFokkerF100\t3. NABAE146\tSelect a license")
+            command_str = self.__interface.get_input()
+        pilot_list = []
+        menu_list = ["NAFokkerF28", "NAFokkerF100", "NABAE146"]
+        selected_license = menu_list[int(command_str)-1]
+        for employee in all_employees:
+            if selected_license in employee.__str__():
+                pilot_list.append(employee)
+        for pilot in pilot_list:
+            print (pilot)
+        input("Press enter to continue...")
 
     def add_employee_to_voyage(self, ssn):
         #self.__logicapi.

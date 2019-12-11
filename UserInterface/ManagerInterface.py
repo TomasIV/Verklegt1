@@ -108,11 +108,13 @@ class ManagerInterface:
             print("Plane Insignia not valid! Please try again")
 
     def get_airplane_model(self):
-        model = input("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+        print("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+        model = self.__interface.get_input()
         model_options = ["1", "2", "3"]
         while model not in model_options:
             print("Invalid input! Please try again")
-            model = input("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+            print("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+            model = self.__interface.get_input()
         if model == "1":
             model = "NAFokkerF100"
         elif model == "2":
@@ -260,8 +262,11 @@ class ManagerInterface:
         dest_num_list = []
         all_destinations = self.__logicapi.list_all_destinations()
         for destination in all_destinations:
-            dest_num_list += str(destination.get_destiantion_number())
-        return str(int(dest_num_list[-1])+1)
+            dest_num_list.append(destination.get_destiantion_number())
+        if int(dest_num_list[-1])+1 < 10:
+            return str("0" + (str(int(dest_num_list[-1])+1)))
+        else:
+            return str(int(dest_num_list[-1])+1)
 
     def change_destination(self):
         self.__clear()
