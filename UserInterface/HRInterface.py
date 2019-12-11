@@ -28,29 +28,29 @@ class HRInterface:
             elif command_str == "2":
                 for employee in self.all_employees:
                     print (employee)
-                input("press enter to return to main menu...")
+                input("press enter to return...")
             elif command_str == "3":
                 self.change_employee()
             elif command_str == "4":
                 for employee in self.all_employees:
                     if "Captain" in employee.__str__():
                         print (employee)
-                input("press enter to return to main menu...")
+                input("press enter to return...")
             elif command_str == "5":
                 for employee in self.all_employees:
                     if "Copilot" in employee.__str__():
                         print (employee)
-                input("press enter to return to main menu...")
+                input("press enter to return...")
             elif command_str == "6":
                 for employee in self.all_employees:
                     if "Flight Service Manager" in employee.__str__():
                         print (employee)
-                input("press enter to return to main menu...")
+                input("press enter to return...")
             elif command_str == "7":
                 for employee in self.all_employees:
                     if "Flight Attendant" in employee.__str__():
                         print (employee)
-                input("press enter to return to main menu...")
+                input("press enter to return...")
             elif command_str == "8":
                 #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
                 #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
@@ -76,12 +76,20 @@ class HRInterface:
                 last = int(new_ssn[-1])
                 if last == 0: #if year == 2000
                     if ((32 > d > 0 ) and ( 13 > m > 0) and (y < 20)):
-                        return new_ssn
+                        ssn_exists = self.check_ssn(new_ssn)
+                        if ssn_exists:
+                            print ("SSN already registered, please try again")
+                        else:
+                            return new_ssn
                     else:
                         print("SSN not valid")
                 elif str(last) == "9": #if year == 1900
                     if (( 32 > d > 0 ) and (13 > m > 0)):
-                        return new_ssn
+                        ssn_exists = self.check_ssn(new_ssn)
+                        if ssn_exists:
+                            print ("SSN already registered, please try again")
+                        else:
+                            return new_ssn
                     else:
                         print("SSN not valid")
                 else:
@@ -89,7 +97,16 @@ class HRInterface:
             else:
                 print ("SSN not valid")
             
-                
+    def check_ssn(self, ssn):
+        """Checks if ssn is already registered to some employee"""
+        ssn_list = []
+        for employee in self.all_employees:
+             ssn_list.append(employee.get_ssn())
+        if ssn in ssn_list:
+            return True
+        else:
+            return False
+                   
     def get_employee_name(self):
         return input("Name: ")
 
@@ -105,7 +122,7 @@ class HRInterface:
         if role =="1":
             role = "Pilot"
         elif role == "2":
-            role = "Cabin crew"
+            role = "Cabincrew"
         return role
     
     def get_pilot_license(self):
@@ -169,7 +186,7 @@ class HRInterface:
             if len(new_num) == 7:
                 return new_num
             else:
-                print ("Invalid input, pleaes try again!")
+                print ("Invalid input, please try again!")
 
     def get_employee_email(self):
         while True:
@@ -223,7 +240,7 @@ class HRInterface:
             print ("Employee details\n\n" + str(employee_ssn[0]))
             input("Press enter to continue...")
         except:
-            input ("Employee not found, press enter to return to main menu")
+            input ("Employee not found, press enter to return")
             return
         if "Pilot" in employee_ssn:
             change_list = ["Main menu", "License", "Address", "Phone", "Email"]
@@ -264,6 +281,7 @@ class HRInterface:
             self.pilot_license = self.get_pilot_license()
             self.rank = self.get_pilot_rank()       
         elif self.role == "Cabincrew":
+            self.pilot_license = "N/A"
             self.rank = self.get_cabincrew_rank()
         self.address = self.get_employee_address()
         self.mobile_phone = self.get_employee_num()

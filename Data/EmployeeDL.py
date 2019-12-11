@@ -19,7 +19,7 @@ class EmployeeDL:
         '''Takes an employee file and reads all employees from it.
         Returns a list of all employees.'''
         list_employee = []
-        with open(self.PATH, "r") as csvfile:
+        with open(self.PATH, "r", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 employee = Employee(row['ssn'], row['name'], row['role'], row['rank'], row['licence'], row['address'], row['phonenumber'], row['email'])
@@ -27,7 +27,7 @@ class EmployeeDL:
             return list_employee
     
     def overwrite_file(self, list_of_employees):
-        with open(self.PATH, "w") as cleared_file:
+        with open(self.PATH, "w", encoding="utf-8") as cleared_file:
             overwriter = csv.writer(cleared_file, lineterminator= "\r")
             overwriter.writerow(['ssn', 'name', 'role', 'rank', 'licence', 'address', 'phonenumber', 'email'])
             for person in list_of_employees:

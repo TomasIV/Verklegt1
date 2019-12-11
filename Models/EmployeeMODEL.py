@@ -14,7 +14,8 @@ class Employee:
         the_line = "SSN     : {:<10s}\nName    : {:<30s} License : {}\nAddress : {:<30s} Role    : {:<20s}\nPhone   : {:<30s} Rank    : {}\nEmail   : {}\n".format(self.__ssn, self.__name, self.licence, self.address, self.__role, self.mobile, self.__rank, self.email)
                     #ssn       #name         #licence   #address #role    #rank #mobile #email         
         return the_line
-
+    def get_ssn(self):
+        return self.__ssn
     #How the list is suppose to print
         #SSN
         #Name       Licence 

@@ -8,7 +8,7 @@ class FlightPathDL:
 
     def list_flight_paths(self):
         list_of_flight_paths = []
-        with open(self.PATH, "r") as csvfile:
+        with open(self.PATH, "r", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 flight_path = FlighPath(row['departingFrom'], row['arrivingAt'], row['departure'], row['soldSeats'], row['arrival'], row['flightNumber'])
@@ -16,7 +16,7 @@ class FlightPathDL:
             return list_of_flight_paths
     
     def overwrite_file(self, list_of_flight_paths):
-        with open(self.PATH, "w") as cleared_file:
+        with open(self.PATH, "w", encoding="utf-8") as cleared_file:
             overwriter = csv.writer(cleared_file, lineterminator= "\r")
             overwriter.writerow(['flightNumber', 'departingFrom', 'arrivingAt', 'departure', 'arrival', 'soldSeats'])
             for path in list_of_flight_paths:
