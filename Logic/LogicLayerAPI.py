@@ -46,4 +46,5 @@ class LogicLayer:
     def change_airplane(self, plane_insignia, new_info):
         self.__logic_airplane.change_airplane()
 
-   
+   def register_voyage(self, new_voyage, departure_sold_seats, arrival_sold_seats):
+       self.__logic_voyage.create_voyage(new_voyage, departure_sold_seats, arrival_sold_seats)
