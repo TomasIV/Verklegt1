@@ -19,6 +19,7 @@ class VoyageLL:
             and new_voyage_date.day == voyage_date.day:
                 if all_voyages[num].get_destination() == some_voyage.get_destination():
                     colliding_voyages.append(num)
+
         last_num = 0
         for num in colliding_voyages:
             voyage_date = dateutil.parser.parse(all_voyages[num].get_departure())
@@ -26,10 +27,17 @@ class VoyageLL:
                 last_num += 2
             elif voyage_date > new_voyage_date:
                 all_voyages[num].change_flight_numbers()
-        flight_num_1 = ''
-        flight_num_2 = ''
+        
+        all_destinations = self.__data_layer.list_destinations()
+        new_voyage_destination = some_voyage.get_destination()
+        for destination in all_destinations:
+            if destination == new_voyage_destination:
+                destination_number = destination.get_destiantion_number()
+        flight_num_1 = 'NA' + destination_number + str(last_num)
+        flight_num_2 = 'NA' + destination_number + str(last_num + 1)
         some_voyage.add_flight_numbers_to_voyage(flight_num_1, flight_num_2)
-        # FUK FUK I CAN DO THIS
+        all_voyages.append(some_voyage)
+        self.__data_layer.overwrite_voyages(all_voyages)
 
     def voyage_time_check(self, some_voyage):
         all_voyages = self.__data_layer.list_voyages()
