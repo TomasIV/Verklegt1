@@ -3,6 +3,8 @@ from Models.AirplaneMODEL import Airplane
 from Logic.LogicLayerAPI import LogicLayer
 from Models.DestinationMODEL import Destination
 import string
+import dateutil
+import datetime
 
 class ManagerInterface:
     def __init__(self, interface):

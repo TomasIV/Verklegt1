@@ -94,11 +94,13 @@ class HRInterface:
         return input("Name: ")
 
     def get_employee_role(self):
-        role = input("1. Pilot\t2. CabinCrew\tSelect a role: ")
+        print ("1. Pilot\t2. CabinCrew\tSelect a role: ")
+        role = self.__interface.get_input()
         options = ["1", "2"]
         while role not in options:
             print ("Invalid input! Please try again")
-            new_role = input("1. Pilot\t2. CabinCrew\tSelect a role: ")
+            print ("1. Pilot\t2. CabinCrew\tSelect a role: ")
+            new_role = self.__interface.get_input()
             role = new_role
         if role =="1":
             role = "Pilot"
@@ -107,14 +109,31 @@ class HRInterface:
         return role
     
     def get_pilot_license(self):
-        return input("License: ") #VANTAR LISTA AF FLUGVÉLUM Í OKKAR EIGU
+        print ("1. NAFokker100\t2. NAFokkerF28\t3. NABAE146\tSelect a license")
+        options = ["1", "2", "3"]
+        pilot_license = self.__interface.get_input()
+        while pilot_license not in options:
+            print ("Invalid input, please try again!")
+            print ("1. NAFokker100\t2. NAFokkerF28\t3. NABAE146\tSelect a license")
+            new_pilot_license = self.__interface.get_input()
+            pilot_license = new_pilot_license
+        if pilot_license == "1":
+            the_license = "NAFokker100"
+        elif pilot_license == "2":
+            the_license = "NAFokkerF28"
+        elif pilot_license == "3":
+            the_license = "NABAE146"
+        return the_license
+
         
     def get_pilot_rank(self):
         options = ["1", "2"]
-        rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+        print ("1. Captain\t2. Co-Pilot\tSelect a rank")
+        rank = self.__interface.get_input()
         while rank not in options:
             print ("Invalid input! Please try again")
-            rank = input("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+            print ("1. Captain\t2. Co-Pilot\nSelect a rank: ")
+            rank = self.__interface.get_input()
         if rank == "1":
             rank = "Captain"
         elif rank == "2":
@@ -123,10 +142,13 @@ class HRInterface:
     
     def get_cabincrew_rank(self):
         options = ["1", "2"]
-        rank = input("1. Flight Service Manager\t2. Flight Attendant\tSelect a rank: ")
+        print ("1. Flight Service Manager\t2. Flight Attendant\tSelect a rank: ")
+        rank = self.__interface.get_input()
         while rank not in options:
             print ("Invalid input! Please try again")
-            rank = input("1. Flight Service Manager\t2. Flight Attendant\tSelect a rank: ")
+            print ("1. Flight Service Manager\t2. Flight Attendant\tSelect a rank: ")
+            new_rank = self.__interface.get_input()
+            rank = new_rank
         if rank == "1":
             rank = "Flight Service Manager"
         elif rank == "2":

@@ -17,7 +17,7 @@ class VoyageDL:
     
     def overwrite_file(self, list_of_voyages):
         with open(self.PATH, "w") as cleared_file:
-            overwriter = csv.writer(cleared_file, lineterminator= "\r")
+            overwriter = csv.writer(cleared_file, lineterminator= "\r", )
             overwriter.writerow(['flightNumber1', 'flightNumber2', 'destination', 'departure', 'aircraftID', 'soldSeats', 'captain', 'copilot', 'fsm', 'fa1', 'fa2'])
             for path in list_of_voyages:
                 overwriter.writerow(path.get_voyage_attributes())
