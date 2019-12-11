@@ -26,8 +26,8 @@ class VoyageLL:
                 last_num += 2
             elif voyage_date > new_voyage_date:
                 all_voyages[num].change_flight_numbers()
-        flight_num_1 = pass
-        flight_num_2 = pass
+        flight_num_1 = ''
+        flight_num_2 = ''
         some_voyage.add_flight_numbers_to_voyage(flight_num_1, flight_num_2)
         # FUK FUK I CAN DO THIS
 
