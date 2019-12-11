@@ -69,3 +69,6 @@ class VoyageLL:
 
     def add_employee_to_voyage(self, ssn): # Þarf að skrifa
         pass
+
+    def get_voyage_status(self): # Þarf að skrifa
+        pass
