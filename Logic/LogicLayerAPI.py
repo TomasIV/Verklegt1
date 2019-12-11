@@ -20,6 +20,7 @@ class LogicLayer:
         self.__logic_employee.change_employee(ssn, what_to_change, new_info)
 
     def find_employees(self, search_word):
+        """Finds employee/s by ssn and returns as list"""
         return self.__logic_employee.find_employee(search_word)
     
     def list_all_destinations(self):

@@ -11,9 +11,9 @@ class HRInterface:
 
         self.__menu_list = ["Back",
         "Register new employee - COMPLETE", "All employees - COMPLETE", "Edit employees - COMPLETE",
-        "Captains - COMPLETE", "Co-Pilots - COMPLETE",
-        "Flight service managers - COMPLETE", "Flight attendants - COMPLETE",
-        "Register employees on voyage"]
+        "List all pilots - COMPLETE", "List all Captains - COMPLETE", "List all Co-Pilots - COMPLETE",
+        "List Cabin crew", "Flight service managers - COMPLETE", "Flight attendants - COMPLETE",
+        "Register employees on voyage", "Find employee"]
 
         self.__menu_helper = self.__interface.menu_helper
         self.__clear = self.__interface.clear
@@ -33,25 +33,35 @@ class HRInterface:
                 self.change_employee()
             elif command_str == "4":
                 for employee in self.all_employees:
-                    if "Captain" in employee.__str__():
+                    if "Captain" or "Copilot" in employee.__str__():
                         print (employee)
-                input("press enter to return...")
+                    input ("press enter to return...")
             elif command_str == "5":
                 for employee in self.all_employees:
-                    if "Copilot" in employee.__str__():
+                    if "Captain" in employee.__str__():
                         print (employee)
                 input("press enter to return...")
             elif command_str == "6":
                 for employee in self.all_employees:
-                    if "Flight Service Manager" in employee.__str__():
+                    if "Copilot" in employee.__str__():
                         print (employee)
                 input("press enter to return...")
             elif command_str == "7":
                 for employee in self.all_employees:
+                    if "Flight Attendant" or "Flight Service Manager" in employee.__str__():
+                        print (employee)
+                    input ("press enter to return...")
+            elif command_str == "8":
+                for employee in self.all_employees:
+                    if "Flight Service Manager" in employee.__str__():
+                        print (employee)
+                input("press enter to return...")
+            elif command_str == "fret":
+                for employee in self.all_employees:
                     if "Flight Attendant" in employee.__str__():
                         print (employee)
                 input("press enter to return...")
-            elif command_str == "8":
+            elif command_str == "10":
                 #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
                 #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
                 print("Please enter what position you want to add to the voyage")
@@ -59,6 +69,10 @@ class HRInterface:
                 self.target_employees = self.__logicapi.find_employees(self.position)
                 for person in self.target_employees:
                     print(person)
+            elif command_str == "9":
+                employee = self.find_employee()
+                print ("\n", employee[0])
+                input("press enter to continue...")
 
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -70,10 +84,10 @@ class HRInterface:
                 if char in num:
                     new_ssn += char
             if len(new_ssn) == 10:
-                d = int(str(new_ssn[0] + new_ssn[1]))
-                m = int(str(new_ssn[2] + new_ssn[3]))
-                y = int(str(new_ssn[4] + new_ssn[5]))
-                last = int(new_ssn[-1])
+                d = int(str(new_ssn[0] + new_ssn[1])) # takes the first and second int in the string as a day
+                m = int(str(new_ssn[2] + new_ssn[3])) # takes third and second int in the string as a month
+                y = int(str(new_ssn[4] + new_ssn[5])) # takes the fifth and sixth int in the string as a year
+                last = int(new_ssn[-1]) # takes the last int in the string as a century
                 if last == 0: #if year == 2000
                     if ((32 > d > 0 ) and ( 13 > m > 0) and (y < 20)):
                         ssn_exists = self.check_ssn(new_ssn)
@@ -231,7 +245,12 @@ class HRInterface:
         #self.__logicapi.
         #self.employees.append(ssn)
         pass
-    
+    def find_employee(self):
+        self.__clear()
+        ssn = input("Enter employee SSN: ")
+        employee = self.__logicapi.find_employees(ssn)
+        return employee
+
     def change_employee(self):
         self.__clear()
         ssn = input("Enter employee SSN: ")
