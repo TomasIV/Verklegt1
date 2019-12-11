@@ -3,6 +3,8 @@ from Models.AirplaneMODEL import Airplane
 from Logic.LogicLayerAPI import LogicLayer
 from Models.DestinationMODEL import Destination
 import string
+import dateutil
+import datetime
 
 class ManagerInterface:
     def __init__(self, interface):
@@ -50,8 +52,9 @@ class ManagerInterface:
                 print ("Please enter number of sold seats for arrival flight")
                 self.arrival_sold_seats = self.get_voyage_sold_seats()
                 self.voyage_airplane_id = self.get_voyage_airplane_id()
-                self.voyage_info = Voyage(self.voyage_destination, self.departure_date_time, self.voyage_airplane_id)
-                self.new_voyage = VoyageLL(self.voyage_info, self.departure_sold_seats, self.arrival_sold_seats)
+                self.new_voyage = Voyage(self.voyage_destination, self.departure_date_time, self.voyage_airplane_id)
+                self.__logicapi.register_voyage(self.new_voyage, self.departure_sold_seats, self.arrival_sold_seats)
+                input("Voyage created, press enter to continue...")
             elif command_str == "3":
                 print("Please enter the details of the new Destination")
                 self.ids = self.get_destination_id()
@@ -68,7 +71,8 @@ class ManagerInterface:
             elif command_str == "5":
                 print ("Wow!") # Class coming!
             elif command_str == "6":
-                print ("Wow!") # Class coming!
+                self.change_destination()
+                print ("Wow!") # Class coming! Edit Destination
             elif command_str == "7":
                 all_airplanes = self.__logicapi.list_all_airplanes()
                 for airplane in all_airplanes:
@@ -250,3 +254,24 @@ class ManagerInterface:
     def get_voyage_destination(self):
         voyage_destination = input("Enter voyage destination: ")
         return voyage_destination
+
+    def change_destination(self):
+        self.__clear()
+        destination = input("Enter destination: ")
+        destination_name = self.__logicapi.find_destination(destination_name)
+        try:
+            print("Destination details\n\n" + str(destination_name[0]))
+            input("Press enter to continue...")
+        except:
+            input("Destination not found, press enter to return to main menu")
+            return
+        change_list = ["Main menu", "Emergency contact name" "Emergency contact phone number"]
+        if command_str == "0":
+            return
+        if command_str == "1":
+            change = change_list[1]
+        elif command_str == "2":
+            change = change_list[2]
+        if change and command_str:
+            new_info = input("New " + change + ": ")
+            self.__logicapi.change_destination(destination_name, change, new_info)
