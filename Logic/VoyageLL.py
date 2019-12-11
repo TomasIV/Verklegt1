@@ -21,5 +21,3 @@ class VoyageLL:
 
     def add_employee_to_voyage(self, ssn):
         pass
-
-    
