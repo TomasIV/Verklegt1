@@ -117,6 +117,7 @@ Edit destination, Hönnunarskýslu fixes, view destinations og Most popular dest
 view airplane og Edit airplane, User face design, vann með gets fall - Tómas
 Register employee to voyage og register voyage - Breki 
 Edit voyages, register employee to voage - Andri
+flight path model  og voyage model - Anna 
 
 í lok dags: 
 
@@ -130,4 +131,4 @@ Unnið var í verkefninu heima þar sem það var veðurofsa.
 
 Register voyage - Andri 
 Endurgera happy path/ útlitshönnun, klára view most popular destinations og breyta aðeins texta í hönnunarskýslu - Tobba
-
+VoyageLL - Anna
