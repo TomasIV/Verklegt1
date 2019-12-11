@@ -11,8 +11,8 @@ ssn,name,role,rank,license,address,phonenumber,email
 1900769521,Jasmine Hagadone,Pilot,Copilot,NABAE146,Fellsmúli 10,8998810,jasmine.Hagadone@gmail.com
 2500812671,Anna Phillips,Pilot,Copilot,NAFokkerF28,Fellsmúli 11,8998811,anna.Phillips@gmail.com
 1309927223,Patricia Bates,Pilot,Copilot,NAFokkerF28,Fellsmúli 12,8998812,patricia.Bates@gmail.com
-1600904199,Sherry Walker,Cabincrew,Flight Service Manager,ABB,Fellsmúli 13,8998813,sherry.Walker@gmail.com
-303758167,Margarita Fischer,Cabincrew,Flight Service Manager,AAB,Fellsmúli 14,8998814,margarita.Fischer@gmail.com
+1600904199,Sherry Walker,Cabincrew,Flight Service Manager,N/A,Fellsmúli 13,8998813,sherry.Walker@gmail.com
+303758167,Margarita Fischer,Cabincrew,Flight Service Manager,N/A,Fellsmúli 14,8998814,margarita.Fischer@gmail.com
 2200763823,Judith Aleshire,Cabincrew,Flight Service Manager,N/A,Fellsmúli 15,8998815,judith.Aleshire@gmail.com
 1308941169,Jacob Blecha,Cabincrew,Flight Service Manager,N/A,NOCCO,8998816,jacob.Blecha@gmail.com
 1405853585,Lula Stefani,Cabincrew,Flight Service Manager,N/A,Fellsmúli 17,8998817,lula.Stefani@gmail.com
@@ -38,3 +38,4 @@ ssn,name,role,rank,license,address,phonenumber,email
 1502003269,tomasigns,Cabincrew,Flight Service Manager,N/A,nowhewre,8947350,tomasing@hotma.sdjsk
 1502013250,tomasingiv,Cabincrew,Flight Service Manager,N/A,NO,8947359,NO@NO.NO
 1502103269,toamsing,Pilot,Copilot,NAFokkerF28,kelduhvamms,8947350,aneurope@email.cock
+1503003260,ekki toms,Cabincrew,Flight Service Manager,N/A,btokne,8943751,some@emial.dot

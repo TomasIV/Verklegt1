@@ -10,11 +10,13 @@ class HRInterface:
         self.all_employees = self.__logicapi.list_all_employees()
 
         self.__menu_list = ["Back",
-        "Register new employee - COMPLETE", "All employees - COMPLETE", "Edit employees - COMPLETE",
-        "List all pilots - COMPLETE", "List all Captains - COMPLETE", "List all Co-Pilots - COMPLETE",
-        "List Cabin crew", "Flight service managers - COMPLETE", "Flight attendants - COMPLETE",
-        "Register employees on voyage", "Find employee", "Find Pilot for specific airplane"]
+        'Edit employees', 'Find Pilot for specific airplane', 'Find employee',
+        'List Employees', 'Register employees on voyage - NSFW', 'Register new employee']
 
+        self.__list_menu = ["Back",
+        "Employees", "Pilots", "Captains",
+        "Co-Pilots", "Cabin Crew",
+        "Flight Service Managers", "Flight Attendants"]
         self.__menu_helper = self.__interface.menu_helper
         self.__clear = self.__interface.clear
 
@@ -24,48 +26,19 @@ class HRInterface:
             if command_str == "0":
                 return
             elif command_str == "1":
-                self.register_new_employee()
-            elif command_str == "2":
-                for employee in self.all_employees:
-                    print (employee)
-                input("press enter to return...")
-            elif command_str == "3":
                 self.change_employee()
+            elif command_str =="2":
+                self.find_pilots_by_license()
+            elif command_str == "3":
+                employee = self.find_employee()
+                try:
+                    print ("\n" + str(employee[0]))
+                except:
+                    print ("Employee not found, press enter to return...")
+                input("press enter to return...")
             elif command_str == "4":
-                sorted_pilots_license = sorted(self.all_employees, key=lambda x: x.license)
-                new_list = []
-                for element in sorted_pilots_license:
-                    if (("Captain") or ("Copilot")) in element.__str__():
-                        new_list.append(element)
-                for pilot in new_list:
-                    print (pilot)
-                input ("press enter to return...")
+                self.list_menu()
             elif command_str == "5":
-                for employee in self.all_employees:
-                    if "Captain" in employee.__str__():
-                        print (employee)
-                input("press enter to return...")
-            elif command_str == "6":
-                for employee in self.all_employees:
-                    if "Copilot" in employee.__str__():
-                        print (employee)
-                input("press enter to return...")
-            elif command_str == "7":
-                for employee in self.all_employees:
-                    if "Flight Attendant" or "Flight Service Manager" in employee.__str__():
-                        print (employee)
-                    input ("press enter to return...")
-            elif command_str == "8":
-                for employee in self.all_employees:
-                    if "Flight Service Manager" in employee.__str__():
-                        print (employee)
-                input("press enter to return...")
-            elif command_str == "9":
-                for employee in self.all_employees:
-                    if "Flight Attendant" in employee.__str__():
-                        print (employee)
-                input("press enter to return...")
-            elif command_str == "FOKK":
                 #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
                 #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
                 print("Please enter what position you want to add to the voyage")
@@ -73,12 +46,49 @@ class HRInterface:
                 self.target_employees = self.__logicapi.find_employees(self.position)
                 for person in self.target_employees:
                     print(person)
-            elif command_str == "FOCC":
-                employee = self.find_employee()
-                print ("\n", employee[0])
-                input("press enter to continue...")
-            elif command_str =="NOCCO":
-                self.find_pilots_by_license()
+            elif command_str == "6":
+                self.register_new_employee()
+    
+    def list_menu(self):
+        
+        while True:
+            command_str = self.__interface.menu_helper("Employee Lists", self.__list_menu)
+            if command_str == "0":
+                return
+            elif command_str == "1":
+                for employee in self.all_employees:
+                    print (employee)
+                input("press enter to return...")
+            elif command_str == "2":
+                for element in sorted(self.all_employees, key=lambda x: x.get_license()):
+                    if element.get_role() == "Pilot":
+                        print (element)
+                input ("press enter to return...")
+            elif command_str == "3":
+                for employee in self.all_employees:
+                    if "Captain" in employee.__str__():
+                        print (employee)
+                input("press enter to return...")
+            elif command_str == "4":
+                for employee in self.all_employees:
+                    if "Copilot" in employee.__str__():
+                        print (employee)
+                input("press enter to return...")
+            elif command_str == "5":
+                for employee in sorted(self.all_employees, key=lambda x: x.get_rank()):
+                    if employee.get_role() == "Cabincrew":
+                        print (employee)
+                input ("press enter to return...")
+            elif command_str == "6":
+                for employee in self.all_employees:
+                    if "Flight Service Manager" in employee.__str__():
+                        print (employee)
+                input("press enter to return...")
+            elif command_str == "7":
+                for employee in self.all_employees:
+                    if "Flight Attendant" in employee.__str__():
+                        print (employee)
+                input("press enter to return...")
 
     def get_employee_ssn(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]

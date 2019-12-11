@@ -16,11 +16,13 @@ class Employee:
         return the_line
     def get_ssn(self):
         return self.__ssn
-
-    def sort_license(self):
+    def get_role(self):
+        return self.__role
+    def get_license(self):
         return self.license
     def get_rank(self):
         return self.__rank
+    
 
     #How the list is suppose to print
         #SSN
