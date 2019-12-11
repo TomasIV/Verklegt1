@@ -11,7 +11,7 @@ class VoyageDL:
         with open(self.PATH, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                voyage = Voyage(row['destination'], row['departure'], row['aircraftID'], row['soldSeats'], [row['flightNumber1'], row['flightNumber2']], [row['captain'], row['copilot'], row['fsm'], row['fa1'], row['fa2']])
+                voyage = Voyage(row['destination'], row['departure'], row['aircraftID'], [row['flightNumber1'], row['flightNumber2']], [row['captain'], row['copilot'], row['fsm'], row['fa1'], row['fa2']])
                 list_of_voyages.append(voyage)
             return list_of_voyages
     
