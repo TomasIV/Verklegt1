@@ -1,13 +1,16 @@
 class Destination:
-    def __init__(self, id, destination, destination_number, emergency_contact, emergency_phone, flight_time, kilometers):
-        self.id = id #we could not have id so I changed it to ids
+    def __init__(self, destination_id, destination, destination_number, emergency_contact, emergency_phone, flight_time, kilometers):
+        self.id = destination_id
         self.destination = destination
         self.number = destination_number
         self.emergency_contact = emergency_contact
         self.emergency_phone = emergency_phone
         self.flight_time = flight_time
         self.kilometers = kilometers
-    
+
+    def get_destiantion_attributes(self):
+        return [self.id, self.destination, self.number, self.emergency_contact, self.emergency_phone, self.flight_time, self.kilometers]
+
     def __str__(self):
         '''Returns the destinastion information format so it looks super nice and pretty'''
         #line = "ID and Destination: Emergency Name and Mobile:\n{:<20s}{}\n{:<20s}{}\n".format(self.id, self.emergency_contact, self.destination,  self.emergency_phone)
