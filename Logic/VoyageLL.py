@@ -1,5 +1,6 @@
 from Models.VoyageMODEL import Voyage
 from Data.DataLayerAPI import DataLayer
+from Models.FlightPathMODEL import FlighPath
 
 class VoyageLL:
     def __init__(self):
