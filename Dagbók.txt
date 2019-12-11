@@ -121,3 +121,13 @@ Edit voyages, register employee to voage - Andri
 í lok dags: 
 
 Tobba náði að klára smá hönnunarskýslu fixes, edit voyage og view voyage , klárar view voyage og most popular destination heima (hópurinn samþykkir það) 
+
+10.12.19:
+
+Unnið var í verkefninu heima þar sem það var veðurofsa. 
+
+11.12.19: 
+
+Register voyage - Andri 
+Endurgera happy path/ útlitshönnun, klára view most popular destinations og breyta aðeins texta í hönnunarskýslu - Tobba
+
