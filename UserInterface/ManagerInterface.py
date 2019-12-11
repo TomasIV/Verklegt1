@@ -59,11 +59,12 @@ class ManagerInterface:
                 print("Please enter the details of the new Destination")
                 self.ids = self.get_destination_id()
                 self.destination = self.get_destination_name()
+                self.destination_number = self.get_destination_number()
                 self.emergency_contact = self.get_destination_emergency_contact()
                 self.emergency_phone = self.get_destination_emegency_phone()
                 self.flight_time = self.get_flight_time()
-                self.km = self.get_km()
-                self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone, self.flight_time, self.km)
+                self.kilometers= self.get_km()
+                self.new_destination = Destination(self.ids, self.destination, self.destination_number, self.emergency_contact, self.emergency_phone, self.flight_time, self.kilometers)
                 self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
@@ -254,6 +255,13 @@ class ManagerInterface:
     def get_voyage_destination(self):
         voyage_destination = input("Enter voyage destination: ")
         return voyage_destination
+
+    def get_destination_number(self):
+        dest_num_list = []
+        all_destinations = self.__logicapi.list_all_destinations()
+        for destination in all_destinations:
+            dest_num_list += str(destination.get_destiantion_number())
+        return str(int(dest_num_list[-1])+1)
 
     def change_destination(self):
         self.__clear()

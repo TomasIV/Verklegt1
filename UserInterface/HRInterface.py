@@ -56,12 +56,12 @@ class HRInterface:
                     if "Flight Service Manager" in employee.__str__():
                         print (employee)
                 input("press enter to return...")
-            elif command_str == "fret":
+            elif command_str == "9":
                 for employee in self.all_employees:
                     if "Flight Attendant" in employee.__str__():
                         print (employee)
                 input("press enter to return...")
-            elif command_str == "10":
+            elif command_str == "FOKK":
                 #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
                 #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
                 print("Please enter what position you want to add to the voyage")
@@ -69,7 +69,7 @@ class HRInterface:
                 self.target_employees = self.__logicapi.find_employees(self.position)
                 for person in self.target_employees:
                     print(person)
-            elif command_str == "9":
+            elif command_str == "FOCC":
                 employee = self.find_employee()
                 print ("\n", employee[0])
                 input("press enter to continue...")
@@ -257,40 +257,45 @@ class HRInterface:
         employee_ssn = self.__logicapi.find_employees(ssn)
         try:
             print ("Employee details\n\n" + str(employee_ssn[0]))
-            input("Press enter to continue...")
+            input ("press enter to continute...")
         except:
             input ("Employee not found, press enter to return")
             return
         if "Pilot" in employee_ssn:
-            change_list = ["Main menu", "License", "Address", "Phone", "Email"]
+            change_list = ["Back", "License", "Address", "Phone", "Email"]
             command_str = self.__menu_helper("Change Employee", change_list)
             if command_str == "0":
                 return
             if command_str == "1":
-                change = change_list[1]
+                change = "license"
+                new_info = self.get_pilot_license()
             elif command_str == "2":
-                change = change_list[2]
+                change = "address"
+                new_info = self.get_employee_address()
             elif command_str == "3":
-                change = change_list[3]
+                change = "phonenumber"
+                new_info = self.get_employee_num()
             elif command_str == "4":
-                change = change_list[4]
-            if change and command_str:
-                new_info = input("New " + change + ": ")
-                self.__logicapi.change_employee(employee_ssn, change, new_info)
+                change = "email"
+                new_info = self.get_employee_email()
+            if change:
+                self.__logicapi.change_employee(employee_ssn[0].get_ssn(), change, new_info)
         elif "Cabincrew" in employee_ssn:
-            change_list2 = ["Main menu", "address", "phone", "email"]
+            change_list2 = ["Back", "address", "phone", "email"]
             command_str = self.__menu_helper("Change Employee", change_list2)
             if command_str == "0":
                 return
             if command_str == "1":
-                change = change_list[1]
+                change = "address"
+                new_info = self.get_employee_address()
             elif command_str == "2":
-                change = change_list[2]
+                change = "phonenumber"
+                new_info = self.get_employee_num()
             elif command_str == "3":
-                change = change_list[3]
-            if change and command_str:
-                new_info = input("New " + change + ": ")
-                self.__logicapi.change_employee(employee_ssn, change, new_info)
+                change = "email"
+                new_info = self.get_employee_email()
+            if change:
+                self.__logicapi.change_employee(employee_ssn[0].get_ssn(), change, new_info)
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
         self.ssn = self.get_employee_ssn()
