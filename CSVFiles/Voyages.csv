@@ -1,1 +1,1 @@
-flightNumber1,flightNumber2,destination,departure,aircraftID,captain,copilot,fsm,fa1,fa2
+aircraftID,homeairport,destination,flightnumber1,soldseats1,departure1,arrival1,flightnumber2,soldseats2,departure2,arrival2,em1,em2,em3,em4,em5

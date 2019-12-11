@@ -8,7 +8,7 @@ class VoyageLL:
     def __init__(self):
         self.__data_layer = DataLayer()
 
-    def create_voyage(self, some_voyage, departure_sold_seats, arrival_sold_seats):
+    def create_voyage(self, some_voyage): # Er að vinna í þessu
         all_voyages = self.__data_layer.list_voyages()
         new_voyage_date = dateutil.parser.parse(some_voyage)
 
@@ -67,5 +67,5 @@ class VoyageLL:
     def get_all_voyages(self):
         return self.__data_layer.list_voyages()
 
-    def add_employee_to_voyage(self, ssn):
+    def add_employee_to_voyage(self, ssn): # Þarf að skrifa
         pass
