@@ -19,3 +19,10 @@ class DestinationDL:
                 destination = Destination(row['id'], row['destination'], row['destinationNumber'], row['emergencycontact'],row['phonenumber'], row['flighttime'], row['kilometers'])
                 list_destinations.append(destination)
             return list_destinations
+        
+    def overwrite_destination_file(self, list_of_destinations):
+        with open(self.PATH, "w", encoding="utf-8") as cleared_file:
+            overwriter = csv.writer(cleared_file, lineterminator= "\r")
+            overwriter.writerow(['id', 'destination', 'destinationNumber', 'emergencycontact', 'phonenumber', 'flighttime', 'kilometers'])
+            for place in list_of_destinations:
+                overwriter.writerow(place.get_employee_attributes())

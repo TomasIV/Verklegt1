@@ -31,6 +31,9 @@ class DataLayer:
 
     def list_destinations(self):
         return self.__data_destination.list_destinations()
+    
+    def overwrite_destination_file(self, list_of_destinations):
+        self.__data_destination.overwrite_destination_file(list_of_destinations)
 
     def list_voyages(self):
         return self.__data_voyage.list_voyages()
