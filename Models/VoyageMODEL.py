@@ -20,6 +20,18 @@ class Voyage:
 
     def add_employee_to_voyage(self, ssn):
         self.employees.append(ssn)
+    
+    def add_flight_numbers_to_voyage(self, num1, num2):
+        self.__flight_numbers = [num1, num2]
+
+    def change_flight_numbers(self):
+        new_flight_numbers = []
+        for number in self.__flight_numbers:
+            last_num = int(number[4])
+            last_letter = str(last_num + 2)
+            new_number = number[:4] + last_letter
+            new_flight_numbers.append(new_number)
+        self.__flight_numbers = new_flight_numbers
 
     def __eq__(self, comparison):
         if comparison in self.__flight_numbers \
