@@ -12,9 +12,9 @@ class ManagerInterface:
         #self.__voyage = Voyage()
         self.__logicapi = LogicLayer()
         self.__menu_list = ["Back", 
-        "Register Airplane COMPLETE", "Register Voyage", "Register Destination COMPLETE", 
-        "Edit Airplane", "Edit Voyage","Edit Destination", 
-        "View Airplanes COMPLETE", "View Voyages","View Destinations COMPLETE"]
+        "Register Airplane", "Register Voyage", "Register Destination", 
+        "Edit Voyage NSFW", "Edit Destination", 
+        "View Airplanes", "View Voyages NSFW","View Destinations"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
@@ -68,24 +68,22 @@ class ManagerInterface:
                 self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
-                self.change_airplane()
-            elif command_str == "5":
                 print ("Wow!") # Class coming!
-            elif command_str == "6":
+            elif command_str == "5":
                 self.change_destination()
                 print ("Wow!") # Class coming! Edit Destination
-            elif command_str == "7":
+            elif command_str == "6":
                 all_airplanes = self.__logicapi.list_all_airplanes()
                 for airplane in all_airplanes:
                     print (airplane)
-                input ("Press enter to return to main menu...")
-            elif command_str == "8":
+                input ("Presss enter to return......")
+            elif command_str == "7":
                 print ("Wow!") # Class coming!
-            elif command_str == "9":
+            elif command_str == "8":
                 all_destinations = self.__logicapi.list_all_destinations()
                 for destinations in all_destinations:
                     print (destinations)
-                input ("Press enter to return to main menu...")
+                input ("Press enter to return...")
 
     def get_km(self):
         return input("Kilometers from Iceland to Destination: ")
@@ -93,19 +91,21 @@ class ManagerInterface:
     def get_flight_time(self):
         return input("Time from Iceland to Destination: ")
 
-    def get_airplane_name(self): #Error check bara á "-"" ekki hvort þetta séu stafir er að missa vitið!
-        plane_insignia = input("Plane Insignia: ")
-        new_plane_insignia = ""
-        letters = string.ascii_letters
-        for char in plane_insignia:
-            new_plane_insignia += char
-        if len(new_plane_insignia) == 6:
-            if new_plane_insignia[2] != "-":
-                print("Plane Insignia not valid! Please try again")
-            else: 
-                return new_plane_insignia
-        else:
-            print("Plane Insignia not valid! Please try again")
+    def get_airplane_name(self):
+        run = True
+        while run:
+            plane_insignia = input("Plane Insignia: ")
+            new_plane_insignia = ""
+            if len(plane_insignia.replace("-", "")) == 5:
+                for char in plane_insignia:
+                    if char in string.ascii_letters:
+                        new_plane_insignia += char
+            if len(new_plane_insignia) == 5:
+                a_str = new_plane_insignia[:2] + "-" + new_plane_insignia[2:]
+                return a_str
+                run = False
+            else:
+                print ("Invalid input, please try again!")
 
     def get_airplane_model(self):
         print("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
@@ -276,10 +276,10 @@ class ManagerInterface:
             print("Destination details\n\n" + str(destination_name))
             input("Press enter to continue...")
         except:
-            input("Destination not found, press enter to return to main menu")
+            input("Destination not found, Presss enter to return...")
             return
         change_list = ["Back", "Emergency contact name", "Emergency contact phone number"]
-        command_str = self.__interface.menu_helper("VERYV VERY VERY VERY NICE TITLE", change_list)
+        command_str = self.__interface.menu_helper("Change Destination", change_list)
         if command_str == "0":
             return
         if command_str == "1":
