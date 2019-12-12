@@ -16,6 +16,9 @@ class Destination:
     
     def get_fligh_time(self):
         return self.__flight_time
+    
+    def get_name(self):
+        return self.__destination
 
     def __eq__(self, comparison):
         if self.__id == comparison \

@@ -2,11 +2,13 @@ import datetime
 import dateutil.parser
 from Models.VoyageMODEL import Voyage
 from Data.DataLayerAPI import DataLayer
+from Logic.DestinationLL import DestinationLL
 
 class VoyageLL:
     TIME = 60 # The time between landing and takeoff at some location (in sec)
     def __init__(self):
         self.__data_layer = DataLayer()
+        self.__logic_destination = DestinationLL()
 
     def create_voyage(self, some_voyage): # Er að vinna í þessu
         all_voyages = self.__data_layer.list_voyages()
