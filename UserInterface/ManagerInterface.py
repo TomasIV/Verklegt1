@@ -93,30 +93,33 @@ class ManagerInterface:
                 options = ["1", "2"]
                 print ("1. Day" + "\t" + "2. Week",)
                 chosen = self.__interface.get_input()
+                ssn = self.__logicapi.get_employee_ssn(True)
                 while chosen not in options:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
                 if chosen == "1":
-                    voyages_day = self.get_voyages_on_specific_day()
+                    from_date = self.__interface.get_voyage_date_without_time()
+                    voyages_day = self.__logicapi.get_all_voyages_by_date(from_date, from_date)
                     for voyage in voyages_day:
-                        print (voyage)
+                        if ssn in voyage.get_employees_on_voyage():
+                            print (voyage)
                     input("Press enter to return...")
                 elif chosen == "2":
                     input ("First enter in a date to start with and next the end date\npress enter to continute...")
-                    ssn = self.__logicapi.get_employee_ssn()
                     from_date = self.__interface.get_voyage_date_without_time()
                     to_date = self.__interface.get_voyage_date_without_time()
                     voyages = self.__logicapi.get_all_voyages_by_date(from_date, to_date)
                     for voyage in voyages:
-                        print (voyage)
-                    input ("Press enter to return...")
+                        if ssn in voyage.get_employees_on_voyage():
+                            print ("\n" + str(voyage))
+                    input ("\nPress enter to return...")
 
 
                 
                 
     def get_voyages_on_specific_day(self):
         voyages = self.__logicapi.view_all_voyages()
-        date = self.get_voyage_date_without_time()
+        date = self.__interface.get_voyage_date_without_time()
         voyage_day_list = []
         for voyage in voyages:
             voyage_date = voyage.get_voyage_depart_time()

@@ -11,7 +11,7 @@ class HRInterface:
 
         self.__menu_list = ["Back",
         'Edit employees', 'Find Pilot for specific airplane', 'Find employee',
-        'List Employees', 'Register employees on voyage - NSFW', 'Register new employee']
+        'List Employees', 'Register employees on voyage - NSFW', 'Register new employee', "Working?"]
 
         self.__list_menu = ["Back",
         "Employees", "Pilots", "Captains",
@@ -47,6 +47,44 @@ class HRInterface:
                     print(person)
             elif command_str == "6":
                 self.register_new_employee()
+            elif command_str == "7":
+                print ("1. Working\t2. Not Working")
+                a_command = self.__interface.get_input()
+                options = ["1", "2"]
+                while a_command not in options:
+                    print ("Invalid input, please try again!")
+                    a_command = self.__interface.get_input()
+                if a_command == "1":
+                    print ("Enter a date")
+                    a_date = self.__interface.get_voyage_date_without_time()
+                    voyages_day = self.__logicapi.get_all_voyages_by_date(a_date, a_date)
+                    for voyage in voyages_day:
+                        try:
+                            for element in voyage.get_employees_on_voyage():
+                                if len(element) > 9:
+                                    print (str(element) + " going to " + voyage.get_destination())
+                        except:
+                            pass
+                    input("Press enter to continue...")
+                elif a_command == "2":
+                    ignore_list = []
+                    all_employees = self.__logicapi.list_all_employees()
+                    print ("Enter a date")
+                    a_date = self.__interface.get_voyage_date_without_time()
+                    voyages_day = self.__logicapi.get_all_voyages_by_date(a_date, a_date)
+                    for voyage in voyages_day:
+                        try:
+                            for element in voyage.get_employees_on_voyage():
+                                if len(element) > 9:
+                                    ignore_list.append(element)
+                        except:
+                            pass
+                    for element in all_employees:
+                        if element not in ignore_list:
+                            print (element)
+                    input("Press enter to continue...")
+
+
 
     def list_menu(self):
         
@@ -288,7 +326,7 @@ class HRInterface:
                 
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
-        self.ssn = self.__logicapi.get_employee_ssn()()
+        self.ssn = self.__logicapi.get_employee_ssn(True)
         self.name = self.get_employee_name()
         self.role = self.get_employee_role()
         if self.role == "Pilot":

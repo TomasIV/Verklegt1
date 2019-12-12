@@ -24,21 +24,22 @@ class Voyage:
 
     def __str__(self):
         """Very very long string"""
-        a_list = []
+        new_str = ""
         a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format(
         "Aircraft ID", self.__aircraft_id,
         "Home Airport", self.__home_id, "Destination ID", self.__destination_id, "Departure date", self.__first_departure,
         "Arrival date", self.__first_arrival, "Departure from destination", self.__second_departure, "Arrival from destination", self.__second_arrival,
         "Sold seats to destination", self.first_sold_seats, "Sold seats from destination", self.second_sold_seats, 
         "First flight number", self.first_flight_number, "Second flight number", self.second_flight_number)
-        a_list.append(a_str)
-        a_list.append("{:<30s}: {}\t{:<30s}: {}".format("Captain", self.captain, "Co-Pilot", self.copilot))
-        a_list.append("{:<30s}: {}\t{:<30s}: {}, {}".format("Flight Service Manager", self.fsm, "Flight attendants", self.fa1, self.fa2))
+
+        new_str +=("\n{:<30s}: {}\t{:<30s}: {}".format("Captain", self.captain, "Co-Pilot", self.copilot))
+        new_str +=("\n{:<30s}: {}\t{:<30s}: {}, {}".format("Flight Service Manager", self.fsm, "Flight attendants", self.fa1, self.fa2))
         if ((self.captain) and (self.copilot) and (self.fsm)):
-            a_list.append("Manned: True")
+            new_str += str("\nManned: True")
         else:
-            a_list.append("Manned: False")
-        return a_str
+            new_str += str("\nManned: False")
+        new_str += a_str
+        return new_str
 
     def get_identification(self):
         one = ("\n{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From/To", "Flight number", "Departure", "Arrival", "Sold seats"))
@@ -46,6 +47,8 @@ class Voyage:
         three = ("{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}\n".format("From " + self.__destination_id + " To ICE", self.second_flight_number, self.__second_departure, self.__second_arrival, self.second_sold_seats))
         return (one, two, three)
 
+    def get_employees_on_voyage(self):
+        return [self.captain, self.copilot, self.fsm, self.fa1, self.fa2]
     def get_destination(self):
         return self.__destination_id
     

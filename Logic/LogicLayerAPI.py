@@ -59,5 +59,5 @@ class LogicLayer:
     def find_destination(self, search_word):
         return self.__logic_destination.find_destination(search_word)
     
-    def get_employee_ssn(self):
-        return self.__logic_employee.get_ssn()
+    def get_employee_ssn(self, new_ssn = ""):
+        return self.__logic_employee.get_ssn(True)
