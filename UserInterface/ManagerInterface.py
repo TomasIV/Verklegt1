@@ -93,17 +93,21 @@ class ManagerInterface:
                 while chosen not in options:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
-                voyages = self.__logicapi.view_all_voyages()
-                date = self.get_voyage_date_without_time()
-                for voyage in voyages:
-                    voyage_date = voyage.get_voyage_depart_time()
-                    if date[:9] == voyage_date[:9]:
-                        print (voyage)
-                print (date[:9])
-                input("Press enter to continue")
-                
-                
+                if chosen == "1":
+                    self.get_week_days()
+                    input("Press enter to continue")
+                elif chosen == "2":
 
+                
+                
+    def get_voyages_on_specific_day(self):
+        voyages = self.__logicapi.view_all_voyages()
+        date = self.get_voyage_date_without_time()
+        for voyage in voyages:
+            voyage_date = voyage.get_voyage_depart_time()
+            if date[:9] == voyage_date[:9]:
+                print (voyage)
+        input("Press enter to continue")
     def get_km(self):
         return input("Kilometers from Iceland to Destination: ")
     
@@ -250,7 +254,6 @@ class ManagerInterface:
         day = int(input("Day: "))
         hour = int(input("Hour: "))
         minute = int(input("Minute: "))
-        print("")
         date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
         return date
     
