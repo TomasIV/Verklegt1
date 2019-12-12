@@ -68,17 +68,16 @@ class ManagerInterface:
                 self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
-                print ("Wow!") # Class coming!
+                self.change_voyage()
             elif command_str == "5":
                 self.change_destination()
-                print ("Wow!") # Class coming! Edit Destination
             elif command_str == "6":
                 all_airplanes = self.__logicapi.list_all_airplanes()
                 for airplane in all_airplanes:
                     print (airplane)
                 input ("Presss enter to return......")
             elif command_str == "7":
-                print ("Wow!") # Class coming!
+                self.view_voyage()
             elif command_str == "8":
                 all_destinations = self.__logicapi.list_all_destinations()
                 for destinations in all_destinations:
@@ -292,3 +291,10 @@ class ManagerInterface:
             new_info = self.get_destination_emergency_phone()
         if change:
             self.__logicapi.change_destination(destination_name.get_name(), change, new_info)
+    def change_voyage(self):
+        pass
+    def view_voyage(self):
+        voyages = self.__logicapi.view_all_voyages()
+        for voyage in voyages:
+            print (voyage)
+        input("Press enter to return...")
