@@ -14,7 +14,7 @@ class ManagerInterface:
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
         "Edit Voyage NSFW", "Edit Destination", 
-        "View Airplanes", "View Voyages","View Destinations"]
+        "View Airplanes", "View Voyages","View Destinations", "Voyages in a certain week/day"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
@@ -69,8 +69,9 @@ class ManagerInterface:
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
                 a_voyage = self.find_voyage()
-                
-                self.__logicapi.change_voyage(a_voyage, )
+                print (a_voyage)
+                input()
+                #self.__logicapi.change_voyage(a_voyage, )
             elif command_str == "5":
                 self.change_destination()
             elif command_str == "6":
@@ -85,6 +86,23 @@ class ManagerInterface:
                 for destinations in all_destinations:
                     print (destinations)
                 input ("Press enter to return...")
+            elif command_str == "9":
+                options = ["1", "2"]
+                print ("1. Day" + "\t" + "2. Week",)
+                chosen = self.__interface.get_input()
+                while chosen not in options:
+                    print ("Invalid input please try again")
+                    chosen = self.__interface.get_input()
+                voyages = self.__logicapi.view_all_voyages()
+                date = self.get_voyage_date_without_time()
+                for voyage in voyages:
+                    voyage_date = voyage.get_voyage_depart_time()
+                    if date[:9] == voyage_date[:9]:
+                        print (voyage)
+                print (date[:9])
+                input("Press enter to continue")
+                
+                
 
     def get_km(self):
         return input("Kilometers from Iceland to Destination: ")
@@ -235,6 +253,13 @@ class ManagerInterface:
         print("")
         date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
         return date
+    
+    def get_voyage_date_without_time(self):
+        year = int(input("Year: "))
+        month = int(input("Month: "))
+        day = int(input("Day: "))
+        date = datetime.datetime(year, month, day, 0, 0, 0).isoformat()
+        return date
 
     def get_voyage_sold_seats(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -317,7 +342,6 @@ class ManagerInterface:
                 flight_num = input("Enter a flight number: ")
             date = self.get_voyage_date()
             for voyage in voyages:
-                print (voyage.get_voyage_depart_time())
                 if date == str(voyage.get_voyage_depart_time()):
                     if flight_num in voyage.get_voyage_flight_numbers():
                         the_voyage = self.__logicapi.find_voyage(flight_num, date)
@@ -342,3 +366,6 @@ class ManagerInterface:
         for voyage in voyages:
             print (voyage)
         input("Press enter to return...")
+
+
+        
