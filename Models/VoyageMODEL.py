@@ -14,7 +14,7 @@ class Voyage:
         self.second_sold_seats = sold_seats_back
         self.first_flight_number = flight_number_1
         self.second_flight_number = flight_number_2
-        self.employees = []
+        self.employees = employees
     
     def get_destination(self):
         return self.__destination_id
@@ -23,10 +23,12 @@ class Voyage:
         return self.__first_departure
 
     def get_voyage_attributes(self):
-        return [self.__aircraft_id, self.__home_id, self.__destination_id, \
+        list_of_attributes = [self.__aircraft_id, self.__home_id, self.__destination_id, \
             self.first_flight_number, self.first_sold_seats, self.__first_departure, self.__first_arrival, \
             self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival]
-            #self.employees[0], self.employees[1], self.employees[2], self.employees[3], self.employees[4]]
+        for person in self.employees:
+            list_of_attributes.append(person)
+        return list_of_attributes
 
     def add_employee_to_voyage(self, ssn):
         self.employees.append(ssn)
