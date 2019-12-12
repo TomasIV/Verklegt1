@@ -5,9 +5,9 @@ class InformationInterface:
         self.__interface = interface
         self.all_employees = LogicLayer().list_all_employees()
         self.__menu_list = ["Back",
-        "List all employees COMPLETE", "Employees on a voyage",
-        "Most popular destinations", "All destinations COMPLETE",
-        "Active voyages", "Old voyages", "Future voyages"]
+        "List all employees", "Employees on a voyage NSFW",
+        "Most popular destinations NSFW", "All destinations",
+        "Active voyages NSFW", "Old voyages NSFW", "Future voyages NSFW"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
