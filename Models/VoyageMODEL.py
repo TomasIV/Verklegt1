@@ -17,14 +17,18 @@ class Voyage:
         self.employees = employees
 
     def __str__(self):
-        a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\n{:<30s}: {}".format("Aircraft ID", self.__aircraft_id,
+        """Very very long string"""
+        a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format("Aircraft ID", self.__aircraft_id,
         "Home Airport", self.__home_id, "Destination ID", self.__destination_id, "Departure date", self.__first_departure,
         "Arrival date", self.__first_arrival, "Departure from destination", self.__second_departure, "Arrival from destination", self.__second_arrival,
         "Sold seats to destination", self.first_sold_seats, "Sold seats from destination", self.second_sold_seats, 
         "First flight number", self.first_flight_number, "Second flight number", self.second_flight_number)
-        for element in self.employees:
-            a_str += ("{:<30s}: "element)
+        try:
+            a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", self.employees.get_ssn())
+        except:
+            a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", "None")
         return a_str
+
     def get_arrival(self):
         return self.__second_arrival
     def get_destination(self):
