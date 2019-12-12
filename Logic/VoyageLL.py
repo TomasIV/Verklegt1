@@ -67,11 +67,11 @@ class VoyageLL:
                 return False
         return True
 
-    def find_voyage(self, search_word):
+    def find_voyage(self, flight_num, date):
         all_voyages = self.__data_layer.list_voyages()
         found_voyages = []
         for voyage in all_voyages:
-            if voyage == search_word:
+            if (date and time) in voyage:
                 found_voyages.append(voyage)
         return found_voyages
 

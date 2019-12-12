@@ -54,3 +54,5 @@ class LogicLayer:
         return self.__logic_destination.find_destination(search_word)
     def view_all_voyages(self):
         return self.__logic_voyage.view_all_voyages()
+    def find_voyage(self, flight_num, date):
+        return self.__logic_voyage.find_voyage(flight_num, date)

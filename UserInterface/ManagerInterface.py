@@ -294,9 +294,51 @@ class ManagerInterface:
     def change_voyage(self):
         self.__clear()
         voyages = self.__logicapi.view_all_voyages()
+        voyage_info = []
         for voyage in voyages:
-            print (voyage.get_identification())
-        input("NIG")
+            the_print = voyage.get_identification()
+            for element in the_print:
+                print (element)
+                if the_print[1] == element:
+                    voyage_info.append(element)
+        input("Press enter to continue...")
+        flight_num = input("Enter a flight number: ")
+        run = True
+        while True:
+            while flight_num not in voyages:
+                print ("Flight number does not exist, please try again")
+                self.__clear()
+                for voyage in voyages:
+                    the_print = voyage.get_identification()
+                    for element in the_print:
+                        print(element)
+                flight_num = input("Enter a flight number: ")
+            date = self.get_voyage_date()
+            for voyage in voyages:
+                if date in voyage.__str__():
+                    if flight_num in voyage.__str__():
+                        print (voyage.__str__())
+                        #the_voyage = self.__logicapi.find_voyage(flight_num, date)
+                        input ("Success 1")
+                        run = False
+                        #return the_voyage
+            while run:
+                self.__clear()
+                for voyage in voyages:
+                    the_print = voyage.get_identification()
+                    for element in the_print:
+                        print(element)
+                print ("Date is not associated with any voyage, please try again")
+                date = self.get_voyage_date()
+                for voyage in voyages:
+                    if date in voyage.__str__():
+                        if flight_num in voyage.__str__():
+                            input ("Success 2")
+                            run = False
+                            #the_voyage = self.__logicapi.find_voyage(flight_num, date)
+            print (the_voyage)
+            input("GOTEM")
+            return the_voyage
 
     def view_voyage(self):
         voyages = self.__logicapi.view_all_voyages()
