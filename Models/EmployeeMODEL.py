@@ -35,6 +35,7 @@ class Employee:
         return [self.__ssn, self.__name, self.__role, self.__rank, self.license, self.address, self.mobile, self.email]
 
     def __eq__(self, comparison):
+        '''Comment here'''
         if self.__ssn == comparison \
         or self.__name == comparison \
         or self.__role == comparison \

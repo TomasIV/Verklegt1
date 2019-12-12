@@ -133,3 +133,16 @@ Register voyage - Andri
 Endurgera happy path/ útlitshönnun, klára view most popular destinations og breyta aðeins texta í hönnunarskýslu - Tobba
 VoyageLL - Anna
 bugfixes n error checks - Tómas
+
+12.12.19: 
+
+Breki vinnur heima vegna veikinda
+
+Í dag vorum við að focusa á að fixa bæta við commentum og tékka
+af listanum hvaða kröfur eru komar og virka 
+
+í lok dags: 
+
+Margt lagað og bætt vitum að það þarf að klára að uppfæra hönnunarskýrslu
+
+
