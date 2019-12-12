@@ -241,12 +241,13 @@ class HRInterface:
                 print ("Invalid input, please try again!")
 
     def get_position_for_voyage(self):
-        position = input("1. Register Captain\t2. Register Co-pilot\t3. Register FSM\t4. Register FA\nSelect a position: ")
+        print ("1. Register Captain\t2. Register Co-pilot\t3. Register FSM\t4. Register FA\nSelect a position: ")
+        position = self.__interface.get_input()
         options = ["1", "2", "3", "4"]
         while position not in options:
             print ("Invalid input! Please try again")
-            new_position = input("1. Register Captain\t2. Register Co-pilot\t3. Register FSM\t4. Register FA\nSelect a position: ")
-            position = new_position
+            print ("1. Register Captain\t2. Register Co-pilot\t3. Register FSM\t4. Register FA\nSelect a position: ")
+            position = self.__interface.get_input()
         if position =="1":
             position = "Captain"
         elif position == "2":
