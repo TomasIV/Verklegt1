@@ -48,6 +48,9 @@ class VoyageLL:
         arrival_1 = new_voyage_date + datetime.timedelta(minutes= int(flight_time))
         departure_2 = new_voyage_date + datetime.timedelta(minutes= (int(flight_time) + self.__stop_time))
         arrival_2 = new_voyage_date + datetime.timedelta(minutes= (int(flight_time)*2 + self.__stop_time))
+        arrival_1 = arrival_1.isoformat()
+        departure_2 = departure_2.isoformat()
+        arrival_2 = arrival_2.isoformat()
 
         # Add flight numbers and dates to the new voyage
         some_voyage.add_flight_numbers_to_voyage(flight_num_1, flight_num_2)
