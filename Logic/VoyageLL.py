@@ -45,7 +45,11 @@ class VoyageLL:
         flight_num_2 = 'NA' + destination_number + str(last_num + 1)
 
         # Find the other three dates
+<<<<<<< HEAD
         arrival_1 = new_voyage_date + datetime.timedelta(minutes= int(flight_time))
+=======
+        arrival_1 = new_voyage_date + datetime.timedelta(minutes= flight_time)
+>>>>>>> 5c697e7f512fb9c8ec5c24e3b865678d8f137a68
         departure_2 = new_voyage_date + datetime.timedelta(minutes= (int(flight_time) + self.__stop_time))
         arrival_2 = new_voyage_date + datetime.timedelta(minutes= (int(flight_time)*2 + self.__stop_time))
 
