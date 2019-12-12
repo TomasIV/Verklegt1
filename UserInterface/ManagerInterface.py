@@ -94,21 +94,23 @@ class ManagerInterface:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
                 if chosen == "1":
-                    self.get_week_days()
-                    input("Press enter to continue")
+                    voyages_day = self.g°et_voyages_on_specific_day()
+                    for voyage in voyages_day:
+                        print (voyage)
                 elif chosen == "2":
-                    pass
+                    
 
                 
                 
     def get_voyages_on_specific_day(self):
         voyages = self.__logicapi.view_all_voyages()
         date = self.get_voyage_date_without_time()
+        voyage_day_list = []
         for voyage in voyages:
             voyage_date = voyage.get_voyage_depart_time()
             if date[:9] == voyage_date[:9]:
-                print (voyage)
-        input("Press enter to continue")
+                voyage_day_list.append(voyage)
+        return voyage_day_list
     def get_km(self):
         return input("Kilometers from Iceland to Destination: ")
     
