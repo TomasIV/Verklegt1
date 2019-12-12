@@ -29,10 +29,12 @@ class Voyage:
         except:
             a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", "None")
         return a_str
+
     def get_identification(self):
         print ("\n{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From/To", "Flight number", "Departure", "Arrival", "Sold seats"))
         first_flight = "{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From ICE To " + self.__destination_id, self.first_flight_number, self.__first_departure, self.__first_arrival, self.first_sold_seats)
         second_flight = "{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From " + self.__destination_id + " To ICE", self.second_flight_number, self.__second_departure, self.__second_arrival, self.second_sold_seats)
+    
     def get_destination(self):
         return self.__destination_id
     
