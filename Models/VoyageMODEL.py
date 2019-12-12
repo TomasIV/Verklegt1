@@ -33,6 +33,9 @@ class Voyage:
     def get_destination(self):
         return self.__destination_id
     
+    def get_home_airport(self):
+        return self.__home_id
+    
     def get_departure(self):
         return self.__first_departure
 

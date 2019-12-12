@@ -60,6 +60,7 @@ class VoyageLL:
         self.__data_layer.overwrite_voyages(all_voyages)
 
     def voyage_time_check(self, some_voyage):
+        '''Takes a Voyage and checks to see if teh departure time collides with any pre-existing voyage'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
             if voyage.get_departure() == some_voyage.get_departure():
@@ -83,14 +84,26 @@ class VoyageLL:
     def add_employee_to_voyage(self, ssn): # Þarf að skrifa
         pass
 
-    def get_voyage_status(self, some_voyage): # Er að skrifa
-        departure_1 = dateutil.parser.parse(some_voyage.get_departure())
-        arrival_2 = dateutil.parser.parse(some_voyage.get_takeoff_dates())
-        if datetime.datetime.now() < departure_1:
+    def get_voyage_status(self, some_voyage):
+        departure_1, arrival_1, departure_2, arrival_2 = some_voyage.get_takeoff_dates()
+        departure_1 = dateutil.parser.parse(departure_1)
+        arrival_1 = dateutil.parser.parse(arrival_1)
+        departure_2 = dateutil.parser.parse(departure_2)
+        arrival_2 = dateutil.parser.parse(arrival_2)
+        right_now = datetime.datetime.now()
+
+        if right_now < departure_1:
             return 'Upcoming'
-        elif departure_1 <= datetime.datetime.now() <= arrival_2:
-            return 'Ongoing'
-        elif arrival_2 < datetime.datetime.now():
+        elif departure_1 <= right_now <= arrival_1:
+            des = some_voyage.get_destination()
+            return 'In flight to ' + des
+        elif arrival_1 < right_now < departure_2:
+            des = some_voyage.get_destination()
+            return 'Standby at ' + des
+        elif departure_2 <= right_now <= arrival_2:
+            des = some_voyage.get_home_airport()
+            return 'In flight to ' + des
+        elif arrival_2 < right_now:
             return 'Finished'
 
     def view_all_voyages(self):
