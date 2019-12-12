@@ -24,16 +24,20 @@ class Voyage:
 
     def __str__(self):
         """Very very long string"""
+        a_list = []
         a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format(
         "Aircraft ID", self.__aircraft_id,
         "Home Airport", self.__home_id, "Destination ID", self.__destination_id, "Departure date", self.__first_departure,
         "Arrival date", self.__first_arrival, "Departure from destination", self.__second_departure, "Arrival from destination", self.__second_arrival,
         "Sold seats to destination", self.first_sold_seats, "Sold seats from destination", self.second_sold_seats, 
         "First flight number", self.first_flight_number, "Second flight number", self.second_flight_number)
-        try:
-            a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", self.employees.get_ssn())
-        except:
-            a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", "None")
+        a_list.append(a_str)
+        a_list.append("{:<30s}: {}\t{:<30s}: {}".format("Captain", self.captain, "Co-Pilot", self.copilot))
+        a_list.append("{:<30s}: {}\t{:<30s}: {}, {}".format("Flight Service Manager", self.fsm, "Flight attendants", self.fa1, self.fa2))
+        if ((self.captain) and (self.copilot) and (self.fsm)):
+            a_list.append("Manned: True")
+        else:
+            a_list.append("Manned: False")
         return a_str
 
     def get_identification(self):
@@ -97,3 +101,5 @@ class Voyage:
             return True
         else:
             return False
+    def get_arrival(self):
+        return self.__second_arrival

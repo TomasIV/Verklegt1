@@ -39,15 +39,15 @@ class HRInterface:
             elif command_str == "4":
                 self.list_menu()
             elif command_str == "5":
-                self.voyage = self.themanger.find_voyage()
+                self.voyage = self.__interface.find_voyage()
                 print("Please enter what position you want to add to the voyage")
-                self.position = self.get_position_for_voyage(interface)
+                self.position = self.get_position_for_voyage()
                 self.target_employees = self.__logicapi.find_employees(self.position)
                 for person in self.target_employees:
                     print(person)
             elif command_str == "6":
                 self.register_new_employee()
-    
+
     def list_menu(self):
         
         while True:
@@ -89,52 +89,6 @@ class HRInterface:
                         print (employee)
                 input("press enter to return...")
 
-    def get_employee_ssn(self):
-        num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        ssn = 99
-        while ssn:
-            ssn = input("SSN: ").strip()
-            new_ssn = ""
-            for char in ssn:
-                if char in num:
-                    new_ssn += char
-            if len(new_ssn) == 10:
-                d = int(str(new_ssn[0] + new_ssn[1])) # takes the first and second int in the string as a day
-                m = int(str(new_ssn[2] + new_ssn[3])) # takes third and second int in the string as a month
-                y = int(str(new_ssn[4] + new_ssn[5])) # takes the fifth and sixth int in the string as a year
-                last = int(new_ssn[-1]) # takes the last int in the string as a century
-                if last == 0: #if year == 2000
-                    if ((32 > d > 0 ) and ( 13 > m > 0) and (y < 20)):
-                        ssn_exists = self.check_ssn(new_ssn)
-                        if ssn_exists:
-                            print ("SSN already registered, please try again")
-                        else:
-                            return new_ssn
-                    else:
-                        print("SSN not valid")
-                elif str(last) == "9": #if year == 1900
-                    if (( 32 > d > 0 ) and (13 > m > 0)):
-                        ssn_exists = self.check_ssn(new_ssn)
-                        if ssn_exists:
-                            print ("SSN already registered, please try again")
-                        else:
-                            return new_ssn
-                    else:
-                        print("SSN not valid")
-                else:
-                    print ("SSN not valid")
-            else:
-                print ("SSN not valid")
-            
-    def check_ssn(self, ssn):
-        """Checks if ssn is already registered to some employee"""
-        ssn_list = []
-        for employee in self.all_employees:
-             ssn_list.append(employee.get_ssn())
-        if ssn in ssn_list:
-            return True
-        else:
-            return False
                    
     def get_employee_name(self):
         return input("Name: ")
@@ -334,7 +288,7 @@ class HRInterface:
                 
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
-        self.ssn = self.get_employee_ssn()
+        self.ssn = self.__logicapi.get_employee_ssn()()
         self.name = self.get_employee_name()
         self.role = self.get_employee_role()
         if self.role == "Pilot":

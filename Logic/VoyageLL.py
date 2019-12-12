@@ -102,8 +102,11 @@ class VoyageLL:
                             voyage_license = plane
                     for employee in all_employees:
                         if employee == ssn:
-                            if employee.get_license() == voyage_license:  
-                                all_voyage[num].captain = ssn
+                            if employee.get_license() == voyage_license:
+                                if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
+                                    all_voyage[num].captain = ssn
+                                else:
+                                    return "Employee is already working on that day"
                             else:
                                 return "Captains license does not match airplane on voyage!"
                 elif role == "Copilot":

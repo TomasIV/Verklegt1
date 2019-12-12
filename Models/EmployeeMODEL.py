@@ -8,6 +8,14 @@ class Employee:
         self.mobile = mobile_phone
         self.address = address
         self.email = email
+    def busy(self, departure_time, arrival_time, all_voyages):
+        for voyage in all_voyages:
+            cond_1 = (departure_time[:9] == voyage.get_voyage_depart_time()[:9])
+            cond_2 = (arrival_time[:9] == voyage.get_arrival()[:9])
+            if self.__ssn in voyage and (cond_1 or cond_2):
+                return True
+            else:
+                return False
 
     def __str__(self):
         '''Returns the employee information on a very pretty format'''
