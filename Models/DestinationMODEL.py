@@ -19,7 +19,7 @@ class Destination:
     
     def get_name(self):
         return self.__destination
-
+    
     def __eq__(self, comparison):
         if self.__id == comparison \
         or self.__destination == comparison \
