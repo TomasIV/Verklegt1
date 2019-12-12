@@ -20,16 +20,20 @@ class LogicLayer:
         self.__logic_employee.change_employee(ssn, what_to_change, new_info)
 
     def find_employees(self, search_word):
+        """Finds employee/s by ssn and returns as list"""
         return self.__logic_employee.find_employee(search_word)
     
     def list_all_destinations(self):
         return self.__logic_destination.list_all_destinations()
     
-    def change_destination(self, all_destinations, what_to_chagne, new_info):
-            self.__data_layer.overwrite_destination_file(all_destinations, what_to_chagne, new_info)
+    def change_destination(self, the_destination, what_to_change, new_info):
+        self.__logic_destination.change_destination(the_destination, what_to_change, new_info)
+
+    def register_voyage(self, new_voyage):
+        self.__logic_voyage.create_voyage(new_voyage)
 
     def get_voyage_to_add_employee_on(self, search_word):
-        return self.__logic_voyage.get_voyage_to_add_employee_on(search_word)
+        return self.__logic_voyage.find_voyage(search_word)
     
     def add_employee_to_voyage(self, ssn):
         return self.__logic_voyage.add_employee_to_voyage(ssn)
@@ -43,7 +47,8 @@ class LogicLayer:
     def list_all_airplanes(self):
         return self.__logic_airplane.list_airplanes()
     
-    def change_airplane(self, plane_insignia, new_info):
-        self.__logic_airplane.change_airplane()
+    def change_airplane(self, plane_insignia, what_to_change, new_info):
+        self.__logic_airplane.change_airplane(plane_insignia, what_to_change, new_info)
 
-   
+    def find_destination(self, search_word):
+        return self.__logic_destination.find_destination(search_word)

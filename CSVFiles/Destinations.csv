@@ -1,9 +1,1 @@
-id,destination,emergencycontact,phonenumber,flighttime,kilometers
-LYR,Longyearbyean,William Defoe,8897393,1337,9001
-GOH,Nuuk,Amaya Bernard,8821336,532,9001
-KUS,Kulusuk,Akeel Merrill,4815508,452,354
-FAE,Thorshavn,Romeo Barclay,6549372,23466,2
-LWK,Tingwall,Lilith Corbett,7180741,234,6535
-KEF,Keflavik,Ameena Winters,7590896,435,123
-892937,eiuhrg,8237,948573487,345,2346
-666,Germany,Hitler,6666666,666,666
+id,destination,destinationNumber,emergencycontact,phonenumber,flighttime,kilometersLYR,Longyearbyean,01,POSTMALONE,666666,1337,9001GOH,Nuuk,02,Bill,8947350,532,9001KUS,Kulusuk,03,EDLILEGT,4815508,4526,354FAE,Thorshavn,04,Romeo Barclay,6549372,23466,2LWK,Tingwall,05,Lilith Corbett,7180741,234,6535KEF,Keflavik,06,Ameena Winters,7590896,435,123

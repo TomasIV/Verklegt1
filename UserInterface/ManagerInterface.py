@@ -3,6 +3,8 @@ from Models.AirplaneMODEL import Airplane
 from Logic.LogicLayerAPI import LogicLayer
 from Models.DestinationMODEL import Destination
 import string
+import dateutil
+import datetime
 
 class ManagerInterface:
     def __init__(self, interface):
@@ -41,16 +43,28 @@ class ManagerInterface:
                 # self.new_airplane = Airplane(self.name, self.model, self.manufacturer, self.capacity)
                 # self.__logicapi.register_airplane(self.new_airplane) # sends the airplane to LLAPI
             elif command_str == "2":
-                print ("Wow!") # Class coming!
+                print ("Please enter a new voyage")
+                print ("Please enter date and time of departure")
+                self.departure_date_time = self.get_voyage_date()
+                self.voyage_destination = self.get_voyage_destination()
+                print ("Please enter number of sold seats for departure flight")
+                self.departure_sold_seats = self.get_voyage_sold_seats()
+                print ("Please enter number of sold seats for arrival flight")
+                self.arrival_sold_seats = self.get_voyage_sold_seats()
+                self.voyage_airplane_id = self.get_voyage_airplane_id()
+                self.new_voyage = Voyage(self.voyage_airplane_id, self.voyage_destination, self.departure_sold_seats, self.arrival_sold_seats, self.departure_date_time)
+                self.__logicapi.register_voyage(self.new_voyage)
+                input("Voyage created, press enter to continue...")
             elif command_str == "3":
                 print("Please enter the details of the new Destination")
                 self.ids = self.get_destination_id()
                 self.destination = self.get_destination_name()
+                self.destination_number = self.get_destination_number()
                 self.emergency_contact = self.get_destination_emergency_contact()
-                self.emergency_phone = self.get_destination_emegency_phone()
+                self.emergency_phone = self.get_destination_emergency_phone()
                 self.flight_time = self.get_flight_time()
-                self.km = self.get_km()
-                self.new_destination = Destination(self.ids, self.destination, self.emergency_contact, self.emergency_phone, self.flight_time, self.km)
+                self.kilometers= self.get_km()
+                self.new_destination = Destination(self.ids, self.destination, self.destination_number, self.emergency_contact, self.emergency_phone, self.flight_time, self.kilometers)
                 self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
@@ -58,7 +72,8 @@ class ManagerInterface:
             elif command_str == "5":
                 print ("Wow!") # Class coming!
             elif command_str == "6":
-                print ("Wow!") # Class coming!
+                self.change_destination()
+                print ("Wow!") # Class coming! Edit Destination
             elif command_str == "7":
                 all_airplanes = self.__logicapi.list_all_airplanes()
                 for airplane in all_airplanes:
@@ -93,11 +108,13 @@ class ManagerInterface:
             print("Plane Insignia not valid! Please try again")
 
     def get_airplane_model(self):
-        model = input("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+        print("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+        model = self.__interface.get_input()
         model_options = ["1", "2", "3"]
         while model not in model_options:
             print("Invalid input! Please try again")
-            model = input("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+            print("Model \n1. NAFokkerF100\n2. NAFokkerF28 \n3. NABAE146 \nSelect Model: ")
+            model = self.__interface.get_input()
         if model == "1":
             model = "NAFokkerF100"
         elif model == "2":
@@ -197,7 +214,7 @@ class ManagerInterface:
     def get_destination_emergency_contact(self):
         return input("Input emergency contact: ")
 
-    def get_destination_emegency_phone(self):
+    def get_destination_emergency_phone(self):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         while True:
             em_phone = input("Input emergency phone number: ")
@@ -209,3 +226,67 @@ class ManagerInterface:
                 return new_em_phone
             else:
                 print("Invalid input, please try again!")
+
+    def get_voyage_date(self):
+        year = int(input("Year: "))
+        month = int(input("Month: "))
+        day = int(input("Day: "))
+        hour = int(input("Hour: "))
+        minute = int(input("Minute: "))
+        date = dateutil.parser.parse(datetime.datetime(year,month,day,hour,minute,0).isoformat())
+        return date
+
+    def get_voyage_sold_seats(self):
+        num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        while True:
+            sold_seats = input("Sold Seats: ")
+            new_num = ""
+            for char in sold_seats:
+                if char in num:
+                    new_num += char
+                if 0 < len(new_num) < 4:
+                    return new_num
+                else: 
+                    print("Invalid input, please try again!")
+
+    def get_voyage_airplane(self):
+        voyage_airplane_id = input("Enter Airplane ID for voyage: ")
+        return voyage_airplane_id
+        #Búa til brú niður í LL þar sem athugað er hvort flugvélin sé nógu stór?
+
+    def get_voyage_destination(self):
+        voyage_destination = input("Enter voyage destination: ")
+        return voyage_destination
+
+    def get_destination_number(self):
+        dest_num_list = []
+        all_destinations = self.__logicapi.list_all_destinations()
+        for destination in all_destinations:
+            dest_num_list.append(destination.get_destiantion_number())
+        if int(dest_num_list[-1])+1 < 10:
+            return str("0" + (str(int(dest_num_list[-1])+1)))
+        else:
+            return str(int(dest_num_list[-1])+1)
+
+    def change_destination(self):
+        self.__clear()
+        destination = input("Enter destination: ")
+        destination_name = self.__logicapi.find_destination(destination)
+        try:
+            print("Destination details\n\n" + str(destination_name))
+            input("Press enter to continue...")
+        except:
+            input("Destination not found, press enter to return to main menu")
+            return
+        change_list = ["Back", "Emergency contact name", "Emergency contact phone number"]
+        command_str = self.__interface.menu_helper("VERYV VERY VERY VERY NICE TITLE", change_list)
+        if command_str == "0":
+            return
+        if command_str == "1":
+            change = "emergencycontact"
+            new_info = self.get_destination_emergency_contact()
+        elif command_str == "2":
+            change = "phonenumber"
+            new_info = self.get_destination_emergency_phone()
+        if change:
+            self.__logicapi.change_destination(destination_name.get_name(), change, new_info)

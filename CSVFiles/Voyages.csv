@@ -1,2 +1,1 @@
-flightNumber1,flightNumber2,destination,departure,aircraftID,soldSeats,captain,copilot,fsm,fa1,fa2
-NA5614,NA7299,LYR,2019-11-02T10:21:00,TF-TYQ,28,3009907461,2410876598,1600904199,3002688722,0505942924
+aircraftID,homeairport,destination,flightnumber1,soldseats1,departure1,arrival1,flightnumber2,soldseats2,departure2,arrival2,em1,em2,em3,em4,em5

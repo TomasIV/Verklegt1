@@ -1,37 +1,41 @@
-ssn,name,role,rank,licence,address,phonenumber,email
-3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsm�li 1,8998801,william.Carillo@gmail.com
-2910858778,Virginia Ho,Pilot,Captain,NABAE146,Fellsm�li 2,8998802,virginia.Ho@gmail.com
-2706838569,Gerard Nelson,Pilot,Captain,NAFokkerF100,Fellsm�li 3,8998803,gerard.Nelson@gmail.com
-2209955782,Allen Ley,Pilot,Captain,NABAE146,Fellsm�li 4,8998804,allen.Ley@gmail.com
-2907675667,Felecia Moye,Pilot,Captain,NABAE146,Fellsm�li 5,8998805,felecia.Moye@gmail.com
-1309797899,Tyler Anderson,Pilot,Captain,NAFokkerF28,Fellsm�li 6,8998806,tyler.Anderson@gmail.com
-2410876598,Nan Gage,Pilot,Copilot,NAFokkerF100,Fellsm�li 7,8998807,nan.Gage@gmail.com
-2211658134,Charla Johnson,Pilot,Copilot,NABAE146,Fellsm�li 8,8998808,charla.Johnson@gmail.com
-2504939263,Sam Preciado,Pilot,Copilot,NABAE146,Fellsm�li 9,8998809,sam.Preciado@gmail.com
-1900769521,Jasmine Hagadone,Pilot,Copilot,NABAE146,Fellsm�li 10,8998810,jasmine.Hagadone@gmail.com
-2500812671,Anna Phillips,Pilot,Copilot,NAFokkerF28,Fellsm�li 11,8998811,anna.Phillips@gmail.com
-1309927223,Patricia Bates,Pilot,Copilot,NAFokkerF28,Fellsm�li 12,8998812,patricia.Bates@gmail.com
-1600904199,Sherry Walker,Cabincrew,Flight Service Manager,N/A,Fellsm�li 13,8998813,sherry.Walker@gmail.com
-303758167,Margarita Fischer,Cabincrew,Flight Service Manager,N/A,Fellsm�li 14,8998814,margarita.Fischer@gmail.com
-2200763823,Judith Aleshire,Cabincrew,Flight Service Manager,N/A,Fellsm�li 15,8998815,judith.Aleshire@gmail.com
+ssn,name,role,rank,license,address,phonenumber,email
+3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801,william.Carillo@gmail.com
+2910858778,Virginia Ho,Pilot,Captain,NABAE146,Fellsmúli 2,8998802,virginia.Ho@gmail.com
+2706838569,Gerard Nelson,Pilot,Captain,NAFokkerF100,Fellsmúli 3,8998803,gerard.Nelson@gmail.com
+2209955782,Allen Ley,Pilot,Captain,NABAE146,Fellsmúli 4,8998804,allen.Ley@gmail.com
+2907675667,Felecia Moye,Pilot,Captain,NABAE146,Fellsmúli 5,8998805,felecia.Moye@gmail.com
+1309797899,Tyler Anderson,Pilot,Captain,NAFokkerF28,Fellsmúli 6,8998806,tyler.Anderson@gmail.com
+2410876598,Nan Gage,Pilot,Copilot,NAFokkerF100,Fellsmúli 7,8998807,nan.Gage@gmail.com
+2211658134,Charla Johnson,Pilot,Copilot,NABAE146,Fellsmúli 8,8998808,charla.Johnson@gmail.com
+2504939263,Sam Preciado,Pilot,Copilot,NABAE146,Fellsmúli 9,8998809,sam.Preciado@gmail.com
+1900769521,Jasmine Hagadone,Pilot,Copilot,NABAE146,Fellsmúli 10,8998810,jasmine.Hagadone@gmail.com
+2500812671,Anna Phillips,Pilot,Copilot,NAFokkerF28,Fellsmúli 11,8998811,anna.Phillips@gmail.com
+1309927223,Patricia Bates,Pilot,Copilot,NAFokkerF28,Fellsmúli 12,8998812,patricia.Bates@gmail.com
+1600904199,Sherry Walker,Cabincrew,Flight Service Manager,N/A,Fellsmúli 13,8998813,sherry.Walker@gmail.com
+303758167,Margarita Fischer,Cabincrew,Flight Service Manager,N/A,Fellsmúli 14,8998814,margarita.Fischer@gmail.com
+2200763823,Judith Aleshire,Cabincrew,Flight Service Manager,N/A,Fellsmúli 15,8998815,judith.Aleshire@gmail.com
 1308941169,Jacob Blecha,Cabincrew,Flight Service Manager,N/A,NOCCO,8998816,jacob.Blecha@gmail.com
-1405853585,Lula Stefani,Cabincrew,Flight Service Manager,N/A,Fellsm�li 17,8998817,lula.Stefani@gmail.com
-909862878,Richard Sanders,Cabincrew,Flight Service Manager,N/A,Fellsm�li 18,8998818,richard.Sanders@gmail.com
-1811931544,John Kline,Cabincrew,Flight Service Manager,N/A,Fellsm�li 19,8998819,john.Kline@gmail.com
-409858797,Evelyn Pickhardt,Cabincrew,Flight Service Manager,N/A,Fellsm�li 20,8998820,evelyn.Pickhardt@gmail.com
-3002688722,Stacey Henrickson,Cabincrew,Flight Attendant,N/A,Fellsm�li 21,8998821,stacey.Henrickson@gmail.com
-3003962187,Delores Whitfield,Cabincrew,Flight Attendant,N/A,Fellsm�li 22,8998822,delores.Whitfield@gmail.com
-1311772221,Maribel Lucero,Cabincrew,Flight Attendant,N/A,Fellsm�li 23,8998823,maribel.Lucero@gmail.com
-2509913418,Katherine Wernimont,Cabincrew,Flight Attendant,N/A,Fellsm�li 24,8998824,katherine.Wernimont@gmail.com
-1103647756,Wilma Horne,Cabincrew,Flight Attendant,N/A,Fellsm�li 25,8998825,wilma.Horne@gmail.com
-2807755841,Bernard Carr,Cabincrew,Flight Attendant,N/A,Fellsm�li 26,8998826,bernard.Carr@gmail.com
-409907212,Sara Davis,Cabincrew,Flight Attendant,N/A,Fellsm�li 27,8998827,sara.Davis@gmail.com
-1103912131,Robert Swope,Cabincrew,Flight Attendant,N/A,Fellsm�li 28,8998828,robert.Swope@gmail.com
-2801645554,John Iversen,Cabincrew,Flight Attendant,N/A,Fellsm�li 29,8998829,john.Iversen@gmail.com
-1501681497,Rhonda Forman,Cabincrew,Flight Attendant,N/A,Fellsm�li 30,8998830,rhonda.Forman@gmail.com
-1811813379,Melissa Paquette,Cabincrew,Flight Attendant,N/A,Fellsm�li 31,8998831,melissa.Paquette@gmail.com
-505942924,Carlton Chan,Cabincrew,Flight Attendant,N/A,Fellsm�li 32,8998832,carlton.Chan@gmail.com
-1110732819,Arthur Karr,Cabincrew,Flight Attendant,N/A,Fellsm�li 33,8998833,arthur.Karr@gmail.com
-2602806942,Teresa Thruman,Cabincrew,Flight Attendant,N/A,Fellsm�li 34,8998834,teresa.Thruman@gmail.com
-1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsm�li 35,8998835,elizabeth.Mcfadden@gmail.com
-1502003260,Tomas Ingi Villalobos,Pilot,Captain,Boeing 707,Oll Arnarneshaedin,8947350,tomasingiv@hotmail.is1502003260,tomas,Pilot,Captain,no,kehas,6671823,gsbd@gmai.is1502003260,tomas,Pilot,Copilot,no license,ofdin,8943624,anemail@trust.nigger
+1405853585,Lula Stefani,Cabincrew,Flight Service Manager,N/A,Fellsmúli 17,8998817,lula.Stefani@gmail.com
+909862878,Richard Sanders,Cabincrew,Flight Service Manager,N/A,Fellsmúli 18,8998818,richard.Sanders@gmail.com
+1811931544,John Kline,Cabincrew,Flight Service Manager,N/A,Fellsmúli 19,8998819,john.Kline@gmail.com
+409858797,Evelyn Pickhardt,Cabincrew,Flight Service Manager,N/A,Fellsmúli 20,8998820,evelyn.Pickhardt@gmail.com
+3002688722,Stacey Henrickson,Cabincrew,Flight Attendant,N/A,Fellsmúli 21,8998821,stacey.Henrickson@gmail.com
+3003962187,Delores Whitfield,Cabincrew,Flight Attendant,N/A,Fellsmúli 22,8998822,delores.Whitfield@gmail.com
+1311772221,Maribel Lucero,Cabincrew,Flight Attendant,N/A,Fellsmúli 23,8998823,maribel.Lucero@gmail.com
+2509913418,Katherine Wernimont,Cabincrew,Flight Attendant,N/A,Fellsmúli 24,8998824,katherine.Wernimont@gmail.com
+1103647756,Wilma Horne,Cabincrew,Flight Attendant,N/A,Fellsmúli 25,8998825,wilma.Horne@gmail.com
+2807755841,Bernard Carr,Cabincrew,Flight Attendant,N/A,Fellsmúli 26,8998826,bernard.Carr@gmail.com
+409907212,Sara Davis,Cabincrew,Flight Attendant,N/A,Fellsmúli 27,8998827,sara.Davis@gmail.com
+1103912131,Robert Swope,Cabincrew,Flight Attendant,N/A,Fellsmúli 28,8998828,robert.Swope@gmail.com
+2801645554,John Iversen,Cabincrew,Flight Attendant,N/A,Fellsmúli 29,8998829,john.Iversen@gmail.com
+1501681497,Rhonda Forman,Cabincrew,Flight Attendant,N/A,Fellsmúli 30,8998830,rhonda.Forman@gmail.com
+1811813379,Melissa Paquette,Cabincrew,Flight Attendant,N/A,Fellsmúli 31,8998831,melissa.Paquette@gmail.com
+505942924,Carlton Chan,Cabincrew,Flight Attendant,N/A,Fellsmúli 32,8998832,carlton.Chan@gmail.com
+1110732819,Arthur Karr,Cabincrew,Flight Attendant,N/A,Fellsmúli 33,8998833,arthur.Karr@gmail.com
+2602806942,Teresa Thruman,Cabincrew,Flight Attendant,N/A,Fellsmúli 34,8998834,teresa.Thruman@gmail.com
+1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835,elizabeth.Mcfadden@gmail.com
+1502003260,Tomas Ingi Villalobos,Pilot,Captain,NAFokker100,NOCCO,6618123,tomasingiv@niggggggggggggggaa.anal
+1502003269,tomasigns,Cabincrew,Flight Service Manager,N/A,nowhewre,8947350,tomasing@hotma.sdjsk
+1502013250,tomasingiv,Cabincrew,Flight Service Manager,N/A,NO,8947359,NO@NO.NO
+1502103269,toamsing,Pilot,Copilot,NAFokkerF28,kelduhvamms,8947350,aneurope@email.cock
+1503003260,ekki toms,Cabincrew,Flight Service Manager,N/A,btokne,8943751,some@emial.dot

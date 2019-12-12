@@ -7,8 +7,8 @@ class PlaneModel:
         pass
 
     def save_model(self, some_aircraftType):
-         with open(self.PATH, "a") as aircraftType:
-            csv_writer = csv.writer(aircraftType, lineterminator= "\r" )
+         with open(self.PATH, "a", encoding="utf-8") as aircraftType:
+            csv_writer = csv.writer(aircraftType, lineterminator= "\r")
             csv_writer.writerow(some_aircraftType.get_aircraftType_attributes())
 
 #planeTypeId,manufacturer,model,capacity,emptyWeight,maxTakeoffWeight,unitThrust,serviceCeiling,length,height,wingspan
@@ -16,7 +16,7 @@ class PlaneModel:
 
     def list_all_airplane_models(self):
         list_aircraftType = []
-        with open(self.PATH, 'r') as csvfile:
+        with open(self.PATH, 'r', encoding="utf-8") as csvfile:
             reader = csv.DictWriter(csvfile)
             for row in reader: 
                 aircraftType = aircraftType(row['planeTypeId'], row['manufacturer'], row['model'],row['capacity'], row['emptyWheight'], row['maxTakeoffWeight'], row['unitThrust'], row['serviceCeiling'], row['length'], row['height'], row['wingspan'])
