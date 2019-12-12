@@ -3,6 +3,7 @@ import dateutil.parser
 from Models.VoyageMODEL import Voyage
 from Data.DataLayerAPI import DataLayer
 from Logic.DestinationLL import DestinationLL
+from Models.EmployeeMODEL import Employee
 
 class VoyageLL:
     def __init__(self):
@@ -81,8 +82,41 @@ class VoyageLL:
             all_voyages[num].clean_employee_list()
         return all_voyages
 
-    def add_employee_to_voyage(self, ssn): # Þarf að skrifa
-        pass
+    def add_employee_to_voyage(self, some_voyage, role, ssn): # Þarf að skrifa
+        all_voyage = self.__data_layer.list_voyages()
+        all_employees = self.__data_layer.list_employee()
+        all_planes = self.__data_layer.list_airplanes()
+        for num in range(len(all_voyage)):
+            if all_voyage[num] == some_voyage:
+                if role == "Captain":
+                    voyage_airplane = some_voyage.get_airplane()
+                    for plane in all_planes:
+                        if plane == voyage_airplane:
+                            voyage_license = plane
+                    for employee in all_employees:
+                        if employee == ssn:
+                            if employee.get_license() == voyage_license:  
+                                all_voyage[num].em1 = ssn
+                            else:
+                                return "Captains license does not match airplane on voyage!"
+                elif role == "Copilot":
+                    voyage_airplane = some_voyage.get_airplane()
+                    for plane in all_planes:
+                        if plane == voyage_airplane:
+                            voyage_license = plane
+                    for employee in all_employees:
+                        if employee == ssn:
+                            if employee.get_license() == voyage_license:
+                                all_voyage[num].em2 = ssn
+                            else:
+                                return "Copilots license does not match airplane on voyage!"
+                elif role == "Flight Service Manager":
+                    all_voyage[num].em3 = ssn
+                elif role == "Flight Attendant":
+                    all_voyage[num].em4 = ssn
+        self.__data_layer.overwrite_voyages(all_voyage)
+        return "{} added to voyage".format(role)
+
 
     def get_voyage_status(self, some_voyage):
         departure_1, arrival_1, departure_2, arrival_2 = some_voyage.get_takeoff_dates()

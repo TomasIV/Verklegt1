@@ -332,6 +332,7 @@ class HRInterface:
                 new_info = self.get_employee_email()
             if change:
                 self.__logicapi.change_employee(employee_ssn[0].get_ssn(), change, new_info)
+
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
         self.ssn = self.get_employee_ssn()
