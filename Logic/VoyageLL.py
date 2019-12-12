@@ -14,13 +14,13 @@ class VoyageLL:
 
     def create_voyage(self, some_voyage): # Er að vinna í þessu
         all_voyages = self.__data_layer.list_voyages()
-        new_voyage_date = dateutil.parser.parse(some_voyage.get_departure())
+        new_voyage_date = dateutil.parser.parse(some_voyage.get_voyage_depart_time())
         new_voyage_destination = some_voyage.get_destination()
 
         # Find colliding voyage indexes
         colliding_voyages = []
         for num in range(len(all_voyages)):
-            voyage_date = dateutil.parser.parse(all_voyages[num].get_departure())
+            voyage_date = dateutil.parser.parse(all_voyages[num].get_voyage_depart_time())
             if new_voyage_date.year == voyage_date.year \
             and new_voyage_date.month == voyage_date.month \
             and new_voyage_date.day == voyage_date.day:
@@ -30,7 +30,7 @@ class VoyageLL:
         # Change flight numbers for the colliding voyages
         last_num = 0
         for num in colliding_voyages:
-            voyage_date = dateutil.parser.parse(all_voyages[num].get_departure())
+            voyage_date = dateutil.parser.parse(all_voyages[num].get_voyage_depart_time())
             if voyage_date < new_voyage_date:
                 last_num += 2
             elif voyage_date > new_voyage_date:
@@ -64,7 +64,7 @@ class VoyageLL:
         '''Takes a Voyage and checks to see if teh departure time collides with any pre-existing voyage'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
-            if voyage.get_departure() == some_voyage.get_departure():
+            if voyage.get_voyage_depart_time() == some_voyage.get_voyage_depart_time():
                 return False
         return True
 
@@ -96,7 +96,7 @@ class VoyageLL:
                     for employee in all_employees:
                         if employee == ssn:
                             if employee.get_license() == voyage_license:  
-                                all_voyage[num].em1 = ssn
+                                all_voyage[num].captain = ssn
                             else:
                                 return "Captains license does not match airplane on voyage!"
                 elif role == "Copilot":
@@ -107,13 +107,16 @@ class VoyageLL:
                     for employee in all_employees:
                         if employee == ssn:
                             if employee.get_license() == voyage_license:
-                                all_voyage[num].em2 = ssn
+                                all_voyage[num].copilot = ssn
                             else:
                                 return "Copilots license does not match airplane on voyage!"
                 elif role == "Flight Service Manager":
-                    all_voyage[num].em3 = ssn
+                    all_voyage[num].fsm = ssn
                 elif role == "Flight Attendant":
-                    all_voyage[num].em4 = ssn
+                    if all_voyage[num].fa1 == '':
+                        all_voyage[num].fa1 = ssn
+                    else:
+                        all_voyage[num].fa2 = ssn
         self.__data_layer.overwrite_voyages(all_voyage)
         return "{} added to voyage".format(role)
 
