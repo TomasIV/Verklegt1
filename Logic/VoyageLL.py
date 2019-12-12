@@ -21,9 +21,7 @@ class VoyageLL:
         colliding_voyages = []
         for num in range(len(all_voyages)):
             voyage_date = dateutil.parser.parse(all_voyages[num].get_voyage_depart_time())
-            if new_voyage_date.year == voyage_date.year \
-            and new_voyage_date.month == voyage_date.month \
-            and new_voyage_date.day == voyage_date.day:
+            if new_voyage_date.date() == voyage_date.date():
                 if all_voyages[num].get_destination() == new_voyage_destination:
                     colliding_voyages.append(num)
 
@@ -61,7 +59,7 @@ class VoyageLL:
         self.__data_layer.overwrite_voyages(all_voyages)
 
     def voyage_time_check(self, some_voyage):
-        '''Takes a Voyage and checks to see if teh departure time collides with any pre-existing voyage'''
+        '''Takes a Voyage and checks to see if the departure time collides with any pre-existing voyage'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
             if voyage.get_voyage_depart_time() == some_voyage.get_voyage_depart_time():
@@ -76,18 +74,25 @@ class VoyageLL:
                 found_voyages.append(voyage)
         return found_voyages
 
-    def get_all_voyages(self):
+    def get_all_voyages_by_date(self, from_date, to_date):
         all_voyages = self.__data_layer.list_voyages()
-        for num in range(len(all_voyages)):
-            all_voyages[num].clean_employee_list()
-        return all_voyages
+        matching_voyages = []
+        for voyage in all_voyages:
+            voyage_date = dateutil.parser.parse(voyage.get_voyage_depart_time())
+            if from_date <= voyage_date.date() <= to_date:
+                matching_voyages.append(voyage)
+        
+
+    def get_all_voyages(self):
+        return self.__data_layer.list_voyages()
 
     def add_employee_to_voyage(self, some_voyage, role, ssn): # Þarf að skrifa
         all_voyage = self.__data_layer.list_voyages()
         all_employees = self.__data_layer.list_employee()
         all_planes = self.__data_layer.list_airplanes()
         for num in range(len(all_voyage)):
-            if all_voyage[num] == some_voyage:
+            if all_voyage[num].get_voyage_depart_time() == some_voyage.get_voyage_depart_time() \
+            and all_voyage[num].get_voyage_flight_numbers() == some_voyage.get_voyage_flight_numbers():
                 if role == "Captain":
                     voyage_airplane = some_voyage.get_airplane()
                     for plane in all_planes:
@@ -142,6 +147,3 @@ class VoyageLL:
             return 'In flight to ' + des
         elif arrival_2 < right_now:
             return 'Finished'
-
-    def view_all_voyages(self):
-        return self.__data_layer.view_all_voyages()

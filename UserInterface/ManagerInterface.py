@@ -360,6 +360,7 @@ class ManagerInterface:
             new_info = self.get_destination_emergency_phone()
         if change:
             self.__logicapi.change_destination(destination_name.get_name(), change, new_info)
+
     def find_voyage(self):
         self.__clear()
         voyages = self.__logicapi.view_all_voyages()
@@ -408,6 +409,4 @@ class ManagerInterface:
         for voyage in voyages:
             print (voyage)
         input("Press enter to return...")
-
-
-        
+   
