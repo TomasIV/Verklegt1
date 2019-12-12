@@ -1,7 +1,6 @@
 from Models.EmployeeMODEL import Employee
 from Logic.LogicLayerAPI import LogicLayer
 from Models.VoyageMODEL import Voyage
-from UserInterface.ManagerInterface import ManagerInterface
 
 class HRInterface:
 
@@ -9,7 +8,6 @@ class HRInterface:
         self.__interface = interface
         self.__logicapi = LogicLayer()
         self.all_employees = self.__logicapi.list_all_employees()
-        self.themanger = ManagerInterface()
 
         self.__menu_list = ["Back",
         'Edit employees', 'Find Pilot for specific airplane', 'Find employee',

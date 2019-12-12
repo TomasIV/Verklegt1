@@ -52,6 +52,9 @@ class ManagerInterface:
                 print ("Please enter number of sold seats for arrival flight")
                 self.arrival_sold_seats = self.get_voyage_sold_seats()
                 self.voyage_airplane_id = self.get_voyage_airplane()
+                while self.voyage_airplane_id not in self.__logicapi.list_all_airplanes():
+                    print ("Invalid input, please try again")
+                    self.voyage_airplane_id = self.get_voyage_airplane()
                 self.new_voyage = Voyage(self.voyage_airplane_id, self.voyage_destination, self.departure_sold_seats, self.arrival_sold_seats, self.departure_date_time)
                 self.__logicapi.register_voyage(self.new_voyage)
                 input("Voyage created, press enter to continue...")
@@ -94,11 +97,12 @@ class ManagerInterface:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
                 if chosen == "1":
-                    voyages_day = self.g°et_voyages_on_specific_day()
+                    voyages_day = self.get_voyages_on_specific_day()
                     for voyage in voyages_day:
                         print (voyage)
+                    input("Press enter to return...")
                 elif chosen == "2":
-                    
+                    pass
 
                 
                 
