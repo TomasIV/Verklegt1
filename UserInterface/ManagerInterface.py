@@ -77,7 +77,7 @@ class ManagerInterface:
                     print (airplane)
                 input ("Presss enter to return......")
             elif command_str == "7":
-                print ("Wow!") # Class coming!
+                self.view_voyage()
             elif command_str == "8":
                 all_destinations = self.__logicapi.list_all_destinations()
                 for destinations in all_destinations:
