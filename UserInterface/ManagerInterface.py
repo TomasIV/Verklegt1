@@ -291,3 +291,6 @@ class ManagerInterface:
         pass
     def view_voyage(self):
         voyages = self.__logicapi.view_all_voyages()
+        for voyage in voyages:
+            print (voyage)
+        input("Press enter to return...")

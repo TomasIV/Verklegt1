@@ -9,7 +9,7 @@ class VoyageDL:
     def list_voyages(self):
         list_of_voyages = []
         with open(self.PATH, 'r', encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
+            reader = csv.DictReader(csvfile, lineterminator = "\r")
             for row in reader:
                 voyage = Voyage(row['aircraftID'], row['destination'], row['soldseats1'], row['soldseats2'], \
                         row['departure1'], row['arrival1'], row['departure2'], row['arrival2'], row['homeairport'], \

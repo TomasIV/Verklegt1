@@ -85,3 +85,5 @@ class VoyageLL:
 
     def get_voyage_status(self): # Þarf að skrifa
         pass
+    def view_all_voyages(self):
+        return self.__data_layer.view_all_voyages()
