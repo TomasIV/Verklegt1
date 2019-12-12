@@ -49,3 +49,6 @@ class DataLayer:
     
     def overwrite_airplane_file(self, list_of_airplanes):
         self.__data_airplane.overwrite_file(list_of_airplanes)
+    
+    def view_all_voyages(self):
+        return self.__data_voyage.list_voyages()
