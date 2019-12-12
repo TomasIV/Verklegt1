@@ -75,18 +75,20 @@ class VoyageLL:
         return found_voyages
 
     def get_all_voyages_by_date(self, from_date, to_date):
+        from_date = dateutil.parser.parse(from_date).date()
+        to_date = dateutil.parser.parse(to_date).date()
         all_voyages = self.__data_layer.list_voyages()
         matching_voyages = []
         for voyage in all_voyages:
             voyage_date = dateutil.parser.parse(voyage.get_voyage_depart_time())
             if from_date <= voyage_date.date() <= to_date:
                 matching_voyages.append(voyage)
-        
+        return matching_voyages
 
     def get_all_voyages(self):
         return self.__data_layer.list_voyages()
 
-    def add_employee_to_voyage(self, some_voyage, role, ssn): # Þarf að skrifa
+    def add_employee_to_voyage(self, some_voyage, role, ssn):
         all_voyage = self.__data_layer.list_voyages()
         all_employees = self.__data_layer.list_employee()
         all_planes = self.__data_layer.list_airplanes()

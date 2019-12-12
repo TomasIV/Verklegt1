@@ -31,11 +31,8 @@ class LogicLayer:
 
     def register_voyage(self, new_voyage):
         self.__logic_voyage.create_voyage(new_voyage)
-
-    def get_voyage_to_add_employee_on(self, search_word):
-        return self.__logic_voyage.find_voyage(search_word)
     
-    def add_employee_to_voyage(self, ssn):
+    def add_employee_to_voyage(self, some_voyage, role, ssn):
         return self.__logic_voyage.add_employee_to_voyage(ssn)
 
     def register_airplane(self, new_airplane):
