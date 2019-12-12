@@ -18,7 +18,8 @@ class Voyage:
 
     def __str__(self):
         """Very very long string"""
-        a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format("Aircraft ID", self.__aircraft_id,
+        a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format(
+        "Aircraft ID", self.__aircraft_id,
         "Home Airport", self.__home_id, "Destination ID", self.__destination_id, "Departure date", self.__first_departure,
         "Arrival date", self.__first_arrival, "Departure from destination", self.__second_departure, "Arrival from destination", self.__second_arrival,
         "Sold seats to destination", self.first_sold_seats, "Sold seats from destination", self.second_sold_seats, 
