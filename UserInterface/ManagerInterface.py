@@ -94,11 +94,12 @@ class ManagerInterface:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
                 if chosen == "1":
-                    voyages_day = self.g°et_voyages_on_specific_day()
+                    voyages_day = self.get_voyages_on_specific_day()
                     for voyage in voyages_day:
                         print (voyage)
+                    input("Press enter to return...")
                 elif chosen == "2":
-                    
+                    pass
 
                 
                 
