@@ -6,6 +6,7 @@ class DestinationLL:
 
     def list_all_destinations(self):
         return self.__data_layer.list_destinations()
+
     def save_destination(self, new_destination):
         self.__data_layer.save_destinations(new_destination)
 
@@ -19,13 +20,11 @@ class DestinationLL:
                     all_destinations[num].emergency_phone = new_info
         self.__data_layer.overwrite_destination_file(all_destinations)
 
-    def list_most_popular_destination(self):
+    def list_most_popular_destination(self): # Þarf að skrifa
         pass
 
     def find_destination(self, search_word):
         all_destinations = self.__data_layer.list_destinations()
-        found_destinations = []
         for place in all_destinations:
             if place == search_word:
-                found_destinations.append(place)
-        return found_destinations
+                return place

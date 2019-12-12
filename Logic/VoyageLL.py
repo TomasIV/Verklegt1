@@ -34,10 +34,11 @@ class VoyageLL:
             elif voyage_date > new_voyage_date:
                 all_voyages[num].change_flight_numbers()
     
-        # Get the destination number
+        # Get the destination number and flight time
         for destination in all_destinations:
             if destination == new_voyage_destination:
                 destination_number = destination.get_destiantion_number()
+                flight_time = destination.get_fligh_time()
 
         # Assemble the flight numbers
         flight_num_1 = 'NA' + destination_number + str(last_num)
