@@ -92,8 +92,7 @@ class ManagerInterface:
         return input("Time from Iceland to Destination: ")
 
     def get_airplane_name(self):
-        run = True
-        while run:
+        while True:
             plane_insignia = input("Plane Insignia: ")
             new_plane_insignia = ""
             if len(plane_insignia.replace("-", "")) == 5:
@@ -103,7 +102,6 @@ class ManagerInterface:
             if len(new_plane_insignia) == 5:
                 a_str = new_plane_insignia[:2] + "-" + new_plane_insignia[2:]
                 return a_str
-                run = False
             else:
                 print ("Invalid input, please try again!")
 
