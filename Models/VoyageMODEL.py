@@ -25,11 +25,16 @@ class Voyage:
     def get_voyage_attributes(self):
         return [self.__aircraft_id, self.__home_id, self.__destination_id, \
             self.first_flight_number, self.first_sold_seats, self.__first_departure, self.__first_arrival, \
-            self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival, \
-            self.employees[0], self.employees[1], self.employees[2], self.employees[3], self.employees[4]]
+            self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival]
+            #self.employees[0], self.employees[1], self.employees[2], self.employees[3], self.employees[4]]
 
     def add_employee_to_voyage(self, ssn):
         self.employees.append(ssn)
+    
+    def add_dates_to_voyage(self, first_arrival_date, second_departure_date, second_arrival_date):
+        self.__first_arrival = first_arrival_date
+        self.__second_departure = second_departure_date
+        self.__second_arrival = second_arrival_date
     
     def add_flight_numbers_to_voyage(self, num1, num2):
         self.first_flight_number = num1

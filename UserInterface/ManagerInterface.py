@@ -51,7 +51,7 @@ class ManagerInterface:
                 self.departure_sold_seats = self.get_voyage_sold_seats()
                 print ("Please enter number of sold seats for arrival flight")
                 self.arrival_sold_seats = self.get_voyage_sold_seats()
-                self.voyage_airplane_id = self.get_voyage_airplane_id()
+                self.voyage_airplane_id = self.get_voyage_airplane()
                 self.new_voyage = Voyage(self.voyage_airplane_id, self.voyage_destination, self.departure_sold_seats, self.arrival_sold_seats, self.departure_date_time)
                 self.__logicapi.register_voyage(self.new_voyage)
                 input("Voyage created, press enter to continue...")
@@ -233,7 +233,7 @@ class ManagerInterface:
         day = int(input("Day: "))
         hour = int(input("Hour: "))
         minute = int(input("Minute: "))
-        date = dateutil.parser.parse(datetime.datetime(year,month,day,hour,minute,0).isoformat())
+        date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
         return date
 
     def get_voyage_sold_seats(self):
@@ -273,7 +273,7 @@ class ManagerInterface:
         destination = input("Enter destination: ")
         destination_name = self.__logicapi.find_destination(destination)
         try:
-            print("Destination details\n\n" + str(destination_name[0]))
+            print("Destination details\n\n" + str(destination_name))
             input("Press enter to continue...")
         except:
             input("Destination not found, press enter to return to main menu")
@@ -289,4 +289,4 @@ class ManagerInterface:
             change = "phonenumber"
             new_info = self.get_destination_emergency_phone()
         if change:
-            self.__logicapi.change_destination(destination_name[0].get_name(), change, new_info)
+            self.__logicapi.change_destination(destination_name.get_name(), change, new_info)

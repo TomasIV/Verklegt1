@@ -1,1 +1,3 @@
 aircraftID,homeairport,destination,flightnumber1,soldseats1,departure1,arrival1,flightnumber2,soldseats2,departure2,arrival2,em1,em2,em3,em4,em5
+ee-eee,KEF,Nuuk,NA020,2,2020-12-12T12:12:00,2020-12-12 21:04:00,NA021,1,2020-12-12 22:04:00,2020-12-13 06:56:00
+ee-eee,KEF,GOH,NA020,3,2019-11-02T06:21:00,2019-11-02T06:22:00,NA022,6,2019-11-02T06:21:00,2019-11-02T06:21:00

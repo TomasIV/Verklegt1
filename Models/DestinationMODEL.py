@@ -13,6 +13,12 @@ class Destination:
 
     def get_destiantion_number(self):
         return self.__number
+    
+    def get_fligh_time(self):
+        return self.__flight_time
+    
+    def get_name(self):
+        return self.__destination
 
     def __eq__(self, comparison):
         if self.__id == comparison \
@@ -25,8 +31,6 @@ class Destination:
             return True
         else:
             return False
-    def get_name(self):
-        return self.__destination
         
     def __str__(self):
         '''Returns the destinastion information format so it looks super nice and pretty'''
