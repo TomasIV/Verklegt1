@@ -315,9 +315,8 @@ class ManagerInterface:
                 flight_num = input("Enter a flight number: ")
             date = self.get_voyage_date()
             for voyage in voyages:
-                if date in voyage.__str__():
-                    if flight_num in voyage.__str__():
-                        print (voyage.__str__())
+                if date == voyage.get_voyage_depart_time():
+                    if flight_num in voyage.get_voyage_flight_numbers():
                         #the_voyage = self.__logicapi.find_voyage(flight_num, date)
                         input ("Success 1")
                         run = False
@@ -331,12 +330,11 @@ class ManagerInterface:
                 print ("Date is not associated with any voyage, please try again")
                 date = self.get_voyage_date()
                 for voyage in voyages:
-                    if date in voyage.__str__():
-                        if flight_num in voyage.__str__():
+                    if date == voyage.get_voyage_depart_time():
+                        if flight_num in voyage.get_voyage_flight_numbers():
                             input ("Success 2")
                             run = False
                             #the_voyage = self.__logicapi.find_voyage(flight_num, date)
-            print (the_voyage)
             input("GOTEM")
             return the_voyage
 

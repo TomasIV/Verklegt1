@@ -27,7 +27,7 @@ class VoyageDL:
     # Overwrite old info with the new info
     
     def overwrite_file(self, list_of_voyages):
-            '''Opens employee file and writes new info into employee file'''
+        '''Opens employee file and writes new info into employee file'''
         with open(self.PATH, "w", encoding="utf-8") as cleared_file:
             overwriter = csv.writer(cleared_file, lineterminator= "\r", )
             overwriter.writerow(['aircraftID', 'homeairport', 'destination', \

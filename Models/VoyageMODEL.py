@@ -92,3 +92,7 @@ class Voyage:
             return True
         else:
             return False
+    def get_voyage_flight_numbers(self):
+        return (self.first_flight_number, self.second_flight_number)
+    def get_voyage_depart_time(self):
+        return self.__first_departure
