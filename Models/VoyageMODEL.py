@@ -31,6 +31,11 @@ class Voyage:
     def add_employee_to_voyage(self, ssn):
         self.employees.append(ssn)
     
+    def add_dates_to_voyage(self, first_arrival_date, second_departure_date, second_arrival_date):
+        self.__first_arrival = first_arrival_date
+        self.__second_departure = second_departure_date
+        self.__second_arrival = second_arrival_date
+    
     def add_flight_numbers_to_voyage(self, num1, num2):
         self.first_flight_number = num1
         self.second_flight_number = num2

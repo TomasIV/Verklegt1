@@ -29,6 +29,9 @@ class LogicLayer:
     def change_destination(self, the_destination, what_to_change, new_info):
         self.__logic_destination.change_destination(the_destination, what_to_change, new_info)
 
+    def register_voyage(self, new_voyage):
+        self.__logic_voyage.create_voyage(new_voyage)
+
     def get_voyage_to_add_employee_on(self, search_word):
         return self.__logic_voyage.find_voyage(search_word)
     
@@ -46,9 +49,6 @@ class LogicLayer:
     
     def change_airplane(self, plane_insignia, what_to_change, new_info):
         self.__logic_airplane.change_airplane(plane_insignia, what_to_change, new_info)
-
-    def register_voyage(self, new_voyage, departure_sold_seats, arrival_sold_seats):
-        self.__logic_voyage.create_voyage(new_voyage, departure_sold_seats, arrival_sold_seats)
 
     def find_destination(self, search_word):
         return self.__logic_destination.find_destination(search_word)
