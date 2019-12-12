@@ -13,7 +13,8 @@ class VoyageLL:
 
     def create_voyage(self, some_voyage): # Er að vinna í þessu
         all_voyages = self.__data_layer.list_voyages()
-        new_voyage_date = dateutil.parser.parse(some_voyage)
+        #date = dateutil.parser.parse(datetime.datetime(year,month,day,hour,minute,0).isoformat())
+        new_voyage_date = dateutil.parser.parse(some_voyage.get_departure())
         new_voyage_destination = some_voyage.get_destination()
 
         # Find colliding voyage indexes
@@ -46,8 +47,8 @@ class VoyageLL:
 
         # Find the other three dates
         arrival_1 = new_voyage_date + datetime.timedelta(minutes= flight_time)
-        departure_2 = new_voyage_date + datetime.timedelta(minutes= (flight_time + self.__stop_time))
-        arrival_2 = new_voyage_date + datetime.timedelta(minutes= (flight_time*2 + self.__stop_time))
+        departure_2 = new_voyage_date + datetime.timedelta(minutes= (int(flight_time) + self.__stop_time))
+        arrival_2 = new_voyage_date + datetime.timedelta(minutes= (int(flight_time)*2 + self.__stop_time))
 
         # Add flight numbers and dates to the new voyage
         some_voyage.add_flight_numbers_to_voyage(flight_num_1, flight_num_2)
