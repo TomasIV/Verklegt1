@@ -1,6 +1,6 @@
 from UserInterface.Interface import Interface
 
-def main(): 
+def main():
     Interface().main_menu()
 
 main()

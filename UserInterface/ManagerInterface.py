@@ -233,7 +233,7 @@ class ManagerInterface:
         day = int(input("Day: "))
         hour = int(input("Hour: "))
         minute = int(input("Minute: "))
-        date = dateutil.parser.parse(datetime.datetime(year,month,day,hour,minute,0).isoformat())
+        date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
         return date
 
     def get_voyage_sold_seats(self):
