@@ -26,8 +26,7 @@ class Voyage:
         list_of_attributes = [self.__aircraft_id, self.__home_id, self.__destination_id, \
             self.first_flight_number, self.first_sold_seats, self.__first_departure, self.__first_arrival, \
             self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival]
-        for person in self.employees:
-            list_of_attributes.append(person)
+        list_of_attributes.extend(self.employees)
         return list_of_attributes
 
     def add_employee_to_voyage(self, ssn):
@@ -52,6 +51,11 @@ class Voyage:
 
         self.first_flight_number = self.first_flight_number[:4] + last_char_1
         self.second_flight_number = self.second_flight_number[:4] + last_char_2
+    
+    def clean_employee_list(self):
+        for num in range(len(self.employees)-1, -1, -1):
+            if self.employees[num] == '':
+                self.employees.pop(num)
 
     def __eq__(self, comparison):
         if self.__aircraft_id == comparison \
