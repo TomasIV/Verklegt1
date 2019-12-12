@@ -83,7 +83,15 @@ class VoyageLL:
     def add_employee_to_voyage(self, ssn): # Þarf að skrifa
         pass
 
-    def get_voyage_status(self): # Þarf að skrifa
-        pass
+    def get_voyage_status(self, some_voyage): # Er að skrifa
+        departure_1 = dateutil.parser.parse(some_voyage.get_departure())
+        arrival_2 = dateutil.parser.parse(some_voyage.get_takeoff_dates())
+        if datetime.datetime.now() < departure_1:
+            return 'Upcoming'
+        elif departure_1 <= datetime.datetime.now() <= arrival_2:
+            return 'Ongoing'
+        elif arrival_2 < datetime.datetime.now():
+            return 'Finished'
+
     def view_all_voyages(self):
         return self.__data_layer.view_all_voyages()

@@ -30,13 +30,14 @@ class Voyage:
             a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", "None")
         return a_str
 
-    def get_arrival(self):
-        return self.__second_arrival
     def get_destination(self):
         return self.__destination_id
     
     def get_departure(self):
         return self.__first_departure
+
+    def get_takeoff_dates(self):
+        return [self.__first_departure, self.__first_arrival, self.__second_departure, self.__second_arrival]
 
     def get_voyage_attributes(self):
         list_of_attributes = [self.__aircraft_id, self.__home_id, self.__destination_id, \
