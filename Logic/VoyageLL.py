@@ -72,7 +72,10 @@ class VoyageLL:
         return found_voyages
 
     def get_all_voyages(self):
-        return self.__data_layer.list_voyages()
+        all_voyages = self.__data_layer.list_voyages()
+        for num in range(len(all_voyages)):
+            all_voyages[num].clean_employee_list()
+        return all_voyages
 
     def add_employee_to_voyage(self, ssn): # Þarf að skrifa
         pass
