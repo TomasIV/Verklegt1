@@ -230,6 +230,7 @@ class ManagerInterface:
         day = int(input("Day: "))
         hour = int(input("Hour: "))
         minute = int(input("Minute: "))
+        print("")
         date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
         return date
 
@@ -252,7 +253,10 @@ class ManagerInterface:
         #Búa til brú niður í LL þar sem athugað er hvort flugvélin sé nógu stór?
 
     def get_voyage_destination(self):
-        voyage_destination = input("Enter voyage destination: ")
+        all_destinations = self.__logicapi.list_all_destinations()
+        for destinations in all_destinations:
+            print (destinations._Destination__destination, "-", destinations._Destination__id,)
+        voyage_destination = input("Enter voyage destinations three letter id: ").upper()
         return voyage_destination
 
     def get_destination_number(self):
