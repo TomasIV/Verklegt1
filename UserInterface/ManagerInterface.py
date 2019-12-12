@@ -68,7 +68,9 @@ class ManagerInterface:
                 self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
-                self.change_voyage()
+                a_voyage = self.find_voyage()
+                
+                self.__logicapi.change_voyage(a_voyage, )
             elif command_str == "5":
                 self.change_destination()
             elif command_str == "6":
@@ -291,7 +293,7 @@ class ManagerInterface:
             new_info = self.get_destination_emergency_phone()
         if change:
             self.__logicapi.change_destination(destination_name.get_name(), change, new_info)
-    def change_voyage(self):
+    def find_voyage(self):
         self.__clear()
         voyages = self.__logicapi.view_all_voyages()
         voyage_info = []
@@ -315,12 +317,11 @@ class ManagerInterface:
                 flight_num = input("Enter a flight number: ")
             date = self.get_voyage_date()
             for voyage in voyages:
-                if date == voyage.get_voyage_depart_time():
+                print (voyage.get_voyage_depart_time())
+                if date == str(voyage.get_voyage_depart_time()):
                     if flight_num in voyage.get_voyage_flight_numbers():
-                        #the_voyage = self.__logicapi.find_voyage(flight_num, date)
-                        input ("Success 1")
+                        the_voyage = self.__logicapi.find_voyage(flight_num, date)
                         run = False
-                        #return the_voyage
             while run:
                 self.__clear()
                 for voyage in voyages:
@@ -330,12 +331,10 @@ class ManagerInterface:
                 print ("Date is not associated with any voyage, please try again")
                 date = self.get_voyage_date()
                 for voyage in voyages:
-                    if date == voyage.get_voyage_depart_time():
+                    if date == str(voyage.get_voyage_depart_time()):
                         if flight_num in voyage.get_voyage_flight_numbers():
-                            input ("Success 2")
                             run = False
-                            #the_voyage = self.__logicapi.find_voyage(flight_num, date)
-            input("GOTEM")
+                            the_voyage = self.__logicapi.find_voyage(flight_num, date)
             return the_voyage
 
     def view_voyage(self):

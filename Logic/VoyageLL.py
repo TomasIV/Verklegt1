@@ -71,7 +71,7 @@ class VoyageLL:
         all_voyages = self.__data_layer.list_voyages()
         found_voyages = []
         for voyage in all_voyages:
-            if (date and time) in voyage:
+            if (date == voyage.get_voyage_depart_time()) and (flight_num in voyage.get_voyage_flight_numbers()):
                 found_voyages.append(voyage)
         return found_voyages
 
