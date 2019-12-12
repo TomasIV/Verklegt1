@@ -1,6 +1,7 @@
 from Models.EmployeeMODEL import Employee
 from Logic.LogicLayerAPI import LogicLayer
 from Models.VoyageMODEL import Voyage
+from UserInterface.ManagerInterface import ManagerInterface
 
 class HRInterface:
 
@@ -8,6 +9,7 @@ class HRInterface:
         self.__interface = interface
         self.__logicapi = LogicLayer()
         self.all_employees = self.__logicapi.list_all_employees()
+        self.themanger = ManagerInterface()
 
         self.__menu_list = ["Back",
         'Edit employees', 'Find Pilot for specific airplane', 'Find employee',
@@ -39,10 +41,9 @@ class HRInterface:
             elif command_str == "4":
                 self.list_menu()
             elif command_str == "5":
-                #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
-                #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
+                self.voyage = self.themanger.find_voyage()
                 print("Please enter what position you want to add to the voyage")
-                self.position = self.get_position_for_voyage()
+                self.position = self.get_position_for_voyage(interface)
                 self.target_employees = self.__logicapi.find_employees(self.position)
                 for person in self.target_employees:
                     print(person)
