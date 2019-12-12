@@ -51,7 +51,7 @@ class ManagerInterface:
                 self.departure_sold_seats = self.get_voyage_sold_seats()
                 print ("Please enter number of sold seats for arrival flight")
                 self.arrival_sold_seats = self.get_voyage_sold_seats()
-                self.voyage_airplane_id = self.get_voyage_airplane_id()
+                self.voyage_airplane_id = self.get_voyage_airplane()
                 self.new_voyage = Voyage(self.voyage_airplane_id, self.voyage_destination, self.departure_sold_seats, self.arrival_sold_seats, self.departure_date_time)
                 self.__logicapi.register_voyage(self.new_voyage)
                 input("Voyage created, press enter to continue...")
