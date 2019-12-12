@@ -33,7 +33,16 @@ class LogicLayer:
         self.__logic_voyage.create_voyage(new_voyage)
     
     def add_employee_to_voyage(self, some_voyage, role, ssn):
-        return self.__logic_voyage.add_employee_to_voyage(ssn)
+        return self.__logic_voyage.add_employee_to_voyage(some_voyage, role, ssn)
+    
+    def get_all_voyages_by_date(self, from_date, to_date):
+        return self.__logic_voyage.get_all_voyages_by_date(from_date, to_date)
+
+    def view_all_voyages(self):
+        return self.__logic_voyage.get_all_voyages()
+
+    def find_voyage(self, flight_num, date):
+        return self.__logic_voyage.find_voyage(flight_num, date)
 
     def register_airplane(self, new_airplane):
         self.__logic_airplane.save_airplane(new_airplane)
@@ -49,9 +58,3 @@ class LogicLayer:
 
     def find_destination(self, search_word):
         return self.__logic_destination.find_destination(search_word)
-
-    def view_all_voyages(self):
-        return self.__logic_voyage.get_all_voyages()
-
-    def find_voyage(self, flight_num, date):
-        return self.__logic_voyage.find_voyage(flight_num, date)
