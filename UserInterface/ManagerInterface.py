@@ -14,7 +14,7 @@ class ManagerInterface:
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
         "Edit Voyage NSFW", "Edit Destination", 
-        "View Airplanes", "View Voyages NSFW","View Destinations"]
+        "View Airplanes", "View Voyages","View Destinations"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
@@ -292,7 +292,12 @@ class ManagerInterface:
         if change:
             self.__logicapi.change_destination(destination_name.get_name(), change, new_info)
     def change_voyage(self):
-        pass
+        self.__clear()
+        voyages = self.__logicapi.view_all_voyages()
+        for voyage in voyages:
+            print (voyage.get_identification())
+        input("NIG")
+
     def view_voyage(self):
         voyages = self.__logicapi.view_all_voyages()
         for voyage in voyages:
