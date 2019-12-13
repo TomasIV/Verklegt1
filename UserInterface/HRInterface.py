@@ -44,7 +44,6 @@ class HRInterface:
                 role = self.get_position_for_voyage()
                 ssn = self.__logicapi.get_employee_ssn()
                 self.__logicapi.add_employee_to_voyage(some_voyage, role, ssn)
-                input("STOP")
             elif command_str == "6":
                 self.register_new_employee()
             elif command_str == "7":

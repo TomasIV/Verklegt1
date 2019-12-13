@@ -12,7 +12,7 @@ class Employee:
         for voyage in all_voyages:
             cond_1 = (departure_time[:9] == voyage.get_voyage_depart_time()[:9])
             cond_2 = (arrival_time[:9] == voyage.get_arrival()[:9])
-            if self.__ssn in voyage.get_ssn():
+            if self.__ssn in voyage.get_employees_on_voyage():
                 if (cond_1 or cond_2):
                     return True
                 else:
