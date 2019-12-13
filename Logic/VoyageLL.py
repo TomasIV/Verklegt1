@@ -103,6 +103,7 @@ class VoyageLL:
                             if employee.get_license() == voyage_airplane_model:
                                 if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
                                     all_voyage[num].captain = ssn
+                                    input("Employee registered on voyage, press enter to continue!")
                                 else:
                                     return "Employee is already working on that day"
                             else:
@@ -117,6 +118,7 @@ class VoyageLL:
                             if employee.get_license() == voyage_airplane_model:
                                 if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
                                     all_voyage[num].copilot = ssn
+                                    input("Employee registered on voyage, press enter to continue!")
                                 else:
                                     return "Employee is already working on that day"
                             else:
