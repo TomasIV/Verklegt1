@@ -3,7 +3,9 @@ import dateutil.parser
 
 class Voyage:
     '''Voyage class.
-    It has 17 variables (besides "self"), 11 of which have a default value.'''
+    It has 17 attributes but only takes 16 variables (besides "self"),
+    11 of which have a default value.
+    All of the defaulted variables can be assigned via functions within the class.'''
     def __init__(self, airplane, destination, sold_seats_out, sold_seats_back, \
             first_departure_date, first_arrival_date = '', second_departure_date = '', second_arrival_date = '', \
             home_airport = 'KEF', flight_number_1 = '', flight_number_2 = '', captain = '', copilot = '', fsm = '', fa1 = '', fa2 = ''):
