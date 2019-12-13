@@ -56,7 +56,7 @@ class Interface:
                 command_input_str = str (command_input)
                 command = command_input_str[2]
             else:
-                command = input("Enter a number you mac bitch: ")
+                command = input("Enter a number you macintosh user: ")
         return str(command)
     
 
@@ -86,7 +86,7 @@ class Interface:
             user_input_str = str(user_input) #Converts to string
             return user_input_str[2] #Return the char pressed
         except:
-            return input("Enter something wrong u mac ReTaRd: ")
+            return input("Enter something wrong u macintosh user: ")
     
     def error_check_num(self, allowed_length, num):
         new_num = ""
