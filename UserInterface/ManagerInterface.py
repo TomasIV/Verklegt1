@@ -292,10 +292,10 @@ class ManagerInterface:
             for char in sold_seats:
                 if char in num:
                     new_num += char
-                if 0 < len(new_num) < 4:
-                    return new_num
-                else: 
-                    print("Invalid input, please try again!")
+            if 0 < len(new_num) < 4:
+                return new_num
+            else: 
+                print("Invalid input, please try again!")
 
     def get_voyage_airplane(self):
         voyage_airplane_id = input("Enter Airplane ID for voyage: ")
