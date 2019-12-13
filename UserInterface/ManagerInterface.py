@@ -46,6 +46,10 @@ class ManagerInterface:
                 print ("Please enter a new voyage")
                 print ("Please enter date and time of departure")
                 self.departure_date_time = self.__interface.get_voyage_date()
+                while self.__logicapi.voyage_time(self.departure_date_time) == False:
+                    print("Date/Time unavailable")
+                    print ("Please enter date and time of departure")
+                    self.departure_date_time = self.__interface.get_voyage_date()
                 self.voyage_destination = self.get_voyage_destination()
                 print ("Please enter number of sold seats for departure flight")
                 self.departure_sold_seats = self.get_voyage_sold_seats()
