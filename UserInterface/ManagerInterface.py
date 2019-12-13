@@ -122,9 +122,6 @@ class ManagerInterface:
                     for voyage in voyages:
                         print (voyage)
                     input ("\nPress enter to return...")
-
-
-                
                 
     def get_voyages_on_specific_day(self):
         voyages = self.__logicapi.view_all_voyages()
@@ -135,6 +132,7 @@ class ManagerInterface:
             if date[:9] == voyage_date[:9]:
                 voyage_day_list.append(voyage)
         return voyage_day_list
+        
     def get_km(self):
         return input("Kilometers from Iceland to Destination: ")
     
