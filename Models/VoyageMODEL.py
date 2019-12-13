@@ -21,6 +21,7 @@ class Voyage:
         self.fsm = fsm
         self.fa1 = fa1
         self.fa2 = fa2
+        self.seats = 0
 
     def __str__(self):
         '''Very very long string'''
@@ -29,15 +30,15 @@ class Voyage:
         else:
             manned_or_not = 'Not fully manned!'
 
-        attributes = ['Aircraft ID:', 'Flight number:', 'Departure:', 'Arrival:', 'Sold seats:', 'Captain:', 'Copilot:', 'Flight service manager:', 'Flight attendant:']
-        return "{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<39s}{} to {:<33s}{} to {}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}\n{:<24s}{:<15s}\n".\
+        attributes = ['Aircraft ID:', 'Flight number:', 'Departure:', 'Arrival:', 'Available seats:', 'Sold seats:', 'Captain:', 'Copilot:', 'Flight service manager:', 'Flight attendant:']
+        return "{:<24s}{:<15s}{:<17s}{:<25s}{:<17s}{}\n{:<39s}{} to {:<35s}{} to {}\n{:<24s}{:<15s}{:<17s}{:<25s}{:<17s}{}\n{:<24s}{:<15s}{:<17s}{:<25s}{:<17s}{}\n{:<24s}{:<15s}{:<17s}{:<25s}{:<17s}{}\n{:<24s}{:<15s}{:<17s}{:<25s}{:<17s}{}\n{:<24s}{:<15s}\n".\
             format(attributes[0], self.__aircraft_id, attributes[1], self.first_flight_number, attributes[1], self.second_flight_number, \
             manned_or_not, self.__home_id, self.__destination_id, self.__destination_id, self.__home_id, \
-            attributes[5], self.captain, attributes[2], self.__first_departure, attributes[2], self.__second_departure, \
-            attributes[6], self.copilot, attributes[3], self.__first_arrival, attributes[3], self.__second_arrival, \
-            attributes[7], self.fsm, attributes[4], self.first_sold_seats, attributes[4], self.second_sold_seats, \
-            attributes[8], self.fa1, \
-            attributes[8], self.fa2)
+            attributes[6], self.captain, attributes[2], self.__first_departure, attributes[2], self.__second_departure, \
+            attributes[7], self.copilot, attributes[3], self.__first_arrival, attributes[3], self.__second_arrival, \
+            attributes[8], self.fsm, attributes[4], str(self.seats - int(self.first_sold_seats)), attributes[4], str(self.seats - int(self.second_sold_seats)), \
+            attributes[9], self.fa1, attributes[5], self.first_sold_seats, attributes[5], self.second_sold_seats, \
+            attributes[9], self.fa2)
 
     def get_identification(self):
         one = ("\n{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From/To", "Flight number", "Departure", "Arrival", "Sold seats"))
@@ -80,6 +81,9 @@ class Voyage:
     def add_flight_numbers_to_voyage(self, num1, num2):
         self.first_flight_number = num1
         self.second_flight_number = num2
+    
+    def add_number_of_seats(self, number_of_seats):
+        self.seats = number_of_seats
 
     def change_flight_numbers(self):
         '''Takes an instance of a Voyage and raises the last number in the flight numbers by 2'''
@@ -106,7 +110,9 @@ class Voyage:
             return True
         else:
             return False
+
     def get_arrival(self):
         return self.__second_arrival
+
     def get_airplane_name(self):
         return self.__aircraft_id
