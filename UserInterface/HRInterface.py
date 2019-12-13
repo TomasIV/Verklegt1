@@ -351,7 +351,8 @@ class HRInterface:
                 
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
-        self.ssn = self.__logicapi.get_employee_ssn(True)
+        some_bool = True
+        self.ssn = self.__logicapi.get_employee_ssn(some_bool)
         self.name = self.get_employee_name()
         self.role = self.get_employee_role()
         if self.role == "Pilot":
