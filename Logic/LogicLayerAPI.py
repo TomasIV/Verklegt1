@@ -52,6 +52,9 @@ class LogicLayer:
     
     def list_all_airplanes(self):
         return self.__logic_airplane.list_airplanes()
+    
+    def get_airplane_status(self, some_plane, some_date):
+        return self.__logic_airplane.get_airplane_status(some_plane, some_date)
 
     def find_destination(self, search_word):
         return self.__logic_destination.find_destination(search_word)

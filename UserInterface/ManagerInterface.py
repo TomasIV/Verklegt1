@@ -90,10 +90,17 @@ class ManagerInterface:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
                 all_airplanes = self.__logicapi.list_all_airplanes()
-                for airplane in all_airplanes:
-                    
-                    airplane.add_status('Bitch')
-                    print (airplane)
+                if chosen == "1":
+                    for airplane in all_airplanes:
+                        status = self.__logicapi.get_airplane_status(airplane, datetime.datetime.now().isoformat())
+                        airplane.add_status(status)
+                        print (airplane)
+                elif chosen == "2":
+                    some_date = self.__interface.get_voyage_date()
+                    for airplane in all_airplanes:
+                        status = self.__logicapi.get_airplane_status(airplane, some_date)
+                        airplane.add_status(status)
+                        print (airplane)
                 input ("Presss enter to return......")
             elif command_str == "7":
                 self.view_voyage()
