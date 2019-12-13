@@ -11,7 +11,7 @@ class HRInterface:
 
         self.__menu_list = ["Back",
         'Edit employees', 'Find Pilot for specific airplane', 'Find employee',
-        'List Employees', 'Register employees on voyage', 'Register new employee', "Working?", "List employees work schedule"]
+        'List Employees', 'Register employees on voyage', 'Register new employee', "Is employee on duty", "List employees work schedule"]
 
         self.__list_menu = ["Back",
         "Employees", "Pilots", "Captains",
