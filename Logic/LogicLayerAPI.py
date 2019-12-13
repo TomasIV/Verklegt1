@@ -67,3 +67,6 @@ class LogicLayer:
 
     def voyage_time(self, date_time):
         return self.__logic_voyage.voyage_time_check(date_time)
+
+    def get_most_popular_destination(self):
+        return self.__logic_destination.list_most_popular_destination()

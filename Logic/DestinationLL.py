@@ -21,7 +21,15 @@ class DestinationLL:
         self.__data_layer.overwrite_destination_file(all_destinations)
 
     def list_most_popular_destination(self): # Þarf að skrifa
-        pass
+        all_voyages = self.__data_layer.listvoyages()
+        destination_dict = {}
+        for destination in all_voyages:
+            if destination in destination_dict:
+                destination_dict[destination] += 1
+            else:
+                destination_dict[destination] = 1
+        sorted(destination_dict)
+        return destination_dict[0]
 
     def find_destination(self, search_word):
         all_destinations = self.__data_layer.list_destinations()
