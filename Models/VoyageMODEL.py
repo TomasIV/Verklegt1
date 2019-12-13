@@ -30,7 +30,7 @@ class Voyage:
             manned_or_not = 'Not fully manned!'
 
         attributes = ['Aircraft ID:', 'Flight number:', 'Departure:', 'Arrival:', 'Sold seats:', 'Captain:', 'Copilot:', 'Flight service manager:', 'Flight attendant:']
-        return "{:<25s}{:<15s}{}{}{}{}\n{:<25s}{} to {}{} to {}\n{:<25s}{:<15s}{}{}{}{}\n{:<25s}{:<15s}{}{}{}{}\n{:<25s}{:<15s}{}{}{}{}\n{:<25s}{:<15s}\n{:<25s}{:<15s}\n".\
+        return "{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<39s}{} to {:<33s}{} to {}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}\n{:<24s}{:<15s}\n".\
             format(attributes[0], self.__aircraft_id, attributes[1], self.first_flight_number, attributes[1], self.second_flight_number, \
             manned_or_not, self.__home_id, self.__destination_id, self.__destination_id, self.__home_id, \
             attributes[5], self.captain, attributes[2], self.__first_departure, attributes[2], self.__second_departure, \
