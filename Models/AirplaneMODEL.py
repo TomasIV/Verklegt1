@@ -14,5 +14,8 @@ class Airplane:
             return False
     def get_airplane_attributes(self):
         return [self.name, self.model]
-    def get_name
+    def get_name(self):
+        return self.name
+    def get_model(self):
+        return self.model
     
