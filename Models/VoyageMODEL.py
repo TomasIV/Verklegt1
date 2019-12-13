@@ -64,6 +64,7 @@ class Voyage:
 
     def get_employees_on_voyage(self):
         return [self.captain, self.copilot, self.fsm, self.fa1, self.fa2]
+
     def get_destination(self):
         return self.__destination_id
     
@@ -83,7 +84,7 @@ class Voyage:
         return [self.__aircraft_id, self.__home_id, self.__destination_id, \
             self.first_flight_number, self.first_sold_seats, self.__first_departure, self.__first_arrival, \
             self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival, \
-            self.captain, self.copilot, self.fa1, self.fa2]
+            self.captain, self.copilot, self.fsm, self.fa1, self.fa2]
     
     def add_dates_to_voyage(self, first_arrival_date, second_departure_date, second_arrival_date):
         self.__first_arrival = first_arrival_date
