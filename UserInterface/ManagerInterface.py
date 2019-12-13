@@ -96,7 +96,7 @@ class ManagerInterface:
                         airplane.add_status(status)
                         print (airplane)
                 elif chosen == "2":
-                    some_date = self.__interface.get_voyage_date()
+                    some_date = self.__interface.get_voyage_date_without_time()
                     for airplane in all_airplanes:
                         status = self.__logicapi.get_airplane_status(airplane, some_date)
                         airplane.add_status(status)
