@@ -10,6 +10,7 @@ class EmployeeLL:
         self.__data_layer.save_employee(new_employee)
     
     def find_employee(self, search_word):
+        '''Gets list of all employes from the DataLayer and returns specific employee depending on search_word to InterfaceLayer '''
         all_employees = self.__data_layer.list_employee()
         found_employees = []
         for person in all_employees:
@@ -18,6 +19,7 @@ class EmployeeLL:
         return found_employees
     
     def get_all_employees_from_voyages(self, list_of_voyages):
+        ''' Gets list of employees from DataLayer and return a list of employees on a specific voyage to Interface through API '''
         found_employees = []
         for voyage in list_of_voyages:
             employees = voyage.get_employees_on_voyage()
@@ -30,9 +32,11 @@ class EmployeeLL:
             return found_employees
     
     def get_all_employees(self):
+        ''' Returns list of employee '''
         return self.__data_layer.list_employee()
     
     def change_employee(self, SSN_number, what_to_change, new_info):
+        ''' Find employee by ssn and changes specific attribute and saves to datalayer '''
         all_employees = self.__data_layer.list_employee()
         for num in range(len(all_employees)):
             if all_employees[num] == SSN_number:
@@ -47,6 +51,7 @@ class EmployeeLL:
         self.__data_layer.overwrite_employee_file(all_employees)
 
     def get_ssn(self, some_bool):
+        ''' Takes ssn input from user and error checks it to make sure its valid '''
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         ssn = 99
         while ssn:
