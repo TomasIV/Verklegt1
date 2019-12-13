@@ -121,7 +121,7 @@ class VoyageLL:
                                 else:
                                     return "Employee is already working on that day"
                             else:
-                                return "Pilots license does not match airplane on voyage!"
+                                return print("Pilots license does not match airplane on voyage!")
                 elif role == "Copilot":
                     voyage_airplane_name = some_voyage.get_airplane_name()
                     for plane in all_planes:
