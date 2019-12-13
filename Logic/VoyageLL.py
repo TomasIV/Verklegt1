@@ -145,7 +145,7 @@ class VoyageLL:
                     else:
                         all_voyage[num].fa2 = ssn
         self.__data_layer.overwrite_voyages(all_voyage)
-        return
+        return 
 
 
     def get_voyage_status(self, some_voyage, right_now = datetime.datetime.now()):
