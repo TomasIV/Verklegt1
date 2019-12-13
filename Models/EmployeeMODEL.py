@@ -34,14 +34,6 @@ class Employee:
         return self.license
     def get_rank(self):
         return self.__rank
-    
-
-    #How the list is suppose to print
-        #SSN
-        #Name       license 
-        #Address    Role 
-        #Moblie     Rank
-        #Email 
 
     def get_employee_attributes(self):
         return [self.__ssn, self.__name, self.__role, self.__rank, self.license, self.address, self.mobile, self.email]

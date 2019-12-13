@@ -9,8 +9,8 @@ class InformationInterface:
         self.__logicapi = LogicLayer()
         self.__menu_list = ["Back",
         "List all employees", "Employees on a voyage",
-        "Most popular destinations NSFW", "All destinations",
-        "Active voyages NSFW", "Old voyages NSFW", "Future voyages NSFW"]
+        "Most popular destinations", "All destinations",
+        "Active voyages", "Old voyages", "Future voyages"]
         self.__clear = self.__interface.clear
         self.__menu_helper = self.__interface.menu_helper
 
@@ -33,15 +33,21 @@ class InformationInterface:
                 if chosen == "1":
                     some_date = datetime.datetime.now().isoformat()
                     voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
-                    employees = self.__logicapi.get_employees_from_voyages(voyages)
-                    for person in employees:
-                        print(person)
+                    if voyages == ['No voyages found...']:
+                        print(voyages[0])
+                    else:
+                        employees = self.__logicapi.get_employees_from_voyages(voyages)
+                        for person in employees:
+                            print(person)
                 elif chosen == "2":
                     some_date = self.__interface.get_voyage_date_without_time()
                     voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
-                    employees = self.__logicapi.get_employees_from_voyages(voyages)
-                    for person in employees:
-                        print(person)
+                    if voyages == ['No voyages found...']:
+                        print(voyages[0])
+                    else:
+                        employees = self.__logicapi.get_employees_from_voyages(voyages)
+                        for person in employees:
+                            print(person)
                 input ("Press enter to continue...")
             elif command_str == "3":
                 this_is_a_tuple = self.__logicapi.get_most_popular_destination()
@@ -53,4 +59,17 @@ class InformationInterface:
                     print (destination)
                 input ("press enter to continue...")
             elif command_str == "5":
-                pass
+                list_of_voyages = self.__logicapi.get_voyages_by_status('active')
+                for voyage in list_of_voyages:
+                    print(voyage)
+                input ("press enter to continue...")
+            elif command_str == "6":
+                list_of_voyages = self.__logicapi.get_voyages_by_status('finished')
+                for voyage in list_of_voyages:
+                    print(voyage)
+                input ("press enter to continue...")
+            elif command_str == "7":
+                list_of_voyages = self.__logicapi.get_voyages_by_status('upcoming')
+                for voyage in list_of_voyages:
+                    print(voyage)
+                input ("press enter to continue...")

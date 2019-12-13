@@ -46,6 +46,9 @@ class LogicLayer:
 
     def find_voyage(self, flight_num, date):
         return self.__logic_voyage.find_voyage(flight_num, date)
+    
+    def get_voyages_by_status(self, some_status):
+        return self.__logic_voyage.get_voyages_by_status(some_status)
 
     def register_airplane(self, new_airplane):
         self.__logic_airplane.save_airplane(new_airplane)
