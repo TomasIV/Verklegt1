@@ -132,13 +132,12 @@ class VoyageLL:
         return
 
 
-    def get_voyage_status(self, some_voyage):
+    def get_voyage_status(self, some_voyage, right_now = datetime.datetime.now()):
         departure_1, arrival_1, departure_2, arrival_2 = some_voyage.get_takeoff_dates()
         departure_1 = dateutil.parser.parse(departure_1)
         arrival_1 = dateutil.parser.parse(arrival_1)
         departure_2 = dateutil.parser.parse(departure_2)
         arrival_2 = dateutil.parser.parse(arrival_2)
-        right_now = datetime.datetime.now()
 
         if right_now < departure_1:
             return 'Upcoming'

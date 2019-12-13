@@ -81,9 +81,18 @@ class ManagerInterface:
                 #self.__logicapi.change_voyage(a_voyage, )
             elif command_str == "5":
                 self.change_destination()
-            elif command_str == "6":
+
+            elif command_str == "6": #######
+                options = ["1", "2"]
+                print("1. Status for today\t2. Status for some specific day")
+                chosen = self.__interface.get_input()
+                while chosen not in options:
+                    print ("Invalid input please try again")
+                    chosen = self.__interface.get_input()
                 all_airplanes = self.__logicapi.list_all_airplanes()
                 for airplane in all_airplanes:
+                    
+                    airplane.add_status('Bitch')
                     print (airplane)
                 input ("Presss enter to return......")
             elif command_str == "7":
@@ -93,7 +102,6 @@ class ManagerInterface:
                 for destinations in all_destinations:
                     print (destinations)
                 input ("Press enter to return...")
-
             elif command_str == "9":
                 options = ["1", "2"]
                 print ("1. Day" + "\t" + "2. Week",)
