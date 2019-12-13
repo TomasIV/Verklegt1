@@ -6,12 +6,15 @@ class DestinationLL:
         self.__data_layer = DataLayer()
 
     def list_all_destinations(self):
+        '''return all destinations in a list'''
         return self.__data_layer.list_destinations()
 
     def save_destination(self, new_destination):
+        '''takes a instance of a destination and saves it'''
         self.__data_layer.save_destinations(new_destination)
 
     def change_destination(self, destination_name, what_to_change, new_info):
+        '''takes in what destination to change, what attribute to change and what the change is'''
         all_destinations = self.__data_layer.list_destinations()
         for num in range(len(all_destinations)):
             if all_destinations[num] == destination_name:
@@ -41,6 +44,7 @@ class DestinationLL:
         return (pop_des.get_name(), list_of_tuples[-1][0])
 
     def find_destination(self, search_word):
+        '''finds a destination and return it and all information about it'''
         all_destinations = self.__data_layer.list_destinations()
         for place in all_destinations:
             if place == search_word:
