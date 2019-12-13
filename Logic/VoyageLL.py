@@ -88,38 +88,41 @@ class VoyageLL:
     def get_all_voyages(self):
         return self.__data_layer.list_voyages()
 
-    def add_employee_to_voyage(self, some_voyage, role, ssn):
+    def add_employee_to_voyage(self, some_voyage, role, ssn, all_plane_models):
         all_voyage = self.__data_layer.list_voyages()
         all_employees = self.__data_layer.list_employee()
         all_planes = self.__data_layer.list_airplanes()
+        some_voyage = some_voyage[0]
         for num in range(len(all_voyage)):
-            if all_voyage[num].get_voyage_depart_time() == some_voyage.get_voyage_depart_time() \
-            and all_voyage[num].get_voyage_flight_numbers() == some_voyage.get_voyage_flight_numbers():
+            if (all_voyage[num].get_voyage_depart_time() == some_voyage.get_voyage_depart_time()) and (all_voyage[num].get_voyage_flight_numbers() == some_voyage.get_voyage_flight_numbers()):
                 if role == "Captain":
-                    voyage_airplane = some_voyage.get_airplane()
+                    voyage_airplane_name = some_voyage.get_airplane_name()
                     for plane in all_planes:
-                        if plane == voyage_airplane:
-                            voyage_license = plane
+                        if voyage_airplane_name == plane.get_name():
+                            voyage_airplane_model = plane.get_model()
                     for employee in all_employees:
                         if employee == ssn:
-                            if employee.get_license() == voyage_license:
+                            if employee.get_license() == voyage_airplane_model:
                                 if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
                                     all_voyage[num].captain = ssn
                                 else:
                                     return "Employee is already working on that day"
                             else:
-                                return "Captains license does not match airplane on voyage!"
+                                return "Pilots license does not match airplane on voyage!"
                 elif role == "Copilot":
-                    voyage_airplane = some_voyage.get_airplane()
+                    voyage_airplane_name = some_voyage.get_airplane_name()
                     for plane in all_planes:
-                        if plane == voyage_airplane:
-                            voyage_license = plane
+                        if voyage_airplane_name == plane.get_name():
+                            voyage_airplane_model = plane.get_model()
                     for employee in all_employees:
                         if employee == ssn:
-                            if employee.get_license() == voyage_license:
-                                all_voyage[num].copilot = ssn
+                            if employee.get_license() == voyage_airplane_model:
+                                if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
+                                    all_voyage[num].copilot = ssn
+                                else:
+                                    return "Employee is already working on that day"
                             else:
-                                return "Copilots license does not match airplane on voyage!"
+                                return "Pilots license does not match airplane on voyage!"
                 elif role == "Flight Service Manager":
                     all_voyage[num].fsm = ssn
                 elif role == "Flight Attendant":

@@ -121,3 +121,5 @@ class Voyage:
             return False
     def get_arrival(self):
         return self.__second_arrival
+    def get_airplane_name(self):
+        return self.__aircraft_id
