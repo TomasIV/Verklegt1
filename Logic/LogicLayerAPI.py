@@ -23,6 +23,9 @@ class LogicLayer:
         """Finds employee/s by ssn and returns as list"""
         return self.__logic_employee.find_employee(search_word)
     
+    def get_employees_from_voyages(self, list_of_voyages):
+        return self.__logic_employee.get_all_employees_from_voyages(list_of_voyages)
+    
     def list_all_destinations(self):
         return self.__logic_destination.list_all_destinations()
     
