@@ -45,7 +45,6 @@ class HRInterface:
                 some_bool = False
                 ssn = self.__logicapi.get_employee_ssn(some_bool)
                 self.__logicapi.add_employee_to_voyage(some_voyage, role, ssn)
-                print("{} added to voyage".format(role))
                 input("press enter to return...")
             elif command_str == "6":
                 self.register_new_employee()

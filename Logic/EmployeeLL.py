@@ -1,4 +1,5 @@
 from Models.EmployeeMODEL import Employee
+from Models.VoyageMODEL import Voyage
 from Data.DataLayerAPI import DataLayer
 
 class EmployeeLL:
@@ -13,6 +14,15 @@ class EmployeeLL:
         found_employees = []
         for person in all_employees:
             if person == search_word:
+                found_employees.append(person)
+        return found_employees
+    
+    def get_all_employees_from_voyages(self, list_of_voyages):
+        found_employees = []
+        for voyage in list_of_voyages:
+            employees = voyage.get_employees_on_voyage()
+            for ssn in employees:
+                person = self.find_employee(ssn)
                 found_employees.append(person)
         return found_employees
     

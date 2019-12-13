@@ -1,11 +1,14 @@
+import datetime
+import dateutil
 from Logic.LogicLayerAPI import LogicLayer
+from Models.EmployeeMODEL import Employee
 
 class InformationInterface:
     def __init__(self, interface):
         self.__interface = interface
-        self.all_employees = LogicLayer().list_all_employees()
+        self.__logicapi = LogicLayer()
         self.__menu_list = ["Back",
-        "List all employees", "Employees on a voyage NSFW",
+        "List all employees", "Employees on a voyage",
         "Most popular destinations NSFW", "All destinations",
         "Active voyages NSFW", "Old voyages NSFW", "Future voyages NSFW"]
         self.__clear = self.__interface.clear
@@ -17,11 +20,33 @@ class InformationInterface:
             if command_str == "0":
                 return
             elif command_str =="1":
-                for employee in self.all_employees:
+                for employee in self.__logicapi.list_all_employees():
                     print (employee)
+                input ("Press enter to continue...")
+            elif command_str == "2":
+                options = ["1", "2"]
+                print("1. Today\t2. Other")
+                chosen = self.__interface.get_input()
+                while chosen not in options:
+                    print ("Invalid input please try again")
+                    chosen = self.__interface.get_input()
+                if chosen == "1":
+                    some_date = datetime.datetime.now().isoformat()
+                    voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
+                    employees = self.__logicapi.get_employees_from_voyages(voyages)
+                    for person in employees:
+                        print(person)
+                elif chosen == "2":
+                    some_date = self.__interface.get_voyage_date()
+                    voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
+                    employees = self.__logicapi.get_employees_from_voyages(voyages)
+                    for person in employees:
+                        print(person)
                 input ("Press enter to continue...")
             elif command_str == "4":
                 destinations = LogicLayer().list_all_destinations()
                 for destination in destinations:
                     print (destination)
                 input ("press enter to continue...")
+            elif command_str == "5":
+                pass
