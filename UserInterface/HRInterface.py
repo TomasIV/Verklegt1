@@ -11,7 +11,7 @@ class HRInterface:
 
         self.__menu_list = ["Back",
         'Edit employees', 'Find Pilot for specific airplane', 'Find employee',
-        'List Employees', 'Register employees on voyage - NSFW', 'Register new employee', "Working?"]
+        'List Employees', 'Register employees on voyage', 'Register new employee', "Working?"]
 
         self.__list_menu = ["Back",
         "Employees", "Pilots", "Captains",
@@ -44,7 +44,8 @@ class HRInterface:
                 role = self.get_position_for_voyage()
                 ssn = self.__logicapi.get_employee_ssn()
                 self.__logicapi.add_employee_to_voyage(some_voyage, role, ssn)
-                input("STOP")
+                print("{} added to voyage".format(role))
+                input("press enter to return...")
             elif command_str == "6":
                 self.register_new_employee()
             elif command_str == "7":
