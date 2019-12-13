@@ -9,8 +9,6 @@ from Models.AirplaneMODEL import Airplane
 from Data.DestinationDL import DestinationDL
 from Data.AircraftModelDL import PlaneModel
 
-# connecting datalayer to logiclayer
-
 class DataLayer:
     def __init__(self):
         self.__data_employee = EmployeeDL()

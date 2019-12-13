@@ -9,7 +9,7 @@ from sys import platform
 try:
     import msvcrt
 except:
-    pass #virkar ekki a fokking mac, what a bitch os
+    pass #virkar ekki a mac
 
 class Interface:
 
@@ -50,14 +50,13 @@ class Interface:
         """Checks to see if the command is valid (in the options list)"""
         while command not in options:
             print ("Invalid input, please try again")
-            #command = str(input("Select a number: "))
             print ("Select a number")
             if platform == "win32" or "win64":
                 command_input = msvcrt.getch()
                 command_input_str = str (command_input)
                 command = command_input_str[2]
             else:
-                command = input("Enter a number you mac bitch: ")
+                command = input("Enter a number you macintosh user: ")
         return str(command)
     
 
@@ -87,7 +86,7 @@ class Interface:
             user_input_str = str(user_input) #Converts to string
             return user_input_str[2] #Return the char pressed
         except:
-            return input("Enter something wrong u mac ReTaRd: ")
+            return input("Enter something u macintosh user: ")
     
     def error_check_num(self, allowed_length, num):
         new_num = ""
@@ -206,7 +205,6 @@ class Interface:
             self.dash_divider(a) # lína 82
 
             input_command_str = self.get_input()
-            #input_command_str =  str(input("Enter a number: "))
             command_str = self.check_command(input_command_str, options_commands)
             if command_str == "0":
                 self.clear()

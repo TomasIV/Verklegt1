@@ -14,10 +14,6 @@ class DestinationDL:
             csv_writer = csv.writer(destination, lineterminator = "\r")
             csv_writer.writerow(some_destination.get_destination_attributes())
 
-   
-    # We need to be able to list all destinations that people can travel to
-    # Opens csv file and reads rows 
-    # Returns list of destinations
     def list_destinations(self):
         '''Takes an destination file and reads all destinations from it.
             Returns a list of all destinations.'''
@@ -29,9 +25,6 @@ class DestinationDL:
                 list_destinations.append(destination)
         return list_destinations
     
-    # We need to be able to overwrite aircraft file if user wants to make any changes
-    # Open files and write 
-    # To be able to overwrite file with the new info
     def overwrite_destination_file(self, list_of_destinations):
         '''Opens destination file and overwrites new info into destination file'''
         with open(self.PATH, "w", encoding="utf-8") as cleared_file:
