@@ -42,7 +42,8 @@ class HRInterface:
                 some_voyage = self.__interface.find_voyage()
                 print("Please enter what position you want to add to the voyage")
                 role = self.get_position_for_voyage()
-                ssn = self.__logicapi.get_employee_ssn()
+                some_bool = False
+                ssn = self.__logicapi.get_employee_ssn(some_bool)
                 self.__logicapi.add_employee_to_voyage(some_voyage, role, ssn)
                 print("{} added to voyage".format(role))
                 input("press enter to return...")
@@ -87,9 +88,10 @@ class HRInterface:
         
             elif command_str == "8":
                 options = ["1", "2"]
-                print ("1. Day" + "\t" + "2. Week",)
+                print ("1. Day" + "\t" + "2. from date, to date")
                 chosen = self.__interface.get_input()
-                ssn = self.__logicapi.get_employee_ssn(True)
+                some_bool = False
+                ssn = self.__logicapi.get_employee_ssn(some_bool)
                 while chosen not in options:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
@@ -102,7 +104,9 @@ class HRInterface:
                     input("Press enter to return...")
                 elif chosen == "2":
                     input ("First enter in a date to start with and next the end date\npress enter to continute...")
+                    print ("input the 'from' date")
                     from_date = self.__interface.get_voyage_date_without_time()
+                    print ("input the 'to' date")
                     to_date = self.__interface.get_voyage_date_without_time()
                     voyages = self.__logicapi.get_all_voyages_by_date(from_date, to_date)
                     for voyage in voyages:
@@ -351,7 +355,8 @@ class HRInterface:
                 
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
-        self.ssn = self.__logicapi.get_employee_ssn(True)
+        some_bool = True
+        self.ssn = self.__logicapi.get_employee_ssn(some_bool)
         self.name = self.get_employee_name()
         self.role = self.get_employee_role()
         if self.role == "Pilot":

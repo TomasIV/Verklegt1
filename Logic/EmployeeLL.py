@@ -33,7 +33,7 @@ class EmployeeLL:
                     all_employees[num].email = new_info
         self.__data_layer.overwrite_employee_file(all_employees)
 
-    def get_ssn(self, new_ssn = ""):
+    def get_ssn(self, some_bool):
         num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
         ssn = 99
         while ssn:
@@ -49,12 +49,24 @@ class EmployeeLL:
                 last = int(new_ssn[-1]) # takes the last int in the string as a century
                 if last == 0: #if year == 2000
                     if ((32 > d > 0 ) and ( 13 > m > 0) and (y < 20)):
-                        return new_ssn
+                        if some_bool:
+                            if not self.check_ssn(new_ssn):
+                                return new_ssn
+                            else:
+                                print ("SSN already exists")
+                        else:
+                            return new_ssn
                     else:
                         print("SSN not valid")
                 elif str(last) == "9": #if year == 1900
                     if (( 32 > d > 0 ) and (13 > m > 0)):
-                        return new_ssn
+                        if some_bool:
+                            if not self.check_ssn(new_ssn):
+                                return new_ssn
+                            else:
+                                print ("SSN already exists")
+                        else:
+                            return new_ssn
                     else:
                         print("SSN not valid")
                 else:
@@ -71,4 +83,3 @@ class EmployeeLL:
             return True
         else:
             return False
-        

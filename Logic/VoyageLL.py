@@ -58,11 +58,11 @@ class VoyageLL:
         all_voyages.append(some_voyage)
         self.__data_layer.overwrite_voyages(all_voyages)
 
-    def voyage_time_check(self, some_voyage):
+    def voyage_time_check(self, some_date):
         '''Takes a Voyage and checks to see if the departure time collides with any pre-existing voyage'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
-            if voyage.get_voyage_depart_time() == some_voyage.get_voyage_depart_time():
+            if voyage.get_voyage_depart_time() == some_date:
                 return False
         return True
 
@@ -90,7 +90,7 @@ class VoyageLL:
         all_voyage = self.__data_layer.list_voyages()
         all_employees = self.__data_layer.list_employee()
         all_planes = self.__data_layer.list_airplanes()
-        some_voyage = some_voyage[0]
+        some_voyage = some_voyage
         for num in range(len(all_voyage)):
             if (all_voyage[num].get_voyage_depart_time() == some_voyage.get_voyage_depart_time()) and (all_voyage[num].get_voyage_flight_numbers() == some_voyage.get_voyage_flight_numbers()):
                 if role == "Captain":
@@ -103,6 +103,7 @@ class VoyageLL:
                             if employee.get_license() == voyage_airplane_model:
                                 if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
                                     all_voyage[num].captain = ssn
+                                    input("Employee registered on voyage, press enter to continue!")
                                 else:
                                     return "Employee is already working on that day"
                             else:
@@ -117,6 +118,7 @@ class VoyageLL:
                             if employee.get_license() == voyage_airplane_model:
                                 if not employee.busy(some_voyage.get_voyage_depart_time(), some_voyage.get_arrival(), self.get_all_voyages()):  
                                     all_voyage[num].copilot = ssn
+                                    input("Employee registered on voyage, press enter to continue!")
                                 else:
                                     return "Employee is already working on that day"
                             else:
@@ -132,13 +134,12 @@ class VoyageLL:
         return
 
 
-    def get_voyage_status(self, some_voyage):
+    def get_voyage_status(self, some_voyage, right_now = datetime.datetime.now()):
         departure_1, arrival_1, departure_2, arrival_2 = some_voyage.get_takeoff_dates()
         departure_1 = dateutil.parser.parse(departure_1)
         arrival_1 = dateutil.parser.parse(arrival_1)
         departure_2 = dateutil.parser.parse(departure_2)
         arrival_2 = dateutil.parser.parse(arrival_2)
-        right_now = datetime.datetime.now()
 
         if right_now < departure_1:
             return 'Upcoming'

@@ -38,23 +38,6 @@ class Voyage:
             attributes[7], self.fsm, attributes[4], self.first_sold_seats, attributes[4], self.second_sold_seats, \
             attributes[8], self.fa1, \
             attributes[8], self.fa2)
-        
-        new_str = ""
-        a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format(
-        "Aircraft ID", self.__aircraft_id,
-        "Home Airport", self.__home_id, "Destination ID", self.__destination_id, "Departure date", self.__first_departure,
-        "Arrival date", self.__first_arrival, "Departure from destination", self.__second_departure, "Arrival from destination", self.__second_arrival,
-        "Sold seats to destination", self.first_sold_seats, "Sold seats from destination", self.second_sold_seats, 
-        "First flight number", self.first_flight_number, "Second flight number", self.second_flight_number)
-
-        new_str +=("\n{:<30s}: {}\t{:<30s}: {}".format("Captain", self.captain, "Co-Pilot", self.copilot))
-        new_str +=("\n{:<30s}: {}\t{:<30s}: {}, {}".format("Flight Service Manager", self.fsm, "Flight attendants", self.fa1, self.fa2))
-        if ((self.captain) and (self.copilot) and (self.fsm)):
-            new_str += str("\nManned: True")
-        else:
-            new_str += str("\nManned: False")
-        new_str += a_str
-        return new_str
 
     def get_identification(self):
         one = ("\n{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From/To", "Flight number", "Departure", "Arrival", "Sold seats"))
@@ -73,6 +56,9 @@ class Voyage:
 
     def get_voyage_flight_numbers(self):
         return (self.first_flight_number, self.second_flight_number)
+    
+    def get_voyage_plane_id(self):
+        return self.__aircraft_id
 
     def get_voyage_depart_time(self):
         return self.__first_departure

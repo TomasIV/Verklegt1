@@ -26,8 +26,8 @@ class PlaneModel:
         Returns a list of all aircraftModels.'''
         list_aircraftType = []
         with open(self.PATH, 'r', encoding="utf-8") as csvfile:
-            reader = csv.DictWriter(csvfile)
+            reader = csv.DictReader(csvfile)
             for row in reader: 
-                aircraftType = aircraftType(row['planeTypeId'], row['manufacturer'], row['model'],row['capacity'], row['emptyWheight'], row['maxTakeoffWeight'], row['unitThrust'], row['serviceCeiling'], row['length'], row['height'], row['wingspan'])
+                aircraftType = [row['planeTypeId'], row['manufacturer'], row['model'],row['capacity'], row['emptyWeight'], row['maxTakeoffWeight'], row['unitThrust'], row['serviceCeiling'], row['length'], row['height'], row['wingspan']]
                 list_aircraftType.append(aircraftType)
             return list_aircraftType

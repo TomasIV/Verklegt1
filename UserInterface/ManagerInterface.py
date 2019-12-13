@@ -46,6 +46,10 @@ class ManagerInterface:
                 print ("Please enter a new voyage")
                 print ("Please enter date and time of departure")
                 self.departure_date_time = self.__interface.get_voyage_date()
+                while self.__logicapi.voyage_time(self.departure_date_time) == False:
+                    print("Date/Time unavailable")
+                    print ("Please enter date and time of departure")
+                    self.departure_date_time = self.__interface.get_voyage_date()
                 self.voyage_destination = self.get_voyage_destination()
                 print ("Please enter number of sold seats for departure flight")
                 self.departure_sold_seats = self.get_voyage_sold_seats()
@@ -82,9 +86,24 @@ class ManagerInterface:
             elif command_str == "5":
                 self.change_destination()
             elif command_str == "6":
+                options = ["1", "2"]
+                print("1. Status for today\t2. Status for some specific day")
+                chosen = self.__interface.get_input()
+                while chosen not in options:
+                    print ("Invalid input please try again")
+                    chosen = self.__interface.get_input()
                 all_airplanes = self.__logicapi.list_all_airplanes()
-                for airplane in all_airplanes:
-                    print (airplane)
+                if chosen == "1":
+                    for airplane in all_airplanes:
+                        status = self.__logicapi.get_airplane_status(airplane, datetime.datetime.now().isoformat())
+                        airplane.add_status(status)
+                        print (airplane)
+                elif chosen == "2":
+                    some_date = self.__interface.get_voyage_date()
+                    for airplane in all_airplanes:
+                        status = self.__logicapi.get_airplane_status(airplane, some_date)
+                        airplane.add_status(status)
+                        print (airplane)
                 input ("Presss enter to return......")
             elif command_str == "7":
                 self.view_voyage()
@@ -93,7 +112,6 @@ class ManagerInterface:
                 for destinations in all_destinations:
                     print (destinations)
                 input ("Press enter to return...")
-
             elif command_str == "9":
                 options = ["1", "2"]
                 print ("1. Day" + "\t" + "2. Week",)
@@ -278,10 +296,10 @@ class ManagerInterface:
             for char in sold_seats:
                 if char in num:
                     new_num += char
-                if 0 < len(new_num) < 4:
-                    return new_num
-                else: 
-                    print("Invalid input, please try again!")
+            if 0 < len(new_num) < 4:
+                return new_num
+            else: 
+                print("Invalid input, please try again!")
 
     def get_voyage_airplane(self):
         voyage_airplane_id = input("Enter Airplane ID for voyage: ")
