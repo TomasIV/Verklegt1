@@ -1,6 +1,7 @@
 import datetime
 import dateutil
 from Logic.LogicLayerAPI import LogicLayer
+from Models.EmployeeMODEL import Employee
 
 class InformationInterface:
     def __init__(self, interface):
@@ -31,11 +32,16 @@ class InformationInterface:
                     chosen = self.__interface.get_input()
                 if chosen == "1":
                     some_date = datetime.datetime.now().isoformat()
-                    self.__logicapi.get_all_voyages_by_date(some_date, some_date)
-                    self
+                    voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
+                    employees = self.__logicapi.get_employees_from_voyages(voyages)
+                    for person in employees:
+                        print(person)
                 elif chosen == "2":
                     some_date = self.__interface.get_voyage_date()
-                    self.__logicapi.get_all_voyages_by_date(some_date, some_date)
+                    voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
+                    employees = self.__logicapi.get_employees_from_voyages(voyages)
+                    for person in employees:
+                        print(person)
                 input ("Press enter to continue...")
             elif command_str == "4":
                 destinations = LogicLayer().list_all_destinations()
