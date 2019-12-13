@@ -37,7 +37,7 @@ class InformationInterface:
                     for person in employees:
                         print(person)
                 elif chosen == "2":
-                    some_date = self.__interface.get_voyage_date()
+                    some_date = self.__interface.get_voyage_date_without_time()
                     voyages = self.__logicapi.get_all_voyages_by_date(some_date, some_date)
                     employees = self.__logicapi.get_employees_from_voyages(voyages)
                     for person in employees:

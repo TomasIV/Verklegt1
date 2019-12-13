@@ -12,7 +12,7 @@ class DestinationDL:
     def save_destinations(self, some_destination):
         with open(self.PATH, "a", encoding="utf-8") as destination:
             csv_writer = csv.writer(destination, lineterminator = "\r")
-            csv_writer.writerow(some_destination.get_destiantion_attributes())
+            csv_writer.writerow(some_destination.get_destination_attributes())
 
    
     # We need to be able to list all destinations that people can travel to
