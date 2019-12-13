@@ -39,12 +39,12 @@ class HRInterface:
             elif command_str == "4":
                 self.list_menu()
             elif command_str == "5":
-                self.voyage = self.__interface.find_voyage()
+                some_voyage = self.__interface.find_voyage()
                 print("Please enter what position you want to add to the voyage")
-                self.position = self.get_position_for_voyage()
-                self.target_employees = self.__logicapi.find_employees(self.position)
-                for person in self.target_employees:
-                    print(person)
+                role = self.get_position_for_voyage()
+                ssn = self.__logicapi.get_employee_ssn()
+                self.__logicapi.add_employee_to_voyage(some_voyage, role, ssn)
+
             elif command_str == "6":
                 self.register_new_employee()
             elif command_str == "7":

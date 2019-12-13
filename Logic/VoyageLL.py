@@ -92,9 +92,9 @@ class VoyageLL:
         all_voyage = self.__data_layer.list_voyages()
         all_employees = self.__data_layer.list_employee()
         all_planes = self.__data_layer.list_airplanes()
+        some_voyage = some_voyage[0]
         for num in range(len(all_voyage)):
-            if all_voyage[num].get_voyage_depart_time() == some_voyage.get_voyage_depart_time() \
-            and all_voyage[num].get_voyage_flight_numbers() == some_voyage.get_voyage_flight_numbers():
+            if (all_voyage[num].get_voyage_depart_time() == some_voyage.get_voyage_depart_time()) and (all_voyage[num].get_voyage_flight_numbers() == some_voyage.get_voyage_flight_numbers()):
                 if role == "Captain":
                     voyage_airplane = some_voyage.get_airplane()
                     for plane in all_planes:
