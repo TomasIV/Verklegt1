@@ -80,12 +80,6 @@ class EmployeeLL:
         for employee in self.get_all_employees():
              ssn_list.append(employee.get_ssn())
         if ssn in ssn_list:
-            print (ssn)
-            print (ssn_list)
-            input()
             return True
         else:
-            print (ssn)
-            print (ssn_list)
-            input()
             return False
