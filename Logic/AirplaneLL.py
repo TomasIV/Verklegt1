@@ -11,7 +11,7 @@ class AirplaneLL:
     def save_airplane(self, new_airplane):
         all_models = self.__data_layer.list_aircraft_models()
         for model in all_models:
-            if model[2] == new_airplane:
+            if model[0] == new_airplane:
                 new_airplane.add_seats(model[3])
         self.__data_layer.save_airplane(new_airplane)
 
