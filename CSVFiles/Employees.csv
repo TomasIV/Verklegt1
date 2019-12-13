@@ -41,4 +41,5 @@ ssn,name,role,rank,license,address,phonenumber,email
 1503003260,ekki toms,Cabincrew,Flight Service Manager,N/A,btokne,8943751,some@emial.dot
 101010000,otmas,Cabincrew,Flight Attendant,N/A,tobbasaeta,8493223,s@s.s
 1007912189,Andri Berg ,Pilot,Captain,NAFokkerF100,Bankastraeti 5,5812345,drberg@gmail.com
-2401932489,Baldvin Haukur,Pilot,Copilot,NAFokkerF28,Hagkaup,7263485,badlvin@hagkaup.pilot1502113260,testingdude,Pilot,Copilot,NAFokkerF28,dmsa,8943750,adsi@gmai.pihg
+2401932489,Baldvin Haukur,Pilot,Copilot,NAFokkerF28,Hagkaup,7263485,badlvin@hagkaup.pilot
+1502113260,testingdude,Pilot,Copilot,NAFokkerF28,dmsa,8943750,adsi@gmai.pihg
