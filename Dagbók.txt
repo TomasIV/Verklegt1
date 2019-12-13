@@ -129,6 +129,8 @@ Unnið var í verkefninu heima þar sem það var veðurofsa.
 
 11.12.19: 
 
+Breki vinnu heima vegna veikinda
+
 Register voyage - Andri 
 Endurgera happy path/ útlitshönnun, klára view most popular destinations og breyta aðeins texta í hönnunarskýslu - Tobba
 VoyageLL - Anna
@@ -146,3 +148,13 @@ af listanum hvaða kröfur eru komar og virka
 Margt lagað og bætt vitum að það þarf að klára að uppfæra hönnunarskýrslu
 
 
+13.12.19:
+
+1. Klárum verkefni í dag, það sem eftir er information valmöguleikarnir.
+2. Klára uppfærslu á skýslu þar sem við bætum nýju og bættu upplýsingunum 
+3. commenta hér og þar 
+
+í lok dags:
+
+taka upp video 
+skila verkefni 
