@@ -65,11 +65,19 @@ class VoyageLL:
             if voyage.get_voyage_depart_time() == some_date:
                 return False
         return True
+    
+    def get_number_of_seats_for_voyage(self, some_voyage):
+        all_planes = self.__data_layer.list_airplanes()
+        for plane in all_planes:
+            if plane.get_name() == some_voyage:
+                return int(plane.seats)
 
     def find_voyage(self, flight_num, date):
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
             if (date == voyage.get_voyage_depart_time()) and (flight_num in voyage.get_voyage_flight_numbers()):
+                seats = self.get_number_of_seats_for_voyage(voyage)
+                voyage.add_number_of_seats(seats)
                 return voyage
 
     def get_all_voyages_by_date(self, from_date, to_date):
@@ -80,11 +88,17 @@ class VoyageLL:
         for voyage in all_voyages:
             voyage_date = dateutil.parser.parse(voyage.get_voyage_depart_time())
             if from_date <= voyage_date.date() <= to_date:
+                seats = self.get_number_of_seats_for_voyage(voyage)
+                voyage.add_number_of_seats(seats)
                 matching_voyages.append(voyage)
         return matching_voyages
 
     def get_all_voyages(self):
-        return self.__data_layer.list_voyages()
+        all_voyages = self.__data_layer.list_voyages()
+        for num in range(len(all_voyages)):
+            seats = self.get_number_of_seats_for_voyage(all_voyages[num])
+            all_voyages[num].add_number_of_seats(seats)
+        return all_voyages
 
     def add_employee_to_voyage(self, some_voyage, role, ssn, all_plane_models):
         all_voyage = self.__data_layer.list_voyages()
