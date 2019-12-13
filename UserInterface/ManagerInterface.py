@@ -81,8 +81,7 @@ class ManagerInterface:
                 #self.__logicapi.change_voyage(a_voyage, )
             elif command_str == "5":
                 self.change_destination()
-
-            elif command_str == "6": #######
+            elif command_str == "6":
                 options = ["1", "2"]
                 print("1. Status for today\t2. Status for some specific day")
                 chosen = self.__interface.get_input()
@@ -96,7 +95,7 @@ class ManagerInterface:
                         airplane.add_status(status)
                         print (airplane)
                 elif chosen == "2":
-                    some_date = self.__interface.get_voyage_date_without_time()
+                    some_date = self.__interface.get_voyage_date()
                     for airplane in all_airplanes:
                         status = self.__logicapi.get_airplane_status(airplane, some_date)
                         airplane.add_status(status)

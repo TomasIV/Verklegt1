@@ -19,18 +19,14 @@ class AirplaneLL:
         some_date = dateutil.parser.parse(some_date)
         for voyage in all_voyages:
             voyage_date = dateutil.parser.parse(voyage.get_voyage_depart_time())
-            if voyage_date.date() == some_date.date() and some_plane.get_name() == voyage.get_voyage_plane_id:
+            if voyage_date.date() == some_date.date() and some_plane.get_name() == voyage.get_voyage_plane_id():
                 departure_1, arrival_1, departure_2, arrival_2 = voyage.get_takeoff_dates()
                 departure_1 = dateutil.parser.parse(departure_1)
                 arrival_1 = dateutil.parser.parse(arrival_1)
                 departure_2 = dateutil.parser.parse(departure_2)
                 arrival_2 = dateutil.parser.parse(arrival_2)
 
-                if arrival_2.date() == departure_1.date():
-                    next_day = departure_1 + datetime.timedelta(days= 1)
-                    next_available_date = datetime.datetime(next_day.date(), 0, 0, 0)
-                elif arrival_2.date == (departure_1.date() + datetime.timedelta(days= 1)):
-                    next_available_date = arrival_2
+                next_available_date = departure_1.date() + datetime.timedelta(days= 1)
 
                 if some_date < departure_1:
                     return 'Unavailable (Pending flight)\n\tNext available at {}'.format(next_available_date)
