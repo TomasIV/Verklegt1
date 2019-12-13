@@ -23,8 +23,11 @@ class EmployeeLL:
             employees = voyage.get_employees_on_voyage()
             for ssn in employees:
                 person = self.find_employee(ssn)
-                found_employees.append(person)
-        return found_employees
+                found_employees.extend(person)
+        if found_employees == []:
+            return ['No employees found...']
+        else:
+            return found_employees
     
     def get_all_employees(self):
         return self.__data_layer.list_employee()
