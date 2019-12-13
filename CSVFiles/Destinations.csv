@@ -1,1 +1,7 @@
-id,destination,destinationNumber,emergencycontact,phonenumber,flighttime,kilometersLYR,Longyearbyean,01,POSTMALONE,666666,1337,9001GOH,Nuuk,02,STeb sir,8947350,532,9001KUS,Kulusuk,03,EDLILEGT,4815508,4526,354FAE,Thorshavn,04,Romeo Barclay,6549372,23466,2LWK,Tingwall,05,Lilith Corbett,7180741,234,6535KEF,Keflavik,06,Ameena Winters,7590896,435,123
+id,destination,destinationNumber,emergencycontact,phonenumber,flighttime,kilometers
+LYR,Longyearbyean,1,POSTMALONE,666666,1337,9001
+GOH,Nuuk,2,STeb sir,8947350,532,9001
+KUS,Kulusuk,3,EDLILEGT,4815508,4526,354
+FAE,Thorshavn,4,Romeo Barclay,6549372,23466,2
+LWK,Tingwall,5,Lilith Corbett,7180741,234,6535
+KEF,Keflavik,6,Ameena Winters,7590896,435,123
