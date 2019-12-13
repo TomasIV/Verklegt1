@@ -68,11 +68,9 @@ class VoyageLL:
 
     def find_voyage(self, flight_num, date):
         all_voyages = self.__data_layer.list_voyages()
-        found_voyages = []
         for voyage in all_voyages:
             if (date == voyage.get_voyage_depart_time()) and (flight_num in voyage.get_voyage_flight_numbers()):
-                found_voyages.append(voyage)
-        return found_voyages
+                return voyage
 
     def get_all_voyages_by_date(self, from_date, to_date):
         from_date = dateutil.parser.parse(from_date).date()
@@ -133,16 +131,15 @@ class VoyageLL:
                     else:
                         all_voyage[num].fa2 = ssn
         self.__data_layer.overwrite_voyages(all_voyage)
-        return "{} added to voyage".format(role)
+        return
 
 
-    def get_voyage_status(self, some_voyage):
+    def get_voyage_status(self, some_voyage, right_now = datetime.datetime.now()):
         departure_1, arrival_1, departure_2, arrival_2 = some_voyage.get_takeoff_dates()
         departure_1 = dateutil.parser.parse(departure_1)
         arrival_1 = dateutil.parser.parse(arrival_1)
         departure_2 = dateutil.parser.parse(departure_2)
         arrival_2 = dateutil.parser.parse(arrival_2)
-        right_now = datetime.datetime.now()
 
         if right_now < departure_1:
             return 'Upcoming'

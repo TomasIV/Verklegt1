@@ -54,3 +54,6 @@ class DataLayer:
     
     def view_all_voyages(self):
         return self.__data_voyage.list_voyages()
+    
+    def list_aircraft_models(self):
+        return self.__data_airplane_model.list_all_airplane_models()

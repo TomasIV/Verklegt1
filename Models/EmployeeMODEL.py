@@ -1,4 +1,5 @@
 class Employee:
+    '''here you can get empolyee, list them nicely and get the info'''
     def __init__(self, ssn, name, role, rank, a_license, address, mobile_phone, email):
         self.__ssn = ssn
         self.__name = name
@@ -46,7 +47,6 @@ class Employee:
         return [self.__ssn, self.__name, self.__role, self.__rank, self.license, self.address, self.mobile, self.email]
 
     def __eq__(self, comparison):
-        '''Comment here'''
         if self.__ssn == comparison \
         or self.__name == comparison \
         or self.__role == comparison \
