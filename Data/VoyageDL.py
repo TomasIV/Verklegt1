@@ -6,9 +6,6 @@ class VoyageDL:
     def __init__(self):
         pass
 
-    # We need to be able to list all voyages 
-    # Opens and reads file 
-    # Return a list of all voyages
     def list_voyages(self):
         '''Opens an voyages file and reads all voyages from it.
         Returns a list of all voyages.'''
@@ -21,11 +18,7 @@ class VoyageDL:
                         row['flightnumber1'], row['flightnumber2'], row['captain'], row['copilot'], row['fsm'], row['fa1'], row['fa2'])
                 list_of_voyages.append(voyage)
             return list_of_voyages
-    
-    # We need to be able to change info so we need an overwirte option to add any new info
-    # Open and read employee file
-    # Overwrite old info with the new info
-    
+
     def overwrite_file(self, list_of_voyages):
         '''Opens employee file and writes new info into employee file'''
         with open(self.PATH, "w", encoding="utf-8") as cleared_file:
