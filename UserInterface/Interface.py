@@ -86,7 +86,7 @@ class Interface:
             user_input_str = str(user_input) #Converts to string
             return user_input_str[2] #Return the char pressed
         except:
-            return input("Enter something wrong u macintosh user: ")
+            return input("Enter something u macintosh user: ")
     
     def error_check_num(self, allowed_length, num):
         new_num = ""
