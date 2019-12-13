@@ -59,8 +59,8 @@ class LogicLayer:
     def find_destination(self, search_word):
         return self.__logic_destination.find_destination(search_word)
     
-    def get_employee_ssn(self, new_ssn = ""):
-        return self.__logic_employee.get_ssn(True)
+    def get_employee_ssn(self, some_bool):
+        return self.__logic_employee.get_ssn(some_bool)
 
     def voyage_time(self, date_time):
         return self.__logic_voyage.voyage_time_check(date_time)
