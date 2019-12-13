@@ -91,7 +91,10 @@ class VoyageLL:
                 seats = self.get_number_of_seats_for_voyage(voyage)
                 voyage.add_number_of_seats(seats)
                 matching_voyages.append(voyage)
-        return matching_voyages
+        if matching_voyages == []:
+            return ['No voyages found...']
+        else:
+            return matching_voyages
 
     def get_all_voyages(self):
         all_voyages = self.__data_layer.list_voyages()
