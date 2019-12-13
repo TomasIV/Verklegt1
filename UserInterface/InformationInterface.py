@@ -43,6 +43,10 @@ class InformationInterface:
                     for person in employees:
                         print(person)
                 input ("Press enter to continue...")
+            elif command_str == "3":
+                this_is_a_tuple = self.__logicapi.get_most_popular_destination()
+                print("The most popular destination is {} with {} voyages documented".format(this_is_a_tuple[0], this_is_a_tuple[1]))
+                input ("press enter to continue...")
             elif command_str == "4":
                 destinations = LogicLayer().list_all_destinations()
                 for destination in destinations:
