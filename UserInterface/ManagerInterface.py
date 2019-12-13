@@ -77,7 +77,7 @@ class ManagerInterface:
                 some_number = input("Flight number: ")
                 a_voyage = self.__logicapi.find_voyage(some_number, some_date)
                 print (a_voyage)
-                input()
+                input("Press enter to return...")
                 #self.__logicapi.change_voyage(a_voyage, )
             elif command_str == "5":
                 self.change_destination()
@@ -98,7 +98,6 @@ class ManagerInterface:
                 options = ["1", "2"]
                 print ("1. Day" + "\t" + "2. Week",)
                 chosen = self.__interface.get_input()
-                ssn = self.__logicapi.get_employee_ssn(True)
                 while chosen not in options:
                     print ("Invalid input please try again")
                     chosen = self.__interface.get_input()
@@ -106,17 +105,17 @@ class ManagerInterface:
                     from_date = self.__interface.get_voyage_date_without_time()
                     voyages_day = self.__logicapi.get_all_voyages_by_date(from_date, from_date)
                     for voyage in voyages_day:
-                        if ssn in voyage.get_employees_on_voyage():
-                            print (voyage)
+                        print (voyage)
                     input("Press enter to return...")
                 elif chosen == "2":
                     input ("First enter in a date to start with and next the end date\npress enter to continute...")
+                    print("Starting date")
                     from_date = self.__interface.get_voyage_date_without_time()
+                    print("End date")
                     to_date = self.__interface.get_voyage_date_without_time()
                     voyages = self.__logicapi.get_all_voyages_by_date(from_date, to_date)
                     for voyage in voyages:
-                        if ssn in voyage.get_employees_on_voyage():
-                            print ("\n" + str(voyage))
+                        print (voyage)
                     input ("\nPress enter to return...")
 
 
