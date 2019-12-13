@@ -45,7 +45,7 @@ class ManagerInterface:
             elif command_str == "2":
                 print ("Please enter a new voyage")
                 print ("Please enter date and time of departure")
-                self.departure_date_time = self.get_voyage_date()
+                self.departure_date_time = self.__interface.get_voyage_date()
                 self.voyage_destination = self.get_voyage_destination()
                 print ("Please enter number of sold seats for departure flight")
                 self.departure_sold_seats = self.get_voyage_sold_seats()
@@ -71,7 +71,11 @@ class ManagerInterface:
                 self.__logicapi.register_destination(self.new_destination) # sends the destination to LLAPI
                 input("Destination created, press enter to continue...")
             elif command_str == "4":
-                a_voyage = self.find_voyage()
+                print ("Please enter date and time of departure")
+                some_date = self.__interface.get_voyage_date()
+                print("Please enter a flight number")
+                some_number = input("Flight number: ")
+                a_voyage = self.__logicapi.find_voyage(some_number, some_date)
                 print (a_voyage)
                 input()
                 #self.__logicapi.change_voyage(a_voyage, )
@@ -89,6 +93,7 @@ class ManagerInterface:
                 for destinations in all_destinations:
                     print (destinations)
                 input ("Press enter to return...")
+
             elif command_str == "9":
                 options = ["1", "2"]
                 print ("1. Day" + "\t" + "2. Week",)
