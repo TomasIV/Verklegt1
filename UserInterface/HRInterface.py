@@ -296,10 +296,6 @@ class HRInterface:
             print (pilot)
         input("Press enter to continue...")
 
-    def add_employee_to_voyage(self, ssn):
-        #self.__logicapi.
-        #self.employees.append(ssn)
-        pass
     def find_employee(self):
         self.__clear()
         ssn = input("Enter employee SSN: ")
