@@ -70,7 +70,7 @@ class VoyageLL:
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
             if (date == voyage.get_voyage_depart_time()) and (flight_num in voyage.get_voyage_flight_numbers()):
-                return found_voyages
+                return voyage
 
     def get_all_voyages_by_date(self, from_date, to_date):
         from_date = dateutil.parser.parse(from_date).date()
