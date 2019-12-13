@@ -87,59 +87,58 @@ class Interface:
             user_input_str = str(user_input) #Converts to string
             return user_input_str[2] #Return the char pressed
         except:
-            return input("Enter something wrong u mac ReTaRd")
+            return input("Enter something wrong u mac ReTaRd: ")
     
     def error_check_num(self, allowed_length, num):
         new_num = ""
         numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        num = str(num)
         for char in num:
-            if char in numbers:
-                new_num += char
+            if str(char) in numbers:
+                new_num += str(char)
         if len(new_num) in allowed_length:
             return False
         else:
             return True
 
     def get_voyage_date(self):
-        year = int(input("Year: "))
+        year = (input("Year: "))
         while self.error_check_num([4], year):
             print ("invalid input, please try again!")
-            year = int(input("Year: "))
-        month = int(input("Month: "))
+            year = input("Year: ")
+        month = input("Month: ")
         while self.error_check_num([1, 2], month):
             print ("invalid input, please try again!")
-            month = int(input("Month: "))
-        day = int(input("Day: "))
+            month = input("Month: ")
+        day = input("Day: ")
         while self.error_check_num([1, 2], day):
             print ("invalid input, please try again!")
-            day = int(input("Day: "))
-        hour = int(input("Hour: "))
+            day = input("Day: ")
+        hour = input("Hour: ")
         while self.error_check_num([1, 2], hour):
             print ("invalid input, please try again!")
-            hour = int(input("Hour: "))
-        minute = int(input("Minute: "))
+            hour = input("Hour: ")
+        minute = input("Minute: ")
         while self.error_check_num([1, 2], minute):
             print ("invalid input, please try again!")
-            minute = int(input("Minute: "))
-        date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
+            minute = input("Minute: ")
+        date = datetime.datetime(int(year),int(month),int(day),int(hour),int(minute),0).isoformat()
         return date
     
 
     def get_voyage_date_without_time(self):
-        year = int(input("Year: "))
-        while self.error_check_num([4, 4], year):
+        year = input("Year: ")
+        while self.error_check_num([4], year):
             print ("invalid input, please try again!")
-            year = int(input("Year: "))
-        month = int(input("Month: "))
+            year = input("Year: ")
+        month = input("Month: ")
         while self.error_check_num([1, 2], month):
             print ("invalid input, please try again!")
-            month = int(input("Month: "))
-        day = int(input("Day: "))
+            month = input("Month: ")
+        day = input("Day: ")
         while self.error_check_num([1, 2], day):
             print ("invalid input, please try again!")
-            day = int(input("Day: "))
-        date = datetime.datetime(year, month, day, 0, 0, 0).isoformat()
+            day = input("Day: ")
+        date = datetime.datetime(int(year), int(month), int(day), 0, 0, 0).isoformat()
         return date  
         
               
