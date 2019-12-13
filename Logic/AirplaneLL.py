@@ -9,6 +9,10 @@ class AirplaneLL:
         self.__data_layer = DataLayer()
 
     def save_airplane(self, new_airplane):
+        all_models = self.__data_layer.list_aircraft_models()
+        for model in all_models:
+            if model[2] == new_airplane:
+                new_airplane.add_seats(model[3])
         self.__data_layer.save_airplane(new_airplane)
 
     def list_airplanes(self):
@@ -29,17 +33,17 @@ class AirplaneLL:
                 next_available_date = departure_1.date() + datetime.timedelta(days= 1)
 
                 if some_date < departure_1:
-                    return 'Unavailable (Pending flight)\n\tNext available at {}'.format(next_available_date)
+                    return 'Unavailable (Pending flight)\n{:<20}Next available at {}'.format('', next_available_date)
                 elif departure_1 <= some_date <= arrival_1:
                     des = voyage.get_destination()
-                    return 'Unavailable (In flight to {})\n\tNext available at {}'.format(des, next_available_date)
+                    return 'Unavailable (In flight to {})\n{:<20}Next available at {}'.format(des, '', next_available_date)
                 elif arrival_1 < some_date < departure_2:
                     des = voyage.get_destination()
-                    return 'Unavailable (Standby at {})\n\tNext available at {}'.format(des, next_available_date)
+                    return 'Unavailable (Standby at {})\n{:<20}Next available at {}'.format(des, '', next_available_date)
                 elif departure_2 <= some_date <= arrival_2:
                     des = voyage.get_home_airport()
-                    return 'Unavailable (In flight to {})\n\tNext available at {}'.format(des, next_available_date)
+                    return 'Unavailable (In flight to {})\n{:<20}Next available at {}'.format(des, '', next_available_date)
                 elif arrival_2 < some_date:
-                    return 'Unavailable\n\tNext available at {}'.format(next_available_date)
+                    return 'Unavailable\n{:<20}Next available at {}'.format('', next_available_date)
 
         return 'Available for the day'
