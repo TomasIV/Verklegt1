@@ -11,7 +11,7 @@ class HRInterface:
 
         self.__menu_list = ["Back",
         'Edit employees', 'Find Pilot for specific airplane', 'Find employee',
-        'List Employees', 'Register employees on voyage - NSFW', 'Register new employee']
+        'List Employees', 'Register employees on voyage - NSFW', 'Register new employee', "Working?"]
 
         self.__list_menu = ["Back",
         "Employees", "Pilots", "Captains",
@@ -39,16 +39,53 @@ class HRInterface:
             elif command_str == "4":
                 self.list_menu()
             elif command_str == "5":
-                #search_word = input("Please enter either flight numbers of the voyage you want to add on: ")
-                #self.voyage = self.__logicapi.get_voyage_to_add_employee_on(search_word)
+                some_voyage = self.__interface.find_voyage()
                 print("Please enter what position you want to add to the voyage")
-                self.position = self.get_position_for_voyage()
-                self.target_employees = self.__logicapi.find_employees(self.position)
-                for person in self.target_employees:
-                    print(person)
+                role = self.get_position_for_voyage()
+                ssn = self.__logicapi.get_employee_ssn()
+                self.__logicapi.add_employee_to_voyage(some_voyage, role, ssn)
+                input("STOP")
             elif command_str == "6":
                 self.register_new_employee()
-    
+            elif command_str == "7":
+                print ("1. Working\t2. Not Working")
+                a_command = self.__interface.get_input()
+                options = ["1", "2"]
+                while a_command not in options:
+                    print ("Invalid input, please try again!")
+                    a_command = self.__interface.get_input()
+                if a_command == "1":
+                    print ("Enter a date")
+                    a_date = self.__interface.get_voyage_date_without_time()
+                    voyages_day = self.__logicapi.get_all_voyages_by_date(a_date, a_date)
+                    for voyage in voyages_day:
+                        try:
+                            for element in voyage.get_employees_on_voyage():
+                                if len(element) > 9:
+                                    print (str(element) + " going to " + voyage.get_destination())
+                        except:
+                            pass
+                    input("Press enter to continue...")
+                elif a_command == "2":
+                    ignore_list = []
+                    all_employees = self.__logicapi.list_all_employees()
+                    print ("Enter a date")
+                    a_date = self.__interface.get_voyage_date_without_time()
+                    voyages_day = self.__logicapi.get_all_voyages_by_date(a_date, a_date)
+                    for voyage in voyages_day:
+                        try:
+                            for element in voyage.get_employees_on_voyage():
+                                if len(element) > 9:
+                                    ignore_list.append(element)
+                        except:
+                            pass
+                    for element in all_employees:
+                        if element not in ignore_list:
+                            print (element)
+                    input("Press enter to continue...")
+
+
+
     def list_menu(self):
         
         while True:
@@ -90,52 +127,6 @@ class HRInterface:
                         print (employee)
                 input("press enter to return...")
 
-    def get_employee_ssn(self):
-        num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        ssn = 99
-        while ssn:
-            ssn = input("SSN: ").strip()
-            new_ssn = ""
-            for char in ssn:
-                if char in num:
-                    new_ssn += char
-            if len(new_ssn) == 10:
-                d = int(str(new_ssn[0] + new_ssn[1])) # takes the first and second int in the string as a day
-                m = int(str(new_ssn[2] + new_ssn[3])) # takes third and second int in the string as a month
-                y = int(str(new_ssn[4] + new_ssn[5])) # takes the fifth and sixth int in the string as a year
-                last = int(new_ssn[-1]) # takes the last int in the string as a century
-                if last == 0: #if year == 2000
-                    if ((32 > d > 0 ) and ( 13 > m > 0) and (y < 20)):
-                        ssn_exists = self.check_ssn(new_ssn)
-                        if ssn_exists:
-                            print ("SSN already registered, please try again")
-                        else:
-                            return new_ssn
-                    else:
-                        print("SSN not valid")
-                elif str(last) == "9": #if year == 1900
-                    if (( 32 > d > 0 ) and (13 > m > 0)):
-                        ssn_exists = self.check_ssn(new_ssn)
-                        if ssn_exists:
-                            print ("SSN already registered, please try again")
-                        else:
-                            return new_ssn
-                    else:
-                        print("SSN not valid")
-                else:
-                    print ("SSN not valid")
-            else:
-                print ("SSN not valid")
-            
-    def check_ssn(self, ssn):
-        """Checks if ssn is already registered to some employee"""
-        ssn_list = []
-        for employee in self.all_employees:
-             ssn_list.append(employee.get_ssn())
-        if ssn in ssn_list:
-            return True
-        else:
-            return False
                    
     def get_employee_name(self):
         return input("Name: ")
@@ -332,9 +323,10 @@ class HRInterface:
                 new_info = self.get_employee_email()
             if change:
                 self.__logicapi.change_employee(employee_ssn[0].get_ssn(), change, new_info)
+                
     def register_new_employee(self):
         print ("Please enter the details of the new employee")
-        self.ssn = self.get_employee_ssn()
+        self.ssn = self.__logicapi.get_employee_ssn(True)
         self.name = self.get_employee_name()
         self.role = self.get_employee_role()
         if self.role == "Pilot":

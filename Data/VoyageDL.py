@@ -18,7 +18,7 @@ class VoyageDL:
             for row in reader:
                 voyage = Voyage(row['aircraftID'], row['destination'], row['soldseats1'], row['soldseats2'], \
                         row['departure1'], row['arrival1'], row['departure2'], row['arrival2'], row['homeairport'], \
-                        row['flightnumber1'], row['flightnumber2'], [row['em1'], row['em2'], row['em3'], row['em4'], row['em5']])
+                        row['flightnumber1'], row['flightnumber2'], row['captain'], row['copilot'], row['fsm'], row['fa1'], row['fa2'])
                 list_of_voyages.append(voyage)
             return list_of_voyages
     
@@ -27,12 +27,12 @@ class VoyageDL:
     # Overwrite old info with the new info
     
     def overwrite_file(self, list_of_voyages):
-            '''Opens employee file and writes new info into employee file'''
+        '''Opens employee file and writes new info into employee file'''
         with open(self.PATH, "w", encoding="utf-8") as cleared_file:
             overwriter = csv.writer(cleared_file, lineterminator= "\r", )
             overwriter.writerow(['aircraftID', 'homeairport', 'destination', \
                 'flightnumber1', 'soldseats1', 'departure1', 'arrival1', \
                 'flightnumber2', 'soldseats2', 'departure2','arrival2', \
-                'em1', 'em2', 'em3', 'em4', 'em5'])
+                'captain', 'copilot', 'fsm', 'fa1','fa2'])
             for path in list_of_voyages:
                 overwriter.writerow(path.get_voyage_attributes())

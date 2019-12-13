@@ -1,7 +1,10 @@
 import os
+import datetime
+import dateutil
 from UserInterface.ManagerInterface import ManagerInterface
 from UserInterface.HRInterface import HRInterface
 from UserInterface.InformationInterface import InformationInterface
+from Logic.LogicLayerAPI import LogicLayer
 from sys import platform
 try:
     import msvcrt
@@ -17,6 +20,7 @@ class Interface:
         self.manager = ManagerInterface(self)
         self.hr = HRInterface(self)
         self.info = InformationInterface(self)
+        self.__logicapi = LogicLayer()
 
 
     def print_menu(self, main_menu_list):
@@ -84,6 +88,103 @@ class Interface:
             return user_input_str[2] #Return the char pressed
         except:
             return input("Enter something wrong u mac ReTaRd")
+    
+    def error_check_num(self, allowed_length, num):
+        new_num = ""
+        numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        num = str(num)
+        for char in num:
+            if char in numbers:
+                new_num += char
+        if len(new_num) in allowed_length:
+            return False
+        else:
+            return True
+
+    def get_voyage_date(self):
+        year = int(input("Year: "))
+        while self.error_check_num([4], year):
+            print ("invalid input, please try again!")
+            year = int(input("Year: "))
+        month = int(input("Month: "))
+        while self.error_check_num([1, 2], month):
+            print ("invalid input, please try again!")
+            month = int(input("Month: "))
+        day = int(input("Day: "))
+        while self.error_check_num([1, 2], day):
+            print ("invalid input, please try again!")
+            day = int(input("Day: "))
+        hour = int(input("Hour: "))
+        while self.error_check_num([1, 2], hour):
+            print ("invalid input, please try again!")
+            hour = int(input("Hour: "))
+        minute = int(input("Minute: "))
+        while self.error_check_num([1, 2], minute):
+            print ("invalid input, please try again!")
+            minute = int(input("Minute: "))
+        date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
+        return date
+    
+
+    def get_voyage_date_without_time(self):
+        year = int(input("Year: "))
+        while self.error_check_num([4, 4], year):
+            print ("invalid input, please try again!")
+            year = int(input("Year: "))
+        month = int(input("Month: "))
+        while self.error_check_num([1, 2], month):
+            print ("invalid input, please try again!")
+            month = int(input("Month: "))
+        day = int(input("Day: "))
+        while self.error_check_num([1, 2], day):
+            print ("invalid input, please try again!")
+            day = int(input("Day: "))
+        date = datetime.datetime(year, month, day, 0, 0, 0).isoformat()
+        return date  
+        
+              
+    def find_voyage(self):
+        self.clear()
+        voyages = self.__logicapi.view_all_voyages()
+        voyage_info = []
+        for voyage in voyages:
+            the_print = voyage.get_identification()
+            for element in the_print:
+                print (element)
+                if the_print[1] == element:
+                    voyage_info.append(element)
+        input("Press enter to continue...")
+        flight_num = input("Enter a flight number: ")
+        run = True
+        while True:
+            while flight_num not in voyages:
+                print ("Flight number does not exist, please try again")
+                self.clear()
+                for voyage in voyages:
+                    the_print = voyage.get_identification()
+                    for element in the_print:
+                        print(element)
+                flight_num = input("Enter a flight number: ")
+            date = self.get_voyage_date()
+            for voyage in voyages:
+                if date == str(voyage.get_voyage_depart_time()):
+                    if flight_num in voyage.get_voyage_flight_numbers():
+                        the_voyage = self.__logicapi.find_voyage(flight_num, date)
+                        run = False
+            while run:
+                self.clear()
+                for voyage in voyages:
+                    the_print = voyage.get_identification()
+                    for element in the_print:
+                        print(element)
+                print ("Date is not associated with any voyage, please try again")
+                date = self.get_voyage_date()
+                for voyage in voyages:
+                    if date == str(voyage.get_voyage_depart_time()):
+                        if flight_num in voyage.get_voyage_flight_numbers():
+                            run = False
+                            the_voyage = self.__logicapi.find_voyage(flight_num, date)
+            return the_voyage
 
 
     def main_menu(self):

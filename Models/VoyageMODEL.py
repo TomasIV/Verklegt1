@@ -2,9 +2,11 @@ import datetime
 import dateutil.parser
 
 class Voyage:
-    def __init__(self, airplane, destination, sold_seats_out, sold_seats_back, first_departure_date, first_arrival_date = '', second_departure_date = '', second_arrival_date = '', home_airport = 'KEF', flight_number_1 = '', flight_number_2 = '', employees = []):
+    def __init__(self, airplane, destination, sold_seats_out, sold_seats_back, \
+            first_departure_date, first_arrival_date = '', second_departure_date = '', second_arrival_date = '', \
+            home_airport = 'KEF', flight_number_1 = '', flight_number_2 = '', captain = '', copilot = '', fsm = '', fa1 = '', fa2 = ''):
         self.__aircraft_id = airplane
-        self.__home_id = home_airport       
+        self.__home_id = home_airport
         self.__destination_id = destination
         self.__first_departure = first_departure_date
         self.__first_arrival = first_arrival_date
@@ -14,46 +16,74 @@ class Voyage:
         self.second_sold_seats = sold_seats_back
         self.first_flight_number = flight_number_1
         self.second_flight_number = flight_number_2
-        self.employees = employees
+        self.captain = captain
+        self.copilot = copilot
+        self.fsm = fsm
+        self.fa1 = fa1
+        self.fa2 = fa2
 
     def __str__(self):
-        """Very very long string"""
+        '''Very very long string'''
+        if self.captain != '' and self.copilot != '' and self.fsm != '':
+            manned_or_not = 'Fully manned'
+        else:
+            manned_or_not = 'Not fully manned!'
+
+        attributes = ['Aircraft ID:', 'Flight number:', 'Departure:', 'Arrival:', 'Sold seats:', 'Captain:', 'Copilot:', 'Flight service manager:', 'Flight attendant:']
+        return "{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<39s}{} to {:<33s}{} to {}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}{:<15s}{:<25s}{:<15s}{}\n{:<24s}{:<15s}\n{:<24s}{:<15s}\n".\
+            format(attributes[0], self.__aircraft_id, attributes[1], self.first_flight_number, attributes[1], self.second_flight_number, \
+            manned_or_not, self.__home_id, self.__destination_id, self.__destination_id, self.__home_id, \
+            attributes[5], self.captain, attributes[2], self.__first_departure, attributes[2], self.__second_departure, \
+            attributes[6], self.copilot, attributes[3], self.__first_arrival, attributes[3], self.__second_arrival, \
+            attributes[7], self.fsm, attributes[4], self.first_sold_seats, attributes[4], self.second_sold_seats, \
+            attributes[8], self.fa1, \
+            attributes[8], self.fa2)
+        
+        new_str = ""
         a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format(
         "Aircraft ID", self.__aircraft_id,
         "Home Airport", self.__home_id, "Destination ID", self.__destination_id, "Departure date", self.__first_departure,
         "Arrival date", self.__first_arrival, "Departure from destination", self.__second_departure, "Arrival from destination", self.__second_arrival,
         "Sold seats to destination", self.first_sold_seats, "Sold seats from destination", self.second_sold_seats, 
         "First flight number", self.first_flight_number, "Second flight number", self.second_flight_number)
-        try:
-            a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", self.employees.get_ssn())
-        except:
-            a_str += "\n{:<30s}: {}\n".format("Employees on this voyage", "None")
-        return a_str
+
+        new_str +=("\n{:<30s}: {}\t{:<30s}: {}".format("Captain", self.captain, "Co-Pilot", self.copilot))
+        new_str +=("\n{:<30s}: {}\t{:<30s}: {}, {}".format("Flight Service Manager", self.fsm, "Flight attendants", self.fa1, self.fa2))
+        if ((self.captain) and (self.copilot) and (self.fsm)):
+            new_str += str("\nManned: True")
+        else:
+            new_str += str("\nManned: False")
+        new_str += a_str
+        return new_str
+
     def get_identification(self):
-        print ("\n{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From/To", "Flight number", "Departure", "Arrival", "Sold seats"))
-        first_flight = "{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From ICE To " + self.__destination_id, self.first_flight_number, self.__first_departure, self.__first_arrival, self.first_sold_seats)
-        second_flight = "{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From " + self.__destination_id + " To ICE", self.second_flight_number, self.__second_departure, self.__second_arrival, self.second_sold_seats)
+        one = ("\n{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From/To", "Flight number", "Departure", "Arrival", "Sold seats"))
+        two = ("{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}".format("From ICE To " + self.__destination_id, self.first_flight_number, self.__first_departure, self.__first_arrival, self.first_sold_seats))
+        three = ("{:<30s}{:<30s}{:<30s}{:<30s}{:<30s}\n".format("From " + self.__destination_id + " To ICE", self.second_flight_number, self.__second_departure, self.__second_arrival, self.second_sold_seats))
+        return (one, two, three)
+
+    def get_employees_on_voyage(self):
+        return [self.captain, self.copilot, self.fsm, self.fa1, self.fa2]
     def get_destination(self):
         return self.__destination_id
     
     def get_home_airport(self):
         return self.__home_id
-    
-    def get_departure(self):
+
+    def get_voyage_flight_numbers(self):
+        return (self.first_flight_number, self.second_flight_number)
+
+    def get_voyage_depart_time(self):
         return self.__first_departure
 
     def get_takeoff_dates(self):
         return [self.__first_departure, self.__first_arrival, self.__second_departure, self.__second_arrival]
 
     def get_voyage_attributes(self):
-        list_of_attributes = [self.__aircraft_id, self.__home_id, self.__destination_id, \
+        return [self.__aircraft_id, self.__home_id, self.__destination_id, \
             self.first_flight_number, self.first_sold_seats, self.__first_departure, self.__first_arrival, \
-            self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival]
-        list_of_attributes.extend(self.employees)
-        return list_of_attributes
-
-    def add_employee_to_voyage(self, ssn):
-        self.employees.append(ssn)
+            self.second_flight_number, self.second_sold_seats, self.__second_departure, self.__second_arrival, \
+            self.captain, self.copilot, self.fa1, self.fa2]
     
     def add_dates_to_voyage(self, first_arrival_date, second_departure_date, second_arrival_date):
         self.__first_arrival = first_arrival_date
@@ -74,11 +104,6 @@ class Voyage:
 
         self.first_flight_number = self.first_flight_number[:4] + last_char_1
         self.second_flight_number = self.second_flight_number[:4] + last_char_2
-    
-    def clean_employee_list(self):
-        for num in range(len(self.employees)-1, -1, -1):
-            if self.employees[num] == '':
-                self.employees.pop(num)
 
     def __eq__(self, comparison):
         if self.__aircraft_id == comparison \
@@ -86,7 +111,15 @@ class Voyage:
         or self.__first_departure == comparison \
         or self.first_flight_number == comparison \
         or self.second_flight_number == comparison \
-        or comparison in self.employees:
+        or self.captain == comparison \
+        or self.copilot == comparison \
+        or self.fsm == comparison \
+        or self.fa1 == comparison \
+        or self.fa2 == comparison:
             return True
         else:
             return False
+    def get_arrival(self):
+        return self.__second_arrival
+    def get_airplane_name(self):
+        return self.__aircraft_id
