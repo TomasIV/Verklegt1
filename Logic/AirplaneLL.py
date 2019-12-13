@@ -9,6 +9,7 @@ class AirplaneLL:
         self.__data_layer = DataLayer()
 
     def save_airplane(self, new_airplane):
+        ''' Takes an instanse of airplane and saves it'''
         all_models = self.__data_layer.list_aircraft_models()
         for model in all_models:
             if model[0] == new_airplane:
@@ -16,9 +17,11 @@ class AirplaneLL:
         self.__data_layer.save_airplane(new_airplane)
 
     def list_airplanes(self):
+        ''' Takes info and returns list of airplanes'''
         return self.__data_layer.list_airplanes()
     
     def get_airplane_status(self, some_plane, some_date):
+        ''' Takes an instance of airplane status if avalible then returns 'Avalible for the day else returns un'''
         all_voyages = self.__data_layer.list_voyages()
         some_date = dateutil.parser.parse(some_date)
         for voyage in all_voyages:
