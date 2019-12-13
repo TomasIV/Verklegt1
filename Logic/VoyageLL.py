@@ -12,7 +12,8 @@ class VoyageLL:
         self.__data_layer = DataLayer()
         self.__logic_destination = DestinationLL()
 
-    def create_voyage(self, some_voyage): 
+    def create_voyage(self, some_voyage):
+        '''Takes an instance of a voyage, fills in the remaining attributes and saves it'''
         all_voyages = self.__data_layer.list_voyages()
         new_voyage_date = dateutil.parser.parse(some_voyage.get_voyage_depart_time())
         new_voyage_destination = some_voyage.get_destination()
@@ -57,7 +58,8 @@ class VoyageLL:
         self.__data_layer.overwrite_voyages(all_voyages)
 
     def voyage_time_check(self, some_date):
-        '''Takes a Voyage and checks to see if the departure time collides with any pre-existing voyage'''
+        '''Takes a Voyage and checks to see if the departure time collides with any pre-existing voyage.
+        Returns False if the time collides, True if it doesn't'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
             if voyage.get_voyage_depart_time() == some_date:
@@ -65,12 +67,16 @@ class VoyageLL:
         return True
     
     def get_number_of_seats_for_voyage(self, some_voyage):
+        '''Takes an instance of a voyage and returns the number of seats
+        for the airplane on that voyage on string format'''
         all_planes = self.__data_layer.list_airplanes()
         for plane in all_planes:
             if plane.get_name() == some_voyage:
                 return int(plane.seats)
 
     def find_voyage(self, flight_num, date):
+        '''Takes in two arguments and compares them with all voyages.
+        Retruns an instance of matching voyage.'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
             if (date == voyage.get_voyage_depart_time()) and (flight_num in voyage.get_voyage_flight_numbers()):
@@ -79,6 +85,8 @@ class VoyageLL:
                 return voyage
 
     def get_all_voyages_by_date(self, from_date, to_date):
+        '''Takes in two date arguments and returns a list of all voyages
+        that match the timespan between these dates'''
         from_date = dateutil.parser.parse(from_date).date()
         to_date = dateutil.parser.parse(to_date).date()
         all_voyages = self.__data_layer.list_voyages()
@@ -95,6 +103,7 @@ class VoyageLL:
             return matching_voyages
 
     def get_all_voyages(self):
+        '''Returns a list of all voyages'''
         all_voyages = self.__data_layer.list_voyages()
         for num in range(len(all_voyages)):
             seats = self.get_number_of_seats_for_voyage(all_voyages[num])
@@ -102,6 +111,10 @@ class VoyageLL:
         return all_voyages
 
     def add_employee_to_voyage(self, some_voyage, role, ssn, all_plane_models):
+        '''Takes four arguments.
+        It tries to add the employee provided to the voyage provided.
+        If not successful, returns an error message.
+        If successful, returns nothing.'''
         all_voyage = self.__data_layer.list_voyages()
         all_employees = self.__data_layer.list_employee()
         all_planes = self.__data_layer.list_airplanes()
@@ -149,6 +162,7 @@ class VoyageLL:
         return 
 
     def get_voyages_by_status(self, some_status):
+        '''Takes some status as an argument and returns a list of voyages that match that status'''
         all_voyages = self.__data_layer.list_voyages()
         found_voyages = []
         for voyage in all_voyages:
@@ -160,6 +174,8 @@ class VoyageLL:
             return found_voyages
 
     def get_voyage_status(self, some_voyage, right_now = datetime.datetime.now()):
+        '''Takes an instanse of a voyage and date (defaulted to current date and time).
+        Returnes the voyage status.'''
         dates = some_voyage.get_takeoff_dates()
         departure_1 = dateutil.parser.parse(dates[0])
         arrival_2 = dateutil.parser.parse(dates[3])
