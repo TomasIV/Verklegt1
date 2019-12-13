@@ -12,12 +12,11 @@ class VoyageLL:
         self.__data_layer = DataLayer()
         self.__logic_destination = DestinationLL()
 
-    def create_voyage(self, some_voyage): # Er að vinna í þessu
+    def create_voyage(self, some_voyage): 
         all_voyages = self.__data_layer.list_voyages()
         new_voyage_date = dateutil.parser.parse(some_voyage.get_voyage_depart_time())
         new_voyage_destination = some_voyage.get_destination()
 
-        # Find colliding voyage indexes
         colliding_voyages = []
         for num in range(len(all_voyages)):
             voyage_date = dateutil.parser.parse(all_voyages[num].get_voyage_depart_time())
@@ -25,7 +24,6 @@ class VoyageLL:
                 if all_voyages[num].get_destination() == new_voyage_destination:
                     colliding_voyages.append(num)
 
-        # Change flight numbers for the colliding voyages
         last_num = 0
         for num in colliding_voyages:
             voyage_date = dateutil.parser.parse(all_voyages[num].get_voyage_depart_time())

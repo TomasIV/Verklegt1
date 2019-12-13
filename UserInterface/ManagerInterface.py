@@ -9,7 +9,6 @@ import datetime
 class ManagerInterface:
     def __init__(self, interface):
         self.__interface = interface
-        #self.__voyage = Voyage()
         self.__logicapi = LogicLayer()
         self.__menu_list = ["Back", 
         "Register Airplane", "Register Voyage", "Register Destination", 
@@ -31,17 +30,6 @@ class ManagerInterface:
                 self.new_airplane = Airplane(self.name, self.model)
                 self.__logicapi.register_airplane(self.new_airplane)
                 input ("Airplane created, press enter to continue...")
-                # self.name = self.get_airplane_name()
-                # self.manufacturer = self.get_airplane_manufacturer()
-                # if self.manufacturer == "BAE":
-                #     self.model = self.get_airplane_bae_model()
-                # elif self.manufacturer == "Fokker":
-                #     self.model = self.get_airplane_fokker_model()
-                # elif self.manufacturer != "Fokker" or self.manufacturer != "BAE":
-                #     self.model = self.get_airplane_other_model()
-                # self.capacity = self.get_airplane_capacity()
-                # self.new_airplane = Airplane(self.name, self.model, self.manufacturer, self.capacity)
-                # self.__logicapi.register_airplane(self.new_airplane) # sends the airplane to LLAPI
             elif command_str == "2":
                 print ("Please enter a new voyage")
                 print ("Please enter date and time of departure")
@@ -82,7 +70,6 @@ class ManagerInterface:
                 a_voyage = self.__logicapi.find_voyage(some_number, some_date)
                 print (a_voyage)
                 input("Press enter to return...")
-                #self.__logicapi.change_voyage(a_voyage, )
             elif command_str == "5":
                 self.change_destination()
             elif command_str == "6":
@@ -186,86 +173,7 @@ class ManagerInterface:
 
     def change_airplane(self):
         pass
-    # def get_airplane_name(self):
-    #     return input("PlaneID: ")
-
-    # def get_airplane_manufacturer(self):
-    #     manufacturer = input("Manufacturer: \n1. BAE\n2. Fokker\n3. Other manufacturer \nSelect Manufacturer: ")
-    #     manufacturer_options = ["1", "2", "3"]
-    #     while manufacturer not in manufacturer_options:
-    #         print ("Invalid input! Please try again")
-    #         new_manufacturer = input("Manufacturer: \n1. BAE\n2. Fokker\n3. Input other manufacturer \nSelect Manufacturer: ")
-    #         manufacturer = new_manufacturer
-    #     if manufacturer == "1":
-    #         manufacturer = "BAE"
-    #     elif manufacturer == "2":
-    #         manufacturer = "Fokker"
-    #     elif manufacturer == "3":
-    #         manufacturer = input("Input other Manufacturer: ")
-    #     return manufacturer
-
-    # def get_airplane_bae_model(self):
-    #     model = input("Model \n1. Model 148\n2. Other Model \nSelect Model: ")
-    #     model_options = ["1", "2"]
-    #     while model not in model_options:
-    #         print("Invalid input! Please try again")
-    #         model = input("Model \n1. Model 148\n2. Other Model \nSelect Model: ")
-    #     if model == "1":
-    #         model = "148"
-    #     elif model == "2":
-    #         model = input("Input other Model: ")
-    #     return model
-
-    # def get_airplane_fokker_model(self):
-    #     model = input("Model \n1. Model F28\n2. Model F100\n3. Other Model \nSelect Model: ")
-    #     model_options = ["1", "2", "3"]
-    #     while model not in model_options:
-    #         print("Invalid input! Please try again")
-    #         model = input("Model \n1. Model F28\n2. Model F100\n3. Other Model \nSelect Model: ")
-    #     if model == "1":
-    #         model = "F28"
-    #     elif model == "2":
-    #         model = "F100"
-    #     elif model == "3":
-    #         model = model = input("Input other Model: ")
-    #     return model
-
-    # def get_airplane_other_model(self):
-    #     return input("Input model number: ")
-
-    # def get_airplane_capacity(self):
-    #     num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    #     while True:
-    #         capacity = input("Capacity: ")
-    #         new_num = ""
-    #         for char in capacity:
-    #             if char in num:
-    #                 new_num += char
-    #         if 0 < len(new_num) < 4:
-    #             return new_num
-    #         else: 
-    #             print("Invalid input, please try again!")
-
-    # def get_voyage_sold_seats(self):
-    #     num = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    #     while True:
-    #         sold_seats = input("Sold Seats: ")
-    #         new_num = ""
-    #         for char in sold_seats:
-    #             if char in num:
-    #                 new_num += char
-    #         if 0 < len(new_num) < 4:
-    #             return new_num
-    #         else: 
-    #             print("Invalid input, please try again!")
-
-    # def get_voyage_airplane(self):
-    #     pass
-
-    # def get_voyage_date(self):
-    #     pass
-
-
+   
     def get_destination_id(self):
         return input("Input destination ID: ")
 
@@ -304,7 +212,7 @@ class ManagerInterface:
     def get_voyage_airplane(self):
         voyage_airplane_id = input("Enter Airplane ID for voyage: ")
         return voyage_airplane_id
-        #Búa til brú niður í LL þar sem athugað er hvort flugvélin sé nógu stór?
+        
 
     def get_voyage_destination(self):
         all_destinations = self.__logicapi.list_all_destinations()
