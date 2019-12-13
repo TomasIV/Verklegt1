@@ -139,7 +139,7 @@ class ManagerInterface:
         return input("Kilometers from Iceland to Destination: ")
     
     def get_flight_time(self):
-        return input("Time from Iceland to Destination: ")
+        return input("Time from Iceland to Destination in minutes: ")
 
     def get_airplane_name(self):
         while True:
