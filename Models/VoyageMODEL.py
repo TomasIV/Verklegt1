@@ -6,7 +6,7 @@ class Voyage:
             first_departure_date, first_arrival_date = '', second_departure_date = '', second_arrival_date = '', \
             home_airport = 'KEF', flight_number_1 = '', flight_number_2 = '', captain = '', copilot = '', fsm = '', fa1 = '', fa2 = ''):
         self.__aircraft_id = airplane
-        self.__home_id = home_airport       
+        self.__home_id = home_airport
         self.__destination_id = destination
         self.__first_departure = first_departure_date
         self.__first_arrival = first_arrival_date
@@ -23,7 +23,22 @@ class Voyage:
         self.fa2 = fa2
 
     def __str__(self):
-        """Very very long string"""
+        '''Very very long string'''
+        if self.captain != '' and self.copilot != '' and self.fsm != '':
+            manned_or_not = 'Fully manned'
+        else:
+            manned_or_not = 'Not fully manned!'
+
+        attributes = ['Aircraft ID:', 'Flight number:', 'Departure:', 'Arrival:', 'Sold seats:', 'Captain:', 'Copilot:', 'Flight service manager:', 'Flight attendant:']
+        return "{:<25s}{:<15s}{}{}{}{}\n{:<25s}{} to {}{} to {}\n{:<25s}{:<15s}{}{}{}{}\n{:<25s}{:<15s}{}{}{}{}\n{:<25s}{:<15s}{}{}{}{}\n{:<25s}{:<15s}\n{:<25s}{:<15s}\n".\
+            format(attributes[0], self.__aircraft_id, attributes[1], self.first_flight_number, attributes[1], self.second_flight_number, \
+            manned_or_not, self.__home_id, self.__destination_id, self.__destination_id, self.__home_id, \
+            attributes[5], self.captain, attributes[2], self.__first_departure, attributes[2], self.__second_departure, \
+            attributes[6], self.copilot, attributes[3], self.__first_arrival, attributes[3], self.__second_arrival, \
+            attributes[7], self.fsm, attributes[4], self.first_sold_seats, attributes[4], self.second_sold_seats, \
+            attributes[8], self.fa1, \
+            attributes[8], self.fa2)
+        
         new_str = ""
         a_str = "{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}\t{:<30s}: {}\n{:<30s}: {}".format(
         "Aircraft ID", self.__aircraft_id,
