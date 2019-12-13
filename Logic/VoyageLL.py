@@ -58,11 +58,11 @@ class VoyageLL:
         all_voyages.append(some_voyage)
         self.__data_layer.overwrite_voyages(all_voyages)
 
-    def voyage_time_check(self, some_voyage):
+    def voyage_time_check(self, some_date):
         '''Takes a Voyage and checks to see if the departure time collides with any pre-existing voyage'''
         all_voyages = self.__data_layer.list_voyages()
         for voyage in all_voyages:
-            if voyage.get_voyage_depart_time() == some_voyage.get_voyage_depart_time():
+            if voyage.get_voyage_depart_time() == some_date:
                 return False
         return True
 

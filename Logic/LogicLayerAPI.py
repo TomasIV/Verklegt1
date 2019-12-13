@@ -61,3 +61,6 @@ class LogicLayer:
     
     def get_employee_ssn(self, new_ssn = ""):
         return self.__logic_employee.get_ssn(True)
+
+    def voyage_time(self, date_time):
+        return self.__logic_voyage.voyage_time_check(date_time)
