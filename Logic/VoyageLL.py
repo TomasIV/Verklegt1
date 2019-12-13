@@ -150,24 +150,24 @@ class VoyageLL:
         self.__data_layer.overwrite_voyages(all_voyage)
         return 
 
+    def get_voyages_by_status(self, some_status):
+        all_voyages = self.__data_layer.list_voyages()
+        found_voyages = []
+        for voyage in all_voyages:
+            if self.get_voyage_status(voyage) == some_status:
+                found_voyages.append(voyage)
+        if found_voyages == []:
+            return ['No voyages found...']
+        else:
+            return found_voyages
 
     def get_voyage_status(self, some_voyage, right_now = datetime.datetime.now()):
-        departure_1, arrival_1, departure_2, arrival_2 = some_voyage.get_takeoff_dates()
-        departure_1 = dateutil.parser.parse(departure_1)
-        arrival_1 = dateutil.parser.parse(arrival_1)
-        departure_2 = dateutil.parser.parse(departure_2)
-        arrival_2 = dateutil.parser.parse(arrival_2)
-
+        dates = some_voyage.get_takeoff_dates()
+        departure_1 = dateutil.parser.parse(dates[0])
+        arrival_2 = dateutil.parser.parse(dates[3])
         if right_now < departure_1:
-            return 'Upcoming'
-        elif departure_1 <= right_now <= arrival_1:
-            des = some_voyage.get_destination()
-            return 'In flight to ' + des
-        elif arrival_1 < right_now < departure_2:
-            des = some_voyage.get_destination()
-            return 'Standby at ' + des
-        elif departure_2 <= right_now <= arrival_2:
-            des = some_voyage.get_home_airport()
-            return 'In flight to ' + des
+            return 'upcoming'
+        elif departure_1 <= right_now <= arrival_2:
+            return 'active'
         elif arrival_2 < right_now:
-            return 'Finished'
+            return 'finished'
